@@ -14,5 +14,6 @@
 #endif
 #include <wx/xml/xml.h>
 #include <wx/graphics.h>
+#include <wx/dcbuffer.h>
 
 #endif //PCH_H

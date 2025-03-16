@@ -9,12 +9,14 @@
 #define GAMEAPP_H
 
 
-
+/**
+ * Main Application Class for the Game
+ */
 class GameApp :public wxApp{
 private:
 
 public:
-
+    bool OnInit() override;
 };
 
 

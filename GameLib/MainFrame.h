@@ -12,9 +12,11 @@
 
 class MainFrame : public wxFrame{
 private:
+    void OnAbout(wxCommandEvent &event);
+    void OnExit(wxCommandEvent &event);
 
 public:
-
+    void Initialize();
 };
 
 

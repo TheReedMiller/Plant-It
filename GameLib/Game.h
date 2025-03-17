@@ -13,8 +13,11 @@
  */
 class Game {
 private:
+    ///Temporary pointer to Background
+    std::shared_ptr<wxBitmap> mBackground;
 
 public:
+    Game();
     void OnDraw(wxDC* graphics);
 };
 

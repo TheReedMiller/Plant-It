@@ -27,3 +27,11 @@ void Item::SetPosition(double x, double y)
     mX = x;
     mY = y;
 }
+
+/**
+ * Destructor for this item
+ */
+Item::~Item()
+{
+
+}

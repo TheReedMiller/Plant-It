@@ -15,12 +15,10 @@
  */
 class Background : public Item
 {
-protected:
-    Background(Game *game);
 private:
 
 public:
-
+    Background(Game *game);
 };
 
 

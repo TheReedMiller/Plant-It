@@ -12,7 +12,9 @@ set(SOURCE_FILES
         Item.cpp
         Item.h
         Background.cpp
-        Background.h)
+        Background.h
+        TaskView.cpp
+        TaskView.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)

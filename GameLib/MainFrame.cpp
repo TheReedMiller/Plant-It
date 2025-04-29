@@ -7,6 +7,7 @@
 #include "MainFrame.h"
 #include "GameView.h"
 #include "ids.h"
+#include "TaskView.h"
 
 /**
  * Initialize the MainFrame window.
@@ -15,19 +16,22 @@ void MainFrame::Initialize()
 {
     Create(nullptr, wxID_ANY, L"Plant-It", wxDefaultPosition, wxSize(1000, 800));
 
-    // create a sizer that will lay out child windows vertically
-    auto sizer = new wxBoxSizer(wxVERTICAL);
+    // create a sizer that will lay out child windows Horizontally
+    auto sizer = new wxBoxSizer(wxHORIZONTAL);
 
-    // Create the view class object as a child of MainFrame
+    //Create Game View as well as Task view
     auto gameView = new GameView();
+    auto taskView = new TaskView(this);
+
+    //Call to initialize
     gameView->Initialize(this);
 
-    //Add it to the sizer
+    //Add Views to the Sizer
     sizer->Add(gameView, 1, wxEXPAND | wxALL);
+    sizer->Add(taskView, 0, wxEXPAND | wxALL);
 
-    // Set the sizer for this frame
+    //Set the sizer for this frame
     SetSizer( sizer );
-
     Layout();
 
     // The top bar containing all the menu options

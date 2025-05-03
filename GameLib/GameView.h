@@ -27,6 +27,7 @@ public:
     void Initialize(wxFrame *parent);
     void OnPaint(wxPaintEvent& event);
     void OnLeftDown(const wxMouseEvent &event);
+    void Save(wxXmlNode* root);
 };
 
 

@@ -89,3 +89,12 @@ void TaskView::OnTimer(wxTimerEvent& event)
 {
 
 }
+
+/**
+ * save function for this view
+ * @param root root node of xml
+ */
+void TaskView::Save(wxXmlNode* root)
+{
+
+}

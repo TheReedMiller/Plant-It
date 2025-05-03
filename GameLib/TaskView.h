@@ -26,6 +26,7 @@ public:
     void OnMouseMove(wxMouseEvent& event);
     void OnDoubleClick(wxMouseEvent& event);
     void OnTimer(wxTimerEvent& event);
+    void Save(wxXmlNode* root);
 };
 
 

@@ -68,3 +68,12 @@ void GameView::OnLeftDown(const wxMouseEvent &event)
 {
     Refresh();
 }
+
+/**
+ * save function for this view
+ * @param root root node of xml
+ */
+void GameView::Save(wxXmlNode* root)
+{
+
+}

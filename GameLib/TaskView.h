@@ -18,7 +18,14 @@ private:
 public:
     ///Constant for Window Width
     static const int Width = 300;
+
     TaskView(wxWindow * parent);
+    void OnPaint(wxPaintEvent& event);
+    void OnLeftDown(wxMouseEvent& event);
+    void OnLeftUp(wxMouseEvent& event);
+    void OnMouseMove(wxMouseEvent& event);
+    void OnDoubleClick(wxMouseEvent& event);
+    void OnTimer(wxTimerEvent& event);
 };
 
 

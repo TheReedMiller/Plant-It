@@ -40,6 +40,7 @@ void Game::OnDraw(wxDC* graphics)
  */
 void Game::Load(const wxString &filename)
 {
+    //Create XML document, try and load it
     wxXmlDocument xmlDoc;
     if(!xmlDoc.Load(filename))
     {

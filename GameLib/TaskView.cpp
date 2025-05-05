@@ -96,5 +96,17 @@ void TaskView::OnTimer(wxTimerEvent& event)
  */
 void TaskView::Save(wxXmlNode* root)
 {
+    //Create items node
+    auto itemsNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"Task");
+
+    root->AddChild(itemsNode);
+}
+
+/**
+ *Load function for this view
+ * @param root root node of xml
+ */
+void TaskView::Load(wxXmlNode* root)
+{
 
 }

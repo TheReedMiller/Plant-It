@@ -77,9 +77,20 @@ void GameView::OnLeftDown(const wxMouseEvent &event)
 void GameView::Save(wxXmlNode* root)
 {
     //Create items node
-    auto itemsNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"items");
+    auto itemsNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"Game");
 
     auto value = wxString::Format(wxT("%d"), mTime);
     itemsNode->AddAttribute(L"time", value);
     root->AddChild(itemsNode);
+}
+
+/**
+ *Load function for this view
+ * @param root root node of xml
+ */
+void GameView::Load(wxXmlNode* root)
+{
+    //Set Time/Stopwatch
+    root->GetAttribute(L"time").ToInt(&mTime);
+    mStopWatch.Start(mTime * 1000);
 }

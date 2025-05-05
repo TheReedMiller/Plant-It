@@ -94,7 +94,45 @@ void MainFrame::OnLoad(wxCommandEvent& event)
         return;
     }
 
+    //Get filename and create XML node
     auto filename = loadFileDialog.GetPath();
+    wxXmlDocument xmlDoc;
+    if(!xmlDoc.Load(filename))
+    {
+        wxMessageBox(L"Unable to load Animation file");
+        return;
+    }
+
+    // Get the XML document root node
+    auto root = xmlDoc.GetRoot();
+
+    //Game View and Task view nodes
+    wxXmlNode* gameNode = nullptr;
+    wxXmlNode* taskNode = nullptr;
+
+    //Iterate to find nodes
+    auto childNode = root->GetChildren();
+    while(childNode)
+    {
+        //Check for Game View Node
+        if (childNode->GetName() == L"Game")
+        {
+            gameNode = childNode;
+        }
+
+        //Check for Task View Node
+        if (childNode->GetName() == L"Task")
+        {
+            taskNode = childNode;
+        }
+
+        //Get Next Child
+        childNode = childNode->GetNext();
+    }
+
+    //Load both Views
+    mGameView->Load(gameNode);
+    mTaskView->Load(taskNode);
 }
 
 /**
@@ -115,7 +153,7 @@ void MainFrame::OnSave(wxCommandEvent& event)
     //create XML document to save
     wxXmlDocument xmlDoc;
     //Create <game> root
-    auto root = new wxXmlNode(wxXML_ELEMENT_NODE, L"game");
+    auto root = new wxXmlNode(wxXML_ELEMENT_NODE, L"TaskManager");
     xmlDoc.SetRoot(root);
 
     //Call to Views to save

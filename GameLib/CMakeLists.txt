@@ -18,7 +18,9 @@ set(SOURCE_FILES
         TaskManager.cpp
         TaskManager.h
         Task.cpp
-        Task.h)
+        Task.h
+        Plant.cpp
+        Plant.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)

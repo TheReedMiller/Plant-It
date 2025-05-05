@@ -27,6 +27,7 @@ public:
     void CreateItem(wxXmlNode *node);
     void Save(wxXmlNode* root);
     void Clear();
+    void Add(std::shared_ptr<Item> item);
 };
 
 

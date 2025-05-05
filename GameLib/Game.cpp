@@ -18,16 +18,22 @@ Game::Game()
 {
     mBackground = make_unique<wxBitmap>(
             L"images/background.png", wxBITMAP_TYPE_ANY);
-
+    auto background = std::make_shared<Background>(this, L"background.png");
+    Add(background);
 }
 
 /**
- * Draw al the items within our game
+ * Draw all the items within our game
  * @param graphics The graphics we are drawing on
  */
 void Game::OnDraw(wxDC* graphics)
 {
-    graphics->DrawBitmap(*mBackground, 0, 0);
+    // graphics->DrawBitmap(*mBackground, 0, 0);
+
+    for (auto item : mItems)
+    {
+        item->Draw(graphics);
+    }
 }
 
 
@@ -61,30 +67,30 @@ void Game::Load(wxXmlNode* root)
  */
 void Game::CreateItem(wxXmlNode *node)
 {
-    // A pointer for the item we are loading
-    shared_ptr<Item> item;
-
-    // We have an item. What type?
-    auto type = node->GetAttribute(L"type");
-    if (type == L"beta")
-    {
-        item = make_shared<Background>(this);
-    }
-
-    else if (type == L"")
-    {
-        //CODE HERE
-    }
-
-
-    if (item != nullptr)
-    {
-        // //Add the Item to the game
-        // Add(item);
-        //
-        // //Finish Loading the Item's attributes
-        // item->XmlLoad(node);
-    }
+    // // A pointer for the item we are loading
+    // shared_ptr<Item> item;
+    //
+    // // We have an item. What type?
+    // auto type = node->GetAttribute(L"type");
+    // if (type == L"beta")
+    // {
+    //     item = make_shared<Background>(this);
+    // }
+    //
+    // else if (type == L"")
+    // {
+    //     //CODE HERE
+    // }
+    //
+    //
+    // if (item != nullptr)
+    // {
+    //     // //Add the Item to the game
+    //     // Add(item);
+    //     //
+    //     // //Finish Loading the Item's attributes
+    //     // item->XmlLoad(node);
+    // }
 }
 
 /**
@@ -105,4 +111,13 @@ void Game::Clear()
 {
     //Clear the Vector - making sure to reset size and deallocate memory
     mItems = vector<shared_ptr<Item>>();
+}
+
+/**
+ * Function to add an item to the game
+ * @param item item to add
+ */
+void Game::Add(std::shared_ptr<Item> item)
+{
+    mItems.push_back(item);
 }

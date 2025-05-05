@@ -18,7 +18,7 @@ class Background : public Item
 private:
 
 public:
-    Background(Game *game);
+    Background(Game *game, const wxString& filename);
 };
 
 

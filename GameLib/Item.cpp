@@ -7,13 +7,19 @@
 #include "Item.h"
 #include "Game.h"
 
+/// Directory within resources that contains the images.
+const std::wstring ImagesDirectory = L"images/";
+
+
 /**
  * Constructor
  * @param game The game this item is a member of
  */
-Item::Item(Game *game) : mGame(game)
+Item::Item(Game *game, const wxString& filename) : mGame(game), mImageFileName(filename)
 {
-
+    //Set Image and Bitmap
+    mItemImage = std::make_unique<wxImage>( ImagesDirectory + filename, wxBITMAP_TYPE_ANY);
+    mItemBitmap = std::make_unique<wxBitmap>(*mItemImage);
 }
 
 /**
@@ -34,4 +40,13 @@ void Item::SetPosition(double x, double y)
 Item::~Item()
 {
 
+}
+
+/**
+ * Function to draw this item
+ * @param dc dc to draw on
+ */
+void Item::Draw(wxDC* dc)
+{
+    dc->DrawBitmap(*mItemBitmap, mX, mY);
 }

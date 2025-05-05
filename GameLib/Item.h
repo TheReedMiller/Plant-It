@@ -15,7 +15,7 @@ class Game;
  */
 class Item {
 protected:
-    Item(Game *game);   //Constructor
+    Item(Game *game, const wxString& filename);   //Constructor
 
 private:
     ///Game object that this item belongs to
@@ -42,6 +42,7 @@ public:
     Item(const Item &) = delete;
 
     virtual ~Item();
+    virtual void Draw(wxDC* dc);
 
     /// Assignment Operator
     Item &operator=(const Item &) = delete;

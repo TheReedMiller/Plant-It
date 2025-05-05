@@ -18,9 +18,12 @@ class TaskManager {
 private:
     ///List of Tasks
     std::vector<std::shared_ptr<Task>> mTasks;
+    ///Width of Parent Frame
+    int mWidth;
 
 public:
-    TaskManager();
+    TaskManager(int width);
+    void Draw(wxDC* dc);
 };
 
 

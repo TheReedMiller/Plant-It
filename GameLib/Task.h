@@ -14,9 +14,15 @@
 */
 class Task {
 private:
+    ///Width of area to display task
+    int mWidth;
+
+    ///Position of this Object
+    wxPoint mPosition;
 
 public:
-    Task();
+    Task(int width);
+    void Draw(wxDC* dc);
 };
 
 

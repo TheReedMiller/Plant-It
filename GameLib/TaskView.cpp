@@ -7,25 +7,26 @@
 #include "TaskView.h"
 
 /**
- * CConstructor for this View
+ * Constructor for this View
  * @param parent parent window
  */
 TaskView::TaskView(wxWindow* parent) :
     wxScrolledCanvas(parent,
-            wxID_ANY,
-            wxDefaultPosition,
-            wxSize(Width, 800),
-            wxBORDER_SIMPLE)
-    {
-        SetBackgroundStyle(wxBG_STYLE_PAINT);
+                     wxID_ANY,
+                     wxDefaultPosition,
+                     wxSize(Width, 800),
+                     wxBORDER_SIMPLE), mTaskManager(Width)
+{
+    SetBackgroundStyle(wxBG_STYLE_PAINT);
 
-        //Bind Events
-        Bind(wxEVT_PAINT, &TaskView::OnPaint, this);    //Paint Bind
-        Bind(wxEVT_LEFT_DOWN, &TaskView::OnLeftDown, this);
-        Bind(wxEVT_LEFT_UP, &TaskView::OnLeftUp, this);
-        Bind(wxEVT_MOTION, &TaskView::OnMouseMove, this);
-        Bind(wxEVT_TIMER, &TaskView::OnTimer, this);
-    }
+    //Bind Events
+    Bind(wxEVT_PAINT, &TaskView::OnPaint, this); //Paint Bind
+    Bind(wxEVT_LEFT_DOWN, &TaskView::OnLeftDown, this);
+    Bind(wxEVT_LEFT_UP, &TaskView::OnLeftUp, this);
+    Bind(wxEVT_MOTION, &TaskView::OnMouseMove, this);
+    Bind(wxEVT_TIMER, &TaskView::OnTimer, this);
+
+}
 
 
 /**
@@ -43,6 +44,9 @@ void TaskView::OnPaint(wxPaintEvent& event)
     wxBrush background(wxColour(139,146,158));
     dc.SetBackground(background);
     dc.Clear();
+
+    //Call to Task Manager to Draw tasks
+    mTaskManager.Draw(&dc);
 }
 
 /**

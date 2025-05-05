@@ -8,6 +8,8 @@
 #ifndef TASKVIEW_H
 #define TASKVIEW_H
 
+#include "TaskManager.h"
+
 
 /**
 * A Class that describes the view that operates the tasks of this game
@@ -18,6 +20,9 @@ private:
 public:
     ///Constant for Window Width
     static const int Width = 300;
+
+    ///Task Manager Object
+    TaskManager mTaskManager;
 
     TaskView(wxWindow * parent);
     void OnPaint(wxPaintEvent& event);

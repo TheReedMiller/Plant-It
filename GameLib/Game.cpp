@@ -22,7 +22,7 @@ Game::Game()
 
     //Add plant to items
     auto plant = std::make_shared<Plant>(this, L"plant1.png");
-    plant->SetPosition(40,220);
+    plant->SetPosition(90,240);
     Add(plant);
 }
 

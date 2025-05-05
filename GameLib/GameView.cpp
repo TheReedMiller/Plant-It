@@ -68,6 +68,8 @@ void GameView::OnPaint(wxPaintEvent& event)
 void GameView::OnLeftDown(const wxMouseEvent &event)
 {
     Refresh();
+    auto click = event.GetPosition();
+    // std::cout << click.x << " " << click.y << std::endl;
 }
 
 /**

@@ -153,7 +153,7 @@ void MainFrame::OnSave(wxCommandEvent& event)
     //create XML document to save
     wxXmlDocument xmlDoc;
     //Create <game> root
-    auto root = new wxXmlNode(wxXML_ELEMENT_NODE, L"TaskManager");
+    auto root = new wxXmlNode(wxXML_ELEMENT_NODE, L"Plant-It");
     xmlDoc.SetRoot(root);
 
     //Call to Views to save

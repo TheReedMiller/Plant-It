@@ -8,6 +8,7 @@
 #include "Game.h"
 #include "Item.h"
 #include "Background.h"
+#include "Plant.h"
 
 using namespace std;
 
@@ -15,11 +16,14 @@ using namespace std;
  * Constructor
  */
 Game::Game()
-{
-    mBackground = make_unique<wxBitmap>(
-            L"images/background.png", wxBITMAP_TYPE_ANY);
+{   //Add background to Items
     auto background = std::make_shared<Background>(this, L"background.png");
     Add(background);
+
+    //Add plant to items
+    auto plant = std::make_shared<Plant>(this, L"plant1.png");
+    plant->SetPosition(40,220);
+    Add(plant);
 }
 
 /**
@@ -28,8 +32,7 @@ Game::Game()
  */
 void Game::OnDraw(wxDC* graphics)
 {
-    // graphics->DrawBitmap(*mBackground, 0, 0);
-
+    //Iterate over the collection of game items
     for (auto item : mItems)
     {
         item->Draw(graphics);

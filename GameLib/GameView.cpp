@@ -30,7 +30,7 @@ void GameView::Initialize(wxFrame* parent)
 
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
-
+    mTime = 0;
     mStopWatch.Start();
 }
 
@@ -40,6 +40,7 @@ void GameView::Initialize(wxFrame* parent)
  */
 void GameView::OnTimer(wxTimerEvent& event)
 {
+    mTime = mStopWatch.Time() / 1000;
     Refresh();
 }
 
@@ -75,5 +76,10 @@ void GameView::OnLeftDown(const wxMouseEvent &event)
  */
 void GameView::Save(wxXmlNode* root)
 {
+    //Create items node
+    auto itemsNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"items");
 
+    auto value = wxString::Format(wxT("%d"), mTime);
+    itemsNode->AddAttribute(L"time", value);
+    root->AddChild(itemsNode);
 }

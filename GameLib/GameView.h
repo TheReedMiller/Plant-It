@@ -20,6 +20,7 @@ private:
     wxTimer mTimer;
     /// Stopwatch used to measure elapsed time
     wxStopWatch mStopWatch;
+    int mTime = 0;
 
     void OnTimer(wxTimerEvent& event);
 

@@ -35,4 +35,21 @@ void Task::Draw(wxDC* dc)
 
     // Draw the rounded rectangle
     dc->DrawRoundedRectangle(mPosition.x, mPosition.y, mWidth, Height, radius);
+
+    // Set text color
+    dc->SetTextForeground(*wxBLACK);
+
+    // The text to draw (you could use a class member here like mName or mLabel)
+    wxString text = L"My Task";
+
+    // Get text size to center it
+    int textWidth, textHeight;
+    dc->GetTextExtent(text, &textWidth, &textHeight);
+
+    // Center the text within the rectangle
+    int textX = mPosition.x + (mWidth - textWidth) / 2;
+    int textY = mPosition.y + (Height - textHeight) / 2;
+
+    // Draw the text
+    dc->DrawText(text, textX, textY);
 }

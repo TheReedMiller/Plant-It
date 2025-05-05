@@ -37,10 +37,13 @@ void Task::Draw(wxDC* dc)
     dc->DrawRoundedRectangle(mPosition.x, mPosition.y, mWidth, Height, radius);
 
     // Set text color
+    // Set a larger font
+    wxFont font(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);
+    dc->SetFont(font);
     dc->SetTextForeground(*wxBLACK);
 
     // The text to draw (you could use a class member here like mName or mLabel)
-    wxString text = L"My Task";
+    wxString text = L"My Task ";
 
     // Get text size to center it
     int textWidth, textHeight;

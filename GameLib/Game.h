@@ -23,8 +23,9 @@ private:
 public:
     Game();
     void OnDraw(wxDC* graphics);
-    void Load(const wxString &filename);
-    void XmlItem(wxXmlNode *node);
+    void Load(wxXmlNode* root);
+    void CreateItem(wxXmlNode *node);
+    void Save(wxXmlNode* root);
     void Clear();
 };
 

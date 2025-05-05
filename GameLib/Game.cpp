@@ -38,32 +38,19 @@ void Game::OnDraw(wxDC* graphics)
  *
  * @param filename The filename of the file to load the game from.
  */
-void Game::Load(const wxString &filename)
+void Game::Load(wxXmlNode* root)
 {
-    //Create XML document, try and load it
-    wxXmlDocument xmlDoc;
-    if(!xmlDoc.Load(filename))
-    {
-        wxMessageBox(L"Unable to load Game file");
-        return;
-    }
+    //Clear current data from game
+    Clear();
 
-    Clear();       //Clear any current date
-
-    // Get the XML document root node
-    auto root = xmlDoc.GetRoot();
-
-    //
     // Traverse the children of the root
-    // node of the XML document in memory!!!!
-    //
     auto child = root->GetChildren();
     for( ; child; child=child->GetNext())
     {
         auto name = child->GetName();
         if(name == L"item")
         {
-            XmlItem(child);
+            CreateItem(child);
         }
     }
 }
@@ -72,7 +59,7 @@ void Game::Load(const wxString &filename)
  * Handle a node of type item.
  * @param node XML node
  */
-void Game::XmlItem(wxXmlNode *node)
+void Game::CreateItem(wxXmlNode *node)
 {
     // A pointer for the item we are loading
     shared_ptr<Item> item;
@@ -98,6 +85,15 @@ void Game::XmlItem(wxXmlNode *node)
         // //Finish Loading the Item's attributes
         // item->XmlLoad(node);
     }
+}
+
+/**
+ * Function to save the state of the game
+ * @param root root node of XML
+ */
+void Game::Save(wxXmlNode *root)
+{
+
 }
 
 /**

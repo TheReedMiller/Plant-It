@@ -16,10 +16,14 @@ class GameView : public wxWindow {
 private:
     /// An object that describes our Game
     Game mGame;
+
     /// The timer that allows for animation
     wxTimer mTimer;
+
     /// Stopwatch used to measure elapsed time
     wxStopWatch mStopWatch;
+
+    ///The Current Time within the game
     int mTime = 0;
 
     void OnTimer(wxTimerEvent& event);

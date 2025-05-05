@@ -82,6 +82,9 @@ void GameView::Save(wxXmlNode* root)
     auto value = wxString::Format(wxT("%d"), mTime);
     itemsNode->AddAttribute(L"time", value);
     root->AddChild(itemsNode);
+
+    //Call to game to save
+    mGame.Save(root);
 }
 
 /**

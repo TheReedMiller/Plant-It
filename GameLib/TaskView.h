@@ -24,6 +24,9 @@ public:
     ///Task Manager Object
     TaskManager mTaskManager;
 
+    ///Grabbed Task for Moving Tasks
+    std::shared_ptr<Task> mGrabbedTask = nullptr;
+
     TaskView(wxWindow * parent);
     void OnPaint(wxPaintEvent& event);
     void OnLeftDown(wxMouseEvent& event);

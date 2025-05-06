@@ -23,6 +23,8 @@ private:
 public:
     Task(int width);
     void Draw(wxDC* dc);
+    bool HitTest(int x, int y);
+    void SetPosition(int x, int y);
 };
 
 

@@ -67,8 +67,6 @@ void GameView::OnPaint(wxPaintEvent& event)
  */
 void GameView::OnLeftDown(const wxMouseEvent &event)
 {
-    // Refresh();
-    std::cout << "POS" << event.GetX() << " " << event.GetY() << std::endl;
     mGrabbedItem = mGame.HitTest(event.GetX(), event.GetY());
     if (mGrabbedItem != nullptr)
     {

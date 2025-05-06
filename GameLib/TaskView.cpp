@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "TaskView.h"
+#include "Task.h""
 
 /**
  * Constructor for this View
@@ -55,7 +56,15 @@ void TaskView::OnPaint(wxPaintEvent& event)
  */
 void TaskView::OnLeftDown(wxMouseEvent& event)
 {
+    auto click = CalcUnscrolledPosition(event.GetPosition());
 
+    mGrabbedTask = mTaskManager.HitTest(click.x, click.y);
+    if (mGrabbedTask != nullptr)
+    {
+        // Move to Back of List
+        mTaskManager.MoveToBack(mGrabbedTask);
+
+    }
 }
 
 /**
@@ -64,7 +73,7 @@ void TaskView::OnLeftDown(wxMouseEvent& event)
  */
 void TaskView::OnLeftUp(wxMouseEvent& event)
 {
-
+    OnMouseMove(event);
 }
 
 /**
@@ -73,7 +82,25 @@ void TaskView::OnLeftUp(wxMouseEvent& event)
  */
 void TaskView::OnMouseMove(wxMouseEvent& event)
 {
+    // See if an item is currently being moved by the mouse
+    if (mGrabbedTask != nullptr)
+    {
+        // If an item is being moved, we only continue to
+        // move it while the left button is down.
+        if (event.LeftIsDown())
+        {
+            mGrabbedTask->SetPosition(event.GetX(), event.GetY());
+        }
+        else
+        {
+            // When the left button is released, we release the
+            // item.
+            mGrabbedTask = nullptr;
+        }
 
+        // Force the screen to redraw
+        Refresh();
+    }
 }
 
 /**

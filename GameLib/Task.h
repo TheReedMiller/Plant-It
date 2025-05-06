@@ -20,11 +20,19 @@ private:
     ///Position of this Object
     wxPoint mPosition;
 
+    ///Is Complete Bool - initially false
+    bool mIsComplete = false;
+
 public:
     Task(int width);
     void Draw(wxDC* dc);
     bool HitTest(int x, int y);
     void SetPosition(int x, int y);
+
+    /**
+    * Function to set this task as Complete
+    */
+    void SetComplete(){mIsComplete = !mIsComplete;}
 };
 
 

@@ -29,6 +29,8 @@ void Task::Draw(wxDC* dc)
     //Set Drawing Position
     auto pos = wxPoint(mPosition.x - mWidth / 2, mPosition.y - Height / 2);
 
+    //MAIN BOX OBJECT
+
     // Set pen (for border) and brush (for fill color)
     dc->SetPen(*wxBLACK_PEN);            // Black border
     dc->SetBrush(*wxLIGHT_GREY_BRUSH);   // Light gray fill
@@ -39,6 +41,42 @@ void Task::Draw(wxDC* dc)
     // Draw the rounded rectangle
     dc->DrawRoundedRectangle(pos.x, pos.y, mWidth, Height, radius);
 
+    // === Small Checkbox (top-left) ===
+    int checkboxSize = 30;
+    int checkboxPadding = 10;
+
+    int checkboxX = pos.x + checkboxPadding;
+    int checkboxY = pos.y + checkboxPadding;
+
+    wxPen thickPen(*wxBLACK, 3);  // color, thickness
+    dc->SetPen(thickPen);
+    dc->SetBrush(*wxLIGHT_GREY_BRUSH);  // white interior with black border
+    dc->DrawRectangle(checkboxX, checkboxY, checkboxSize, checkboxSize);
+
+    //Only Draw Checkbox if this Box is Marked Completed
+    if (mIsComplete)
+    {
+        // === Checkmark ===
+        dc->SetPen(wxPen(*wxGREEN, 3));  // green pen, slightly thicker for clarity
+
+        // Compute center of checkbox
+        int checkCenterX = checkboxX + checkboxSize / 2;
+        int checkCenterY = checkboxY + checkboxSize / 2;
+
+        // Compute size of checkmark relative to checkbox size
+        int offset = checkboxSize / 4;
+
+        // Draw checkmark (a simple "tick" shape)
+        wxPoint checkStart(checkCenterX - offset, checkCenterY);
+        wxPoint checkMid(checkCenterX - offset / 2, checkCenterY + offset / 2);
+        wxPoint checkEnd(checkCenterX + offset, checkCenterY - offset);
+
+        // Two lines for the check
+        dc->DrawLine(checkStart, checkMid);
+        dc->DrawLine(checkMid, checkEnd);
+    }
+
+    //DRAW TEXT
     // Set text color
     // Set a larger font
     wxFont font(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL);

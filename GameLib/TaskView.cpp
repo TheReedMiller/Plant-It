@@ -25,6 +25,7 @@ TaskView::TaskView(wxWindow* parent) :
     Bind(wxEVT_LEFT_DOWN, &TaskView::OnLeftDown, this);
     Bind(wxEVT_LEFT_UP, &TaskView::OnLeftUp, this);
     Bind(wxEVT_MOTION, &TaskView::OnMouseMove, this);
+    Bind(wxEVT_LEFT_DCLICK, &TaskView::OnDoubleClick, this);
     Bind(wxEVT_TIMER, &TaskView::OnTimer, this);
 
 }
@@ -109,7 +110,17 @@ void TaskView::OnMouseMove(wxMouseEvent& event)
  */
 void TaskView::OnDoubleClick(wxMouseEvent& event)
 {
+    //See if we Double-Clicked a Task
+    mGrabbedTask = mTaskManager.HitTest(event.GetX(), event.GetY());
 
+    if (mGrabbedTask != nullptr)
+    {
+        //Set Task
+        mGrabbedTask->SetComplete();
+    }
+
+    //Refresh the view
+    Refresh();
 }
 
 /**

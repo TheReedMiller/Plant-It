@@ -36,6 +36,7 @@ public:
     void OnTimer(wxTimerEvent& event);
     void Save(wxXmlNode* root);
     void Load(wxXmlNode* root);
+    void OnRightClick(wxMouseEvent& event);
 };
 
 

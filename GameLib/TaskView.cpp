@@ -24,6 +24,7 @@ TaskView::TaskView(wxWindow* parent) :
     Bind(wxEVT_PAINT, &TaskView::OnPaint, this); //Paint Bind
     Bind(wxEVT_LEFT_DOWN, &TaskView::OnLeftDown, this);
     Bind(wxEVT_LEFT_UP, &TaskView::OnLeftUp, this);
+    Bind(wxEVT_RIGHT_DOWN, &TaskView::OnRightClick, this);
     Bind(wxEVT_MOTION, &TaskView::OnMouseMove, this);
     Bind(wxEVT_LEFT_DCLICK, &TaskView::OnDoubleClick, this);
     Bind(wxEVT_TIMER, &TaskView::OnTimer, this);
@@ -151,4 +152,23 @@ void TaskView::Save(wxXmlNode* root)
 void TaskView::Load(wxXmlNode* root)
 {
 
+}
+
+/**
+ * Event handler for right clicking
+ * @param event event to handler
+ */
+void TaskView::OnRightClick(wxMouseEvent& event)
+{
+    //See if we Double-Clicked a Task
+    mGrabbedTask = mTaskManager.HitTest(event.GetX(), event.GetY());
+
+    if (mGrabbedTask != nullptr)
+    {
+        //Set Task
+        mGrabbedTask->SetDifficulty();
+    }
+
+    //Refresh the view
+    Refresh();
 }

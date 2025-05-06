@@ -41,7 +41,7 @@ void Task::Draw(wxDC* dc)
     // Draw the rounded rectangle
     dc->DrawRoundedRectangle(pos.x, pos.y, mWidth, Height, radius);
 
-    // === Small Checkbox (top-left) ===
+    //Draw Checkbox
     int checkboxSize = 30;
     int checkboxPadding = 10;
 
@@ -56,8 +56,8 @@ void Task::Draw(wxDC* dc)
     //Only Draw Checkbox if this Box is Marked Completed
     if (mIsComplete)
     {
-        // === Checkmark ===
-        dc->SetPen(wxPen(*wxGREEN, 3));  // green pen, slightly thicker for clarity
+        //Draw Check in box
+        dc->SetPen(wxPen(wxColor(50,168,82), 5));  // green pen, slightly thicker for clarity
 
         // Compute center of checkbox
         int checkCenterX = checkboxX + checkboxSize / 2;
@@ -75,6 +75,32 @@ void Task::Draw(wxDC* dc)
         dc->DrawLine(checkStart, checkMid);
         dc->DrawLine(checkMid, checkEnd);
     }
+
+    //Draw Circle
+    int circleRadius = 15;  // Radius of the circle
+    int circlePadding = 10;  // Space between checkbox and circle
+
+    // Circle center position: right of the checkbox
+    int circleCenterX = checkboxX + checkboxSize + circlePadding + circleRadius;
+    int circleCenterY = checkboxY + checkboxSize / 2;
+
+    dc->SetPen(*wxTRANSPARENT_PEN);               // No border
+
+    //Determine the color of the difficulty Circle
+    if (mDifficulty == Difficulty::Easy)
+    {
+        dc->SetBrush(wxColor(50,168,82));     // Fill with green
+    }
+    else if (mDifficulty == Difficulty::Moderate)
+    {
+        dc->SetBrush(wxColor(244,95,2));     // Fill with Orange
+    }
+    else if (mDifficulty == Difficulty::Hard)
+    {
+        dc->SetBrush(wxColor(173,39,5));
+    }
+
+    dc->DrawCircle(circleCenterX, circleCenterY, circleRadius);
 
     //DRAW TEXT
     // Set text color
@@ -132,4 +158,23 @@ void Task::SetPosition(int x, int y)
 {
     mPosition.x = x;
     mPosition.y = y;
+}
+
+/**
+ * Sets the difficulty for this task
+ */
+void Task::SetDifficulty()
+{
+    if (mDifficulty == Difficulty::Easy)
+    {
+        mDifficulty = Difficulty::Moderate;
+    }
+    else if (mDifficulty == Difficulty::Moderate)
+    {
+        mDifficulty = Difficulty::Hard;
+    }
+    else if (mDifficulty == Difficulty::Hard)
+    {
+        mDifficulty = Difficulty::Easy;
+    }
 }

@@ -14,6 +14,12 @@
 */
 class Task {
 private:
+    ///Difficulty class for tasks
+    enum class Difficulty {Easy, Moderate, Hard};
+
+    ///Difficulty of this Task
+    Difficulty mDifficulty = Difficulty::Easy;
+
     ///Width of area to display task
     int mWidth;
 
@@ -28,6 +34,7 @@ public:
     void Draw(wxDC* dc);
     bool HitTest(int x, int y);
     void SetPosition(int x, int y);
+    void SetDifficulty();
 
     /**
     * Function to set this task as Complete

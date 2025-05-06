@@ -24,8 +24,8 @@ void GameView::Initialize(wxFrame* parent)
 
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
     Bind(wxEVT_LEFT_DOWN, &GameView::OnLeftDown, this);
-
-
+    Bind(wxEVT_LEFT_UP, &GameView::OnLeftUp, this);
+    Bind(wxEVT_MOTION, &GameView::OnMouseMove, this);
     Bind(wxEVT_TIMER, &GameView::OnTimer, this);
 
     mTimer.SetOwner(this);
@@ -67,9 +67,51 @@ void GameView::OnPaint(wxPaintEvent& event)
  */
 void GameView::OnLeftDown(const wxMouseEvent &event)
 {
-    Refresh();
-    auto click = event.GetPosition();
-    // std::cout << click.x << " " << click.y << std::endl;
+    // Refresh();
+    std::cout << "POS" << event.GetX() << " " << event.GetY() << std::endl;
+    mGrabbedItem = mGame.HitTest(event.GetX(), event.GetY());
+    if (mGrabbedItem != nullptr)
+    {
+        // Move to Back of List
+        mGame.MoveToBack(mGrabbedItem);
+
+    }
+}
+
+/**
+* Handle the left mouse button down event
+* @param event
+*/
+void GameView::OnLeftUp(wxMouseEvent &event)
+{
+    OnMouseMove(event);
+}
+
+/**
+* Handle the mouse movement event
+* @param event
+*/
+void GameView::OnMouseMove(wxMouseEvent &event)
+{
+    // See if an item is currently being moved by the mouse
+    if (mGrabbedItem != nullptr)
+    {
+        // If an item is being moved, we only continue to
+        // move it while the left button is down.
+        if (event.LeftIsDown())
+        {
+            mGrabbedItem->SetPosition(event.GetX(), event.GetY());
+        }
+        else
+        {
+            // When the left button is released, we release the
+            // item.
+            mGrabbedItem = nullptr;
+        }
+
+        // Force the screen to redraw
+        Refresh();
+    }
 }
 
 /**

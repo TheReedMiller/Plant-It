@@ -14,3 +14,8 @@ Background::Background(Game *game, const wxString& filename) : Item(game, filena
 {
  //Simple up-call - No added functionality
 }
+
+void Background::Draw(wxDC* dc)
+{
+    dc->DrawBitmap(*GetBitmap(), GetX(), GetY());
+}

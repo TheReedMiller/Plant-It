@@ -43,6 +43,7 @@ public:
 
     virtual ~Item();
     virtual void Draw(wxDC* dc);
+    virtual bool HitTest(int x, int y);
 
     /// Assignment Operator
     Item &operator=(const Item &) = delete;
@@ -61,6 +62,23 @@ public:
 
     void SetPosition(double x, double y);
 
+    /**
+     * Getter for X coord
+     * @return x coord
+     */
+    double GetX() const { return mX; }
+
+    /**
+     * Getter for Y coord
+     * @return Y coord
+     */
+    double GetY() const { return mY; }
+
+    /**
+     * Getter for the bitmap
+     * @return Bitmap for this item
+     */
+    wxBitmap* GetBitmap() const { return mItemBitmap.get(); }
 };
 
 

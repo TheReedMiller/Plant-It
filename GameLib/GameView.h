@@ -26,12 +26,17 @@ private:
     ///The Current Time within the game
     int mTime = 0;
 
+    ///Pointer to a Grabbed Item
+    std::shared_ptr<Item> mGrabbedItem = nullptr;
+
     void OnTimer(wxTimerEvent& event);
 
 public:
     void Initialize(wxFrame *parent);
     void OnPaint(wxPaintEvent& event);
     void OnLeftDown(const wxMouseEvent &event);
+    void OnLeftUp(wxMouseEvent& event);
+    void OnMouseMove(wxMouseEvent& event);
     void Save(wxXmlNode* root);
     void Load(wxXmlNode* root);
 };

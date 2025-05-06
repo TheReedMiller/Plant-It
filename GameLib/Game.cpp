@@ -17,11 +17,10 @@ using namespace std;
  */
 Game::Game()
 {   //Add background to Items
-    auto background = std::make_shared<Background>(this, L"background.png");
-    Add(background);
+    mBackground = std::make_unique<Background>(this, L"background.png");
 
     //Add plant to items
-    auto plant = std::make_shared<Plant>(this, L"plant1.png");
+    auto plant = std::make_shared<Plant>(this, L"sunflower1.png");
     plant->SetPosition(90,240);
     Add(plant);
 }
@@ -32,6 +31,9 @@ Game::Game()
  */
 void Game::OnDraw(wxDC* graphics)
 {
+    //Draw the background
+    mBackground->Draw(graphics);
+
     //Iterate over the collection of game items
     for (auto item : mItems)
     {
@@ -123,4 +125,41 @@ void Game::Clear()
 void Game::Add(std::shared_ptr<Item> item)
 {
     mItems.push_back(item);
+}
+
+/**
+ * Test an x,y click location to see if it clicked
+ * on some item in the game.
+ * @param x X location in pixels
+ * @param y Y location in pixels
+ * @returns Pointer to item we clicked on or nullptr if none.
+*/
+std::shared_ptr<Item> Game::HitTest(int x, int y)
+{
+    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+    {
+        if ((*i)->HitTest(x, y))
+        {
+            return *i;
+        }
+    }
+
+    return  nullptr;
+}
+
+/**
+ *A function to move a grabbed item to the back of the item-list
+ *@param item the item to move
+ */
+void Game::MoveToBack(std::shared_ptr<Item> item)
+{
+    //First We Find the Location of the clicked item
+    auto loc = find(begin(mItems), end(mItems), item);
+    if (loc != end(mItems))
+    {
+        //Remove the original element from the vector
+        mItems.erase(loc);
+        //Add it back to the end of the list
+        mItems.push_back(item);
+    }
 }

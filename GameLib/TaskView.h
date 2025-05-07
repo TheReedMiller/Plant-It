@@ -10,6 +10,9 @@
 
 #include "TaskManager.h"
 
+//Forward Reference
+class Bank;
+
 
 /**
 * A Class that describes the view that operates the tasks of this game
@@ -24,10 +27,13 @@ public:
     ///Task Manager Object
     TaskManager mTaskManager;
 
+    ///Parent Window
+    std::shared_ptr<Bank> mBank = nullptr;
+
     ///Grabbed Task for Moving Tasks
     std::shared_ptr<Task> mGrabbedTask = nullptr;
 
-    TaskView(wxWindow * parent);
+    TaskView(wxWindow * parent, std::shared_ptr<Bank> bank);
     void OnPaint(wxPaintEvent& event);
     void OnLeftDown(wxMouseEvent& event);
     void OnLeftUp(wxMouseEvent& event);

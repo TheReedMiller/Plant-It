@@ -35,11 +35,7 @@ public:
     bool HitTest(int x, int y);
     void SetPosition(int x, int y);
     void SetDifficulty();
-
-    /**
-    * Function to set this task as Complete
-    */
-    void SetComplete(){mIsComplete = !mIsComplete;}
+    bool SetComplete();
 };
 
 

@@ -178,3 +178,15 @@ void Task::SetDifficulty()
         mDifficulty = Difficulty::Easy;
     }
 }
+
+/**
+    * Function to set this task as Complete
+    * @return Bool representing if this Task is now Complete
+    */
+bool Task::SetComplete()
+{
+    //Flip Status
+    mIsComplete = !mIsComplete;
+
+    return mIsComplete;
+}

@@ -19,6 +19,9 @@ Game::Game()
 {   //Add background to Items
     mBackground = std::make_unique<Background>(this, L"background.png");
 
+    //Create the Bank
+    mBank = std::make_shared<Bank>();
+
     //Add plant to items
     auto plant = std::make_shared<Plant>(this, L"sunflower1.png");
     plant->SetPosition(90,240);
@@ -35,7 +38,7 @@ void Game::OnDraw(wxDC* graphics)
     mBackground->Draw(graphics);
 
     //Draw the Bank
-    mBank.Draw(graphics);
+    mBank->Draw(graphics);
 
     //Iterate over the collection of game items
     for (auto item : mItems)

@@ -39,6 +39,12 @@ public:
     void OnMouseMove(wxMouseEvent& event);
     void Save(wxXmlNode* root);
     void Load(wxXmlNode* root);
+
+    /**
+     * Getter for the Bank within Game
+     * @return Bank of the underlying game
+     */
+    std::shared_ptr<Bank> GetBank(){return mGame.GetBank();}
 };
 
 

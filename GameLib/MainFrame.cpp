@@ -22,7 +22,7 @@ void MainFrame::Initialize()
 
     //Create Game View as well as Task view
     mGameView = new GameView();
-    mTaskView = new TaskView(this);
+    mTaskView = new TaskView(this, mGameView->GetBank());
 
     //Call to initialize
     mGameView->Initialize(this);
@@ -166,4 +166,9 @@ void MainFrame::OnSave(wxCommandEvent& event)
         wxMessageBox(L"Write to XML failed");
         return;
     }
+}
+
+void MainFrame::AddToBank(int coins)
+{
+    std::cout << "TEST" << std::endl;
 }

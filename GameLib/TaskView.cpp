@@ -5,18 +5,19 @@
 
 #include "pch.h"
 #include "TaskView.h"
-#include "Task.h""
+#include "Task.h"
+#include "Bank.h"
 
 /**
  * Constructor for this View
  * @param parent parent window
  */
-TaskView::TaskView(wxWindow* parent) :
+TaskView::TaskView(wxWindow* parent, std::shared_ptr<Bank> bank) :
     wxScrolledCanvas(parent,
                      wxID_ANY,
                      wxDefaultPosition,
                      wxSize(Width, 800),
-                     wxBORDER_SIMPLE), mTaskManager(Width)
+                     wxBORDER_SIMPLE), mTaskManager(Width), mBank(bank)
 {
     SetBackgroundStyle(wxBG_STYLE_PAINT);
 
@@ -117,7 +118,11 @@ void TaskView::OnDoubleClick(wxMouseEvent& event)
     if (mGrabbedTask != nullptr)
     {
         //Set Task
-        mGrabbedTask->SetComplete();
+        if (mGrabbedTask->SetComplete())
+        {
+            //Add to bank
+            mBank->Add(50);
+        }
     }
 
     //Refresh the view

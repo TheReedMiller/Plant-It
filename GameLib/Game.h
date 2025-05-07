@@ -22,7 +22,7 @@ private:
     std::unique_ptr<Background> mBackground;
 
     ///Bank for game
-    Bank mBank;
+    std::shared_ptr<Bank> mBank = nullptr;
 
     ///Container to hold all the game's Items
     std::vector<std::shared_ptr<Item>> mItems;
@@ -37,6 +37,12 @@ public:
     void Add(std::shared_ptr<Item> item);
     std::shared_ptr<Item> HitTest(int x, int y);
     void MoveToBack(std::shared_ptr<Item> item);
+
+    /**
+     * Getter for the Bank
+     * @return Bank of this game
+     */
+    std::shared_ptr<Bank> GetBank(){return mBank;}
 };
 
 

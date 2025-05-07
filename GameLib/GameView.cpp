@@ -9,6 +9,7 @@
 #include "GameView.h"
 
 #include "Cactus.h"
+#include "Flytrap.h"
 #include "Plant.h"
 #include "Item.h"
 #include "Sunflower.h"
@@ -185,7 +186,7 @@ void GameView::OnAddCactus(wxCommandEvent& event)
  */
 void GameView::OnAddFlytrap(wxCommandEvent& event)
 {
-    auto item = std::make_shared<Plant>(&mGame, L"sunflower1.png");
+    auto item = std::make_shared<Flytrap>(&mGame);
     mGame.Add(item);
     Refresh();
 }

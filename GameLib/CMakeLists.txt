@@ -28,7 +28,9 @@ set(SOURCE_FILES
         Rose.cpp
         Rose.h
         Cactus.cpp
-        Cactus.h)
+        Cactus.h
+        Flytrap.cpp
+        Flytrap.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)

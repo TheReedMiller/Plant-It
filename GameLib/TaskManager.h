@@ -27,6 +27,7 @@ public:
     std::shared_ptr<Task> HitTest(int x, int Y);
     void MoveToBack(std::shared_ptr<Task> task);
     void Save(wxXmlNode* taskNode);
+    void Load(wxXmlNode* taskNode);
 };
 
 

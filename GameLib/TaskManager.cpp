@@ -13,9 +13,9 @@
  */
 TaskManager::TaskManager(int width) : mWidth(width)
 {
-    auto task = std::make_shared<Task>(width);
-    task->SetPosition(width/2, 175);
-    mTasks.push_back(task);
+    // auto task = std::make_shared<Task>(width);
+    // task->SetPosition(width/2, 175);
+    // mTasks.push_back(task);
 }
 
 
@@ -113,5 +113,31 @@ void TaskManager::Save(wxXmlNode* taskNode)
     for (auto task : mTasks)
     {
         task->Save(taskNode);
+    }
+}
+
+/**
+ *Load function for this task manager
+ * @param taskNode root node of xml
+ */
+void TaskManager::Load(wxXmlNode* taskNode)
+{
+    //Iterate over nodes, creating a Task for each
+    auto child = taskNode->GetChildren();
+
+    while (child != nullptr)
+    {
+        //Create Task
+        auto task = std::make_shared<Task>(mWidth);
+
+        //Load in task
+        task->Load(child);
+
+        //Add Task
+        mTasks.push_back(task);
+
+        //Retrieve next Child
+        child = child->GetNext();
+
     }
 }

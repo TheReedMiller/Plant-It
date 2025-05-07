@@ -35,10 +35,17 @@ public:
     bool HitTest(int x, int y);
     void SetPosition(int x, int y);
     void ToggleDifficulty();
-    bool SetComplete();
+    bool ToggleComplete();
     void Save(wxXmlNode* taskNode);
+    void Load(wxXmlNode* child);
     wxString Difficulty();
     void SetDifficulty(wxString diff);
+
+    /**
+     * Setter for the IsComplete member variable
+     * @param complete bool telling if this task is completed
+     */
+    void SetComplete(bool complete){mIsComplete = complete;}
 };
 
 

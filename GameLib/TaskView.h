@@ -41,7 +41,7 @@ public:
     void OnDoubleClick(wxMouseEvent& event);
     void OnTimer(wxTimerEvent& event);
     void Save(wxXmlNode* root);
-    void Load(wxXmlNode* root);
+    void Load(wxXmlNode* taskNode);
     void OnRightClick(wxMouseEvent& event);
 };
 

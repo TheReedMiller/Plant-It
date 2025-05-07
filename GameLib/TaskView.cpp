@@ -118,7 +118,7 @@ void TaskView::OnDoubleClick(wxMouseEvent& event)
     if (mGrabbedTask != nullptr)
     {
         //Set Task
-        if (mGrabbedTask->SetComplete())
+        if (mGrabbedTask->ToggleComplete())
         {
             //Add to bank
             mBank->Add(50);
@@ -154,11 +154,12 @@ void TaskView::Save(wxXmlNode* root)
 
 /**
  *Load function for this view
- * @param root root node of xml
+ * @param taskNode root node of xml
  */
-void TaskView::Load(wxXmlNode* root)
+void TaskView::Load(wxXmlNode* taskNode)
 {
-
+    //Call to task manager to load
+    mTaskManager.Load(taskNode);
 }
 
 /**

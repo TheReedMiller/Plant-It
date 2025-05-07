@@ -183,7 +183,7 @@ void Task::ToggleDifficulty()
     * Function to set this task as Complete
     * @return Bool representing if this Task is now Complete
     */
-bool Task::SetComplete()
+bool Task::ToggleComplete()
 {
     //Flip Status
     mIsComplete = !mIsComplete;
@@ -219,8 +219,34 @@ void Task::Save(wxXmlNode* taskNode)
     {
         task->AddAttribute(L"isComplete", L"n");
     }
+}
 
+/**
+ * Load in a Task Object
+ * @param child child node to load xml data from
+ */
+void Task::Load(wxXmlNode* child)
+{
+    //Position
+    int x = 0, y = 0;
+    child->GetAttribute(L"x").ToInt(&x);
+    child->GetAttribute(L"y").ToInt(&y);
+    SetPosition(x, y);
 
+    //Difficulty
+    wxString diff = child->GetAttribute(L"diff");
+    SetDifficulty(diff);
+
+    //IsComplete
+    wxString isComplete = child->GetAttribute(L"isComplete");
+    if (isComplete == "y")
+    {
+        mIsComplete = true;
+    }
+    else
+    {
+        mIsComplete = false;
+    }
 }
 
 /**
@@ -244,17 +270,17 @@ wxString Task::Difficulty()
  */
 void Task::SetDifficulty(wxString diff)
 {
-    if (diff == L"Easy")
+    if (diff == L"easy")
     {
         mDifficulty = Difficulty::Easy;
     }
 
-    else if (diff == L"Moderate")
+    else if (diff == L"moderate")
     {
         mDifficulty = Difficulty::Moderate;
     }
 
-    else if (diff == L"Hard")
+    else if (diff == L"hard")
     {
         mDifficulty = Difficulty::Hard;
     }

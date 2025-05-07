@@ -26,6 +26,7 @@ public:
     void Draw(wxDC* dc);
     std::shared_ptr<Task> HitTest(int x, int Y);
     void MoveToBack(std::shared_ptr<Task> task);
+    void Save(wxXmlNode* taskNode);
 };
 
 

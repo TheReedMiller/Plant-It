@@ -144,10 +144,12 @@ void TaskView::OnTimer(wxTimerEvent& event)
  */
 void TaskView::Save(wxXmlNode* root)
 {
-    //Create items node
-    auto itemsNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"Task");
+    //Create Task node
+    auto taskNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"Task");
+    root->AddChild(taskNode);
 
-    root->AddChild(itemsNode);
+    //Save Task Manager
+    mTaskManager.Save(taskNode);
 }
 
 /**
@@ -160,7 +162,7 @@ void TaskView::Load(wxXmlNode* root)
 }
 
 /**
- * Event handler for right clicking
+ * Event handler for right-clicking
  * @param event event to handler
  */
 void TaskView::OnRightClick(wxMouseEvent& event)
@@ -171,7 +173,7 @@ void TaskView::OnRightClick(wxMouseEvent& event)
     if (mGrabbedTask != nullptr)
     {
         //Set Task
-        mGrabbedTask->SetDifficulty();
+        mGrabbedTask->ToggleDifficulty();
     }
 
     //Refresh the view

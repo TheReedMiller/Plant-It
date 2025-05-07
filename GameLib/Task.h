@@ -34,8 +34,11 @@ public:
     void Draw(wxDC* dc);
     bool HitTest(int x, int y);
     void SetPosition(int x, int y);
-    void SetDifficulty();
+    void ToggleDifficulty();
     bool SetComplete();
+    void Save(wxXmlNode* taskNode);
+    wxString Difficulty();
+    void SetDifficulty(wxString diff);
 };
 
 

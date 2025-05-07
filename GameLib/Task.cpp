@@ -163,7 +163,7 @@ void Task::SetPosition(int x, int y)
 /**
  * Sets the difficulty for this task
  */
-void Task::SetDifficulty()
+void Task::ToggleDifficulty()
 {
     if (mDifficulty == Difficulty::Easy)
     {
@@ -189,4 +189,73 @@ bool Task::SetComplete()
     mIsComplete = !mIsComplete;
 
     return mIsComplete;
+}
+
+/**
+ * Saves the state of this Task
+ * @param taskNode root node of the task portion of the xml document
+ */
+void Task::Save(wxXmlNode* taskNode)
+{
+    //Create item node
+    auto task = new wxXmlNode(wxXML_ELEMENT_NODE, L"task");
+    taskNode->AddChild(task);
+
+    //Save Task Attributes
+    auto xCoord = wxString::Format(wxT("%d"), mPosition.x);
+    task->AddAttribute(L"x", xCoord);  //Save x
+
+    auto yCoord = wxString::Format(wxT("%d"), mPosition.y);
+    task->AddAttribute(L"y", yCoord);  //Save y
+
+    task->AddAttribute(L"diff", Difficulty());  //Save Difficulty
+
+    //Save isComplete bool member variable
+    if (mIsComplete)
+    {
+        task->AddAttribute(L"isComplete", L"y");
+    }
+    else
+    {
+        task->AddAttribute(L"isComplete", L"n");
+    }
+
+
+}
+
+/**
+ * Function to convert the difficulty component
+ * @return difficulty enum converted to a wxstrijng
+ */
+wxString Task::Difficulty()
+{
+    switch (mDifficulty)
+    {
+        case Difficulty::Easy: return L"easy";
+        case Difficulty::Moderate: return L"moderate";
+        case Difficulty::Hard: return L"hard";
+        default: return L"easy";
+    }
+}
+
+/**
+ * Setter for Difficulty of task
+ * @param diff difficulty to set
+ */
+void Task::SetDifficulty(wxString diff)
+{
+    if (diff == L"Easy")
+    {
+        mDifficulty = Difficulty::Easy;
+    }
+
+    else if (diff == L"Moderate")
+    {
+        mDifficulty = Difficulty::Moderate;
+    }
+
+    else if (diff == L"Hard")
+    {
+        mDifficulty = Difficulty::Hard;
+    }
 }

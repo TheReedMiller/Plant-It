@@ -102,3 +102,16 @@ void TaskManager::MoveToBack(std::shared_ptr<Task> task)
         mTasks.push_back(task);
     }
 }
+
+/**
+ * Saves the state of the task manager
+ * @param taskNode root node for the tasks portion of the XML document
+ */
+void TaskManager::Save(wxXmlNode* taskNode)
+{
+    //Save each Task
+    for (auto task : mTasks)
+    {
+        task->Save(taskNode);
+    }
+}

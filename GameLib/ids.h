@@ -12,8 +12,8 @@
  * wxIDs of each of the levels for loading levels
  */
 enum IDs {
-    IDM_ITEMONE= wxID_HIGHEST + 1,
-    IDM_ITEMTWO,
+    IDM_ADDSUNFLOWER= wxID_HIGHEST + 1,
+    IDM_ADDFLYTRAP,
     IDM_ITEMTHREE
 };
 

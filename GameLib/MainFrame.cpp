@@ -40,15 +40,17 @@ void MainFrame::Initialize()
 
     // Menu options
     auto fileMenu = new wxMenu();
-    auto helpMenu = new wxMenu();
+    auto plantMenu = new wxMenu();
 
     // Append the menu options to the bar.
-    menuBar->Append(helpMenu, L"&Help");
     menuBar->Append(fileMenu, L"&File");
+    menuBar->Append(plantMenu, L"&Plants");
 
     //Add to menus
     fileMenu->Append(wxID_SAVEAS, "Save", "Save the Program");
     fileMenu->Append(wxID_OPEN, "Load", "Load a Program");
+
+    plantMenu->Append(IDM_ADDSUNFLOWER, "Buy Sunflower [100]", "Buy Sunflower [100]");
 
     SetMenuBar( menuBar );
 
@@ -166,9 +168,4 @@ void MainFrame::OnSave(wxCommandEvent& event)
         wxMessageBox(L"Write to XML failed");
         return;
     }
-}
-
-void MainFrame::AddToBank(int coins)
-{
-    std::cout << "TEST" << std::endl;
 }

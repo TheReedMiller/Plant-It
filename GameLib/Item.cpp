@@ -8,7 +8,7 @@
 #include "Game.h"
 
 /// Directory within resources that contains the images.
-const std::wstring ImagesDirectory = L"images/";
+const std::wstring ImagesDirectory = L"Images/";
 
 
 /**

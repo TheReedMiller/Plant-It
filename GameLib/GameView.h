@@ -39,6 +39,7 @@ public:
     void OnMouseMove(wxMouseEvent& event);
     void Save(wxXmlNode* root);
     void Load(wxXmlNode* root);
+    void OnAddSunflower(wxCommandEvent& event);
 
     /**
      * Getter for the Bank within Game

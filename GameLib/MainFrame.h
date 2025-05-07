@@ -23,7 +23,6 @@ private:
     void OnAbout(wxCommandEvent &event);
     void OnLoad(wxCommandEvent& event);
     void OnSave(wxCommandEvent& event);
-    void AddToBank(int coins);
     void OnExit(wxCommandEvent &event);
 
 public:

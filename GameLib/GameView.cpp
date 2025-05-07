@@ -7,6 +7,8 @@
 
 #include "ids.h"
 #include "GameView.h"
+#include "Plant.h"
+#include "Item.h"
 
 ///Frame Duration Constant
 const int FrameDuration = 30;
@@ -22,11 +24,14 @@ void GameView::Initialize(wxFrame* parent)
            wxFULL_REPAINT_ON_RESIZE);
     SetBackgroundStyle(wxBG_STYLE_PAINT);
 
+    //Bind Event Handlers
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
     Bind(wxEVT_LEFT_DOWN, &GameView::OnLeftDown, this);
     Bind(wxEVT_LEFT_UP, &GameView::OnLeftUp, this);
     Bind(wxEVT_MOTION, &GameView::OnMouseMove, this);
     Bind(wxEVT_TIMER, &GameView::OnTimer, this);
+
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddSunflower, this, IDM_ADDSUNFLOWER);
 
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
@@ -138,4 +143,14 @@ void GameView::Load(wxXmlNode* root)
     //Set Time/Stopwatch
     root->GetAttribute(L"time").ToInt(&mTime);
     mStopWatch.Start(mTime * 1000);
+}
+
+/**
+ * Function to add a sunflower to our game
+ */
+void GameView::OnAddSunflower(wxCommandEvent& event)
+{
+    auto item = std::make_shared<Plant>(&mGame, L"sunflower1.png");
+    mGame.Add(item);
+    Refresh();
 }

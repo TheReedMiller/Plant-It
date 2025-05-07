@@ -26,7 +26,9 @@ set(SOURCE_FILES
         Sunflower.cpp
         Sunflower.h
         Rose.cpp
-        Rose.h)
+        Rose.h
+        Cactus.cpp
+        Cactus.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)

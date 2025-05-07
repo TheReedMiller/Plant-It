@@ -34,6 +34,9 @@ void Game::OnDraw(wxDC* graphics)
     //Draw the background
     mBackground->Draw(graphics);
 
+    //Draw the Bank
+    mBank.Draw(graphics);
+
     //Iterate over the collection of game items
     for (auto item : mItems)
     {

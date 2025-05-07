@@ -20,7 +20,9 @@ set(SOURCE_FILES
         Task.cpp
         Task.h
         Plant.cpp
-        Plant.h)
+        Plant.h
+        Bank.cpp
+        Bank.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)

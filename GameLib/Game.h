@@ -9,6 +9,7 @@
 
 #include "Item.h"
 #include "Background.h"
+#include "Bank.h"
 
 //forward references
 
@@ -18,7 +19,10 @@
 class Game {
 private:
     ///Background for game
-    std::unique_ptr<Background> mBackground;;
+    std::unique_ptr<Background> mBackground;
+
+    ///Bank for game
+    Bank mBank;
 
     ///Container to hold all the game's Items
     std::vector<std::shared_ptr<Item>> mItems;

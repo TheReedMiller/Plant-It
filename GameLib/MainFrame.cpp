@@ -15,7 +15,7 @@
  */
 void MainFrame::Initialize()
 {
-    Create(nullptr, wxID_ANY, L"Plant-It", wxDefaultPosition, wxSize(1300, 800));
+    Create(nullptr, wxID_ANY, L"Plant-It", wxDefaultPosition, wxSize(1100, 800));
 
     // create a sizer that will lay out child windows Horizontally
     auto sizer = new wxBoxSizer(wxHORIZONTAL);

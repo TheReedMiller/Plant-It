@@ -22,10 +22,6 @@ Game::Game()
     //Create the Bank
     mBank = std::make_shared<Bank>();
 
-    //Add plant to items
-    auto plant = std::make_shared<Plant>(this, L"sunflower1.png");
-    plant->SetPosition(90,240);
-    Add(plant);
 }
 
 /**

@@ -87,9 +87,29 @@ bool Item::HitTest(int x, int y)
 
 /**
  * Function to save the state of this Item
- * @param root root node of XML
+ * @param gameNode root node of XML
+ * @return a completed xmlNode for this object
  */
-void Item::Save(wxXmlNode *root)
+wxXmlNode* Item::Save(wxXmlNode *gameNode)
 {
+    //Create Child node and Append
+    auto itemNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"item");
+    gameNode->AddChild(itemNode);
 
+    //Add Position Attributes
+    itemNode->AddAttribute(L"x", wxString::FromDouble(mX));
+    itemNode->AddAttribute(L"y", wxString::FromDouble(mY));
+
+    //Return the Completed Node
+    return itemNode;
+}
+
+/**
+ * Load in this item from xml
+ * @param childNode node to load xml data from
+ */
+void Item::Load(wxXmlNode *childNode)
+{
+    childNode->GetAttribute(L"x", L"0").ToDouble(&mX);
+    childNode->GetAttribute(L"y", L"0").ToDouble(&mY);
 }

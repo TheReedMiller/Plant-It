@@ -18,6 +18,7 @@ private:
 
 public:
     Flytrap(Game* game);
+    wxXmlNode* Save(wxXmlNode* gameNode) override;
 };
 
 

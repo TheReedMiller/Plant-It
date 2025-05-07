@@ -14,3 +14,20 @@ Rose::Rose(Game* game) : Plant(game, L"rose.png")
 {
     //Simple up-call
 }
+
+/**
+ * Function to save the state of this Rose
+ * @param gameNode root node of XML
+ * @return a completed xmlNode for this object
+ */
+wxXmlNode* Rose::Save(wxXmlNode *gameNode)
+{
+    //Up-call to item class
+    auto itemNode = Item::Save(gameNode);
+
+    //Add type of plant
+    itemNode->AddAttribute(L"type", L"rose");
+
+    //Return the Node
+    return itemNode;
+}

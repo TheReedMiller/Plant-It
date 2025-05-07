@@ -30,8 +30,8 @@ private:
 public:
     Game();
     void OnDraw(wxDC* graphics);
-    void Load(wxXmlNode* root);
-    void CreateItem(wxXmlNode *node);
+    void Load(wxXmlNode* gameNode);
+    void CreateItem(wxXmlNode *childNode);
     void Save(wxXmlNode* root);
     void Clear();
     void Add(std::shared_ptr<Item> item);

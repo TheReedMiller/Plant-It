@@ -9,6 +9,10 @@
 #include "Item.h"
 #include "Background.h"
 #include "Plant.h"
+#include "Rose.h"
+#include "Flytrap.h"
+#include "Cactus.h"
+#include "Sunflower.h"
 
 using namespace std;
 
@@ -75,34 +79,48 @@ void Game::Load(wxXmlNode* gameNode)
 
 /**
  * Handle a node of type item.
- * @param node XML node
+ * @param childNode XML node
  */
-void Game::CreateItem(wxXmlNode *node)
+void Game::CreateItem(wxXmlNode* childNode)
 {
-    // // A pointer for the item we are loading
-    // shared_ptr<Item> item;
-    //
-    // // We have an item. What type?
-    // auto type = node->GetAttribute(L"type");
-    // if (type == L"beta")
-    // {
-    //     item = make_shared<Background>(this);
-    // }
-    //
-    // else if (type == L"")
-    // {
-    //     //CODE HERE
-    // }
-    //
-    //
-    // if (item != nullptr)
-    // {
-    //     // //Add the Item to the game
-    //     // Add(item);
-    //     //
-    //     // //Finish Loading the Item's attributes
-    //     // item->XmlLoad(node);
-    // }
+    // A pointer for the item we are loading
+    shared_ptr<Item> item;
+
+    // We have an item. What type?
+    auto type = childNode->GetAttribute(L"type");
+
+    //Rose Plant
+    if (type == L"rose")
+    {
+        item = make_shared<Rose>(this);
+    }
+
+    //Sunflower Plant
+    else if (type == L"sunflower")
+    {
+        item = make_shared<Sunflower>(this);
+    }
+
+    //Cactus Plant
+    else if (type == L"cactus")
+    {
+        item = make_shared<Cactus>(this);
+    }
+
+    //Flytrap Plant
+    else if (type == L"flytrap")
+    {
+        item = make_shared<Flytrap>(this);
+    }
+
+    if (item != nullptr)
+    {
+        //Add the Item to the game
+        Add(item);
+
+        //Finish Loading the Item's attributes
+        item->Load(childNode);
+    }
 }
 
 /**

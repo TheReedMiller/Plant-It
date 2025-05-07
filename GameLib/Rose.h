@@ -18,6 +18,7 @@ private:
 
 public:
     Rose(Game* game);
+    wxXmlNode* Save(wxXmlNode* gameNode) override;
 };
 
 

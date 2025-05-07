@@ -44,7 +44,8 @@ public:
     virtual ~Item();
     virtual void Draw(wxDC* dc);
     virtual bool HitTest(int x, int y);
-    virtual void Save(wxXmlNode* root);
+    virtual wxXmlNode* Save(wxXmlNode* root);
+    virtual void Load(wxXmlNode* childNode);
 
     /// Assignment Operator
     Item &operator=(const Item &) = delete;

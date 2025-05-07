@@ -51,13 +51,18 @@ void Game::OnDraw(wxDC* graphics)
  *
  * @param filename The filename of the file to load the game from.
  */
-void Game::Load(wxXmlNode* root)
+void Game::Load(wxXmlNode* gameNode)
 {
     //Clear current data from game
     Clear();
 
+    //Get Root attribute for Bank Amount
+    int coins = 0;
+    gameNode->GetAttribute(L"coins").ToInt(&coins);
+    mBank->SetCoins(coins);
+
     // Traverse the children of the root
-    auto child = root->GetChildren();
+    auto child = gameNode->GetChildren();
     for( ; child; child=child->GetNext())
     {
         auto name = child->GetName();
@@ -102,11 +107,19 @@ void Game::CreateItem(wxXmlNode *node)
 
 /**
  * Function to save the state of the game
- * @param root root node of XML
+ * @param gameNode game root node of XML
  */
-void Game::Save(wxXmlNode *root)
+void Game::Save(wxXmlNode *gameNode)
 {
+    //Save Bank Amount of coins
+    auto coins = wxString::Format(wxT("%d"), mBank->GetCoins());
+    gameNode->AddAttribute(L"coins", coins);
 
+    //Save Each item within the game
+    for (auto item : mItems)
+    {
+        item->Save(gameNode);
+    }
 }
 
 /**

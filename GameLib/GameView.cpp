@@ -132,26 +132,29 @@ void GameView::OnMouseMove(wxMouseEvent &event)
  */
 void GameView::Save(wxXmlNode* root)
 {
-    //Create items node
-    auto itemsNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"Game");
+    //Create game node
+    auto gameNode = new wxXmlNode(wxXML_ELEMENT_NODE, L"Game");
 
     auto value = wxString::Format(wxT("%d"), mTime);
-    itemsNode->AddAttribute(L"time", value);
-    root->AddChild(itemsNode);
+    gameNode->AddAttribute(L"time", value);
+    root->AddChild(gameNode);
 
     //Call to game to save
-    mGame.Save(root);
+    mGame.Save(gameNode);
 }
 
 /**
  *Load function for this view
- * @param root root node of xml
+ * @param gameNode game root node of xml
  */
-void GameView::Load(wxXmlNode* root)
+void GameView::Load(wxXmlNode* gameNode)
 {
     //Set Time/Stopwatch
-    root->GetAttribute(L"time").ToInt(&mTime);
+    gameNode->GetAttribute(L"time").ToInt(&mTime);
     mStopWatch.Start(mTime * 1000);
+
+    //Load game
+    mGame.Load(gameNode);
 }
 
 /**

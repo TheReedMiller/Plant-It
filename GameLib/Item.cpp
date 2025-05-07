@@ -84,3 +84,12 @@ bool Item::HitTest(int x, int y)
     // part of the image
     return !mItemImage->IsTransparent((int)testX, (int)testY);
 }
+
+/**
+ * Function to save the state of this Item
+ * @param root root node of XML
+ */
+void Item::Save(wxXmlNode *root)
+{
+
+}

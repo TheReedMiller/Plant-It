@@ -9,6 +9,8 @@
 #include "GameView.h"
 #include "Plant.h"
 #include "Item.h"
+#include "Sunflower.h"
+#include "Rose.h"
 
 ///Frame Duration Constant
 const int FrameDuration = 30;
@@ -31,7 +33,11 @@ void GameView::Initialize(wxFrame* parent)
     Bind(wxEVT_MOTION, &GameView::OnMouseMove, this);
     Bind(wxEVT_TIMER, &GameView::OnTimer, this);
 
+    //Menu Event Handlers
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddSunflower, this, IDM_ADDSUNFLOWER);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddRose, this, IDM_ADDROSE);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddCactus, this, IDM_ADDCACTUS);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddFlytrap, this, IDM_ADDFLYTRAP);
 
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
@@ -149,6 +155,33 @@ void GameView::Load(wxXmlNode* root)
  * Function to add a sunflower to our game
  */
 void GameView::OnAddSunflower(wxCommandEvent& event)
+{
+    auto item = std::make_shared<Sunflower>(&mGame);
+    mGame.Add(item);
+    Refresh();
+}
+/**
+ * Function to add a rose to our game
+ */
+void GameView::OnAddRose(wxCommandEvent& event)
+{
+    auto item = std::make_shared<Rose>(&mGame);
+    mGame.Add(item);
+    Refresh();
+}
+/**
+ * Function to add a cactus to our game
+ */
+void GameView::OnAddCactus(wxCommandEvent& event)
+{
+    auto item = std::make_shared<Plant>(&mGame, L"sunflower1.png");
+    mGame.Add(item);
+    Refresh();
+}
+/**
+ * Function to add a flytrap to our game
+ */
+void GameView::OnAddFlytrap(wxCommandEvent& event)
 {
     auto item = std::make_shared<Plant>(&mGame, L"sunflower1.png");
     mGame.Add(item);

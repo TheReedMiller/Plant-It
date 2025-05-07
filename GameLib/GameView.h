@@ -40,6 +40,9 @@ public:
     void Save(wxXmlNode* root);
     void Load(wxXmlNode* root);
     void OnAddSunflower(wxCommandEvent& event);
+    void OnAddRose(wxCommandEvent& event);
+    void OnAddCactus(wxCommandEvent& event);
+    void OnAddFlytrap(wxCommandEvent& event);
 
     /**
      * Getter for the Bank within Game

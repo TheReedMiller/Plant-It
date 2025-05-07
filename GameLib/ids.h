@@ -14,7 +14,8 @@
 enum IDs {
     IDM_ADDSUNFLOWER= wxID_HIGHEST + 1,
     IDM_ADDFLYTRAP,
-    IDM_ITEMTHREE
+    IDM_ADDROSE,
+    IDM_ADDCACTUS
 };
 
 #endif //IDS_H

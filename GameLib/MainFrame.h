@@ -23,6 +23,7 @@ private:
     void OnAbout(wxCommandEvent &event);
     void OnLoad(wxCommandEvent& event);
     void OnSave(wxCommandEvent& event);
+    void OnShowControls(wxCommandEvent& event);
     void OnExit(wxCommandEvent &event);
 
 public:

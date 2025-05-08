@@ -40,17 +40,21 @@ void MainFrame::Initialize()
 
     // Menu options
     auto fileMenu = new wxMenu();
+    auto helpMenu = new wxMenu();
     auto plantMenu = new wxMenu();
     auto taskMenu = new wxMenu();
 
     // Append the menu options to the bar.
     menuBar->Append(fileMenu, L"&File");
+    menuBar->Append(helpMenu, L"&Help");
     menuBar->Append(plantMenu, L"&Plants");
     menuBar->Append(taskMenu, L"&Tasks");
 
     //Add to menus
     fileMenu->Append(wxID_SAVEAS, "Save", "Save the Program");
     fileMenu->Append(wxID_OPEN, "Load", "Load a Program");
+
+    helpMenu->Append(wxID_ABOUT, "Game Controls", "View game controls and rules");
 
     plantMenu->Append(IDM_ADDSUNFLOWER, "Buy Sunflower [150]", "Buy Sunflower [150]");
     plantMenu->Append(IDM_ADDROSE, "Buy Rose [200]", "Buy Rose [200]");
@@ -65,6 +69,7 @@ void MainFrame::Initialize()
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnAbout, this, wxID_ABOUT);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnSave, this, wxID_SAVEAS);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad, this, wxID_OPEN);
+    Bind(wxEVT_MENU, &MainFrame::OnShowControls, this, wxID_ABOUT);
 
     CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
 }
@@ -175,4 +180,26 @@ void MainFrame::OnSave(wxCommandEvent& event)
         wxMessageBox(L"Write to XML failed");
         return;
     }
+}
+
+/**
+ * Function that Gives the user a description of the Game Controls
+ * @param event event to handle
+ */
+void MainFrame::OnShowControls(wxCommandEvent& event)
+{
+    wxMessageBox(
+        "Plants:\n"
+        " - You can Purchase Plants from the Plant Menu Option\n"
+        " - Click and Drag your plants where you want\n\n"
+        "Tasks:\n"
+        " - Tasks can be added from the menu bar.\n"
+        " - You can Edit Tasks by right clicking them.\n"
+        " - You can Mark Tasks completed by double-clicking them.\n"
+        " - Click and Drag your Task to organize how you'd like.\n"
+        " - Complete tasks to earn coins for your plant bank!\n",
+        "Controls",
+        wxOK | wxICON_INFORMATION,
+        this
+    );
 }

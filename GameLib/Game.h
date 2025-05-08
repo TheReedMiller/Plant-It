@@ -35,6 +35,7 @@ public:
     void Save(wxXmlNode* root);
     void Clear();
     void Add(std::shared_ptr<Item> item);
+    void Remove(std::shared_ptr<Item> item);
     std::shared_ptr<Item> HitTest(int x, int y);
     void MoveToBack(std::shared_ptr<Item> item);
 

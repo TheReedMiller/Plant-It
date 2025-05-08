@@ -35,6 +35,7 @@ void GameView::Initialize(wxFrame* parent)
     Bind(wxEVT_LEFT_UP, &GameView::OnLeftUp, this);
     Bind(wxEVT_MOTION, &GameView::OnMouseMove, this);
     Bind(wxEVT_TIMER, &GameView::OnTimer, this);
+    Bind(wxEVT_KEY_DOWN, &GameView::OnKeyDown, this);
 
     //Menu Event Handlers
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddSunflower, this, IDM_ADDSUNFLOWER);
@@ -82,6 +83,7 @@ void GameView::OnPaint(wxPaintEvent& event)
 void GameView::OnLeftDown(const wxMouseEvent &event)
 {
     mGrabbedItem = mGame.HitTest(event.GetX(), event.GetY());
+    mSelectedItem = mGrabbedItem;
     if (mGrabbedItem != nullptr)
     {
         // Move to Back of List
@@ -97,6 +99,7 @@ void GameView::OnLeftDown(const wxMouseEvent &event)
 void GameView::OnLeftUp(wxMouseEvent &event)
 {
     OnMouseMove(event);
+    mGrabbedItem = nullptr;
 }
 
 /**
@@ -192,4 +195,26 @@ void GameView::OnAddFlytrap(wxCommandEvent& event)
     auto item = std::make_shared<Flytrap>(&mGame);
     mGame.Add(item);
     Refresh();
+}
+
+/**
+ * Event Handler for a Key Being Pressed
+ * @param event event to handle
+ */
+void GameView::OnKeyDown(wxKeyEvent& event)
+{
+    if (event.GetKeyCode() == WXK_BACK)
+    {
+        //Delete Most Recently Selected Plant
+        if (mSelectedItem != nullptr)
+        {
+            //Remove and clear selected item
+            mGame.Remove(mSelectedItem);
+            mSelectedItem = nullptr;
+        }
+    }
+    else
+    {
+        event.Skip(); // Let other handlers run if not handled
+    }
 }

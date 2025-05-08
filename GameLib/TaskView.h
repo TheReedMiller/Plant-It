@@ -33,6 +33,9 @@ public:
     ///Grabbed Task for Moving Tasks
     std::shared_ptr<Task> mGrabbedTask = nullptr;
 
+    ///Most Recently Selected Task
+    std::shared_ptr<Task> mSelectedTask = nullptr;
+
     TaskView(wxWindow * parent, std::shared_ptr<Bank> bank);
     void OnPaint(wxPaintEvent& event);
     void OnLeftDown(wxMouseEvent& event);
@@ -44,6 +47,7 @@ public:
     void Load(wxXmlNode* taskNode);
     void OnRightClick(wxMouseEvent& event);
     void OnAddTask(wxCommandEvent& event);
+    void OnKeyDown(wxKeyEvent& event);
 };
 
 

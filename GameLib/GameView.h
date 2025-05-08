@@ -29,6 +29,9 @@ private:
     ///Pointer to a Grabbed Item
     std::shared_ptr<Item> mGrabbedItem = nullptr;
 
+    ///Pointer to Most Recently Selected Item
+    std::shared_ptr<Item> mSelectedItem = nullptr;
+
     void OnTimer(wxTimerEvent& event);
 
 public:
@@ -43,6 +46,7 @@ public:
     void OnAddRose(wxCommandEvent& event);
     void OnAddCactus(wxCommandEvent& event);
     void OnAddFlytrap(wxCommandEvent& event);
+    void OnKeyDown(wxKeyEvent& event);
 
     /**
      * Getter for the Bank within Game

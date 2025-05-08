@@ -156,3 +156,13 @@ std::shared_ptr<Task> TaskManager::Add()
     //Return the task for editing
     return task;
 }
+
+/**
+ * Function to Remove a given task from the TaskManager
+ * @param task task to remove
+ */
+void TaskManager::Remove(std::shared_ptr<Task> task)
+{
+    //Remove the Given Task
+    mTasks.erase(std::remove(mTasks.begin(), mTasks.end(), task),mTasks.end());
+}

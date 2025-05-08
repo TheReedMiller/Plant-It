@@ -31,6 +31,7 @@ TaskView::TaskView(wxWindow* parent, std::shared_ptr<Bank> bank) :
     Bind(wxEVT_MOTION, &TaskView::OnMouseMove, this);
     Bind(wxEVT_LEFT_DCLICK, &TaskView::OnDoubleClick, this);
     Bind(wxEVT_TIMER, &TaskView::OnTimer, this);
+    Bind(wxEVT_KEY_DOWN, &TaskView::OnKeyDown, this);
 
     //Menu Event Handler
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &TaskView::OnAddTask, this, IDM_ADDTASK);
@@ -67,6 +68,7 @@ void TaskView::OnLeftDown(wxMouseEvent& event)
     auto click = CalcUnscrolledPosition(event.GetPosition());
 
     mGrabbedTask = mTaskManager.HitTest(click.x, click.y);
+    mSelectedTask = mGrabbedTask;   //Set Most recently selected also
     if (mGrabbedTask != nullptr)
     {
         // Move to Back of List
@@ -82,6 +84,7 @@ void TaskView::OnLeftDown(wxMouseEvent& event)
 void TaskView::OnLeftUp(wxMouseEvent& event)
 {
     OnMouseMove(event);
+    mGrabbedTask = nullptr;
 }
 
 /**
@@ -206,7 +209,25 @@ void TaskView::OnAddTask(wxCommandEvent& event)
         // task->GetDescription() has been updated
         Refresh();
     }
+}
 
-
-
+/**
+ * Event Handler for a Key Being Pressed
+ * @param event event to handle
+ */
+void TaskView::OnKeyDown(wxKeyEvent& event)
+{
+    if (event.GetKeyCode() == WXK_BACK)
+    {
+        //Delete most recently Selected Task
+        if (mSelectedTask != nullptr)
+        {
+            mTaskManager.Remove(mSelectedTask); //Call to delete the selected task
+            mSelectedTask = nullptr;
+        }
+    }
+    else
+    {
+        event.Skip(); // Let other handlers run if not handled
+    }
 }

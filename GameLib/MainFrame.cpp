@@ -191,13 +191,15 @@ void MainFrame::OnShowControls(wxCommandEvent& event)
     wxMessageBox(
         "Plants:\n"
         " - You can Purchase Plants from the Plant Menu Option\n"
-        " - Click and Drag your plants where you want\n\n"
+        " - Click and Drag your plants where you want\n"
+        " - Click on a Plant and Press Backspace/Delete to Sell it\n\n"
         "Tasks:\n"
         " - Tasks can be added from the menu bar.\n"
         " - You can Edit Tasks by right clicking them.\n"
         " - You can Mark Tasks completed by double-clicking them.\n"
         " - Click and Drag your Task to organize how you'd like.\n"
-        " - Complete tasks to earn coins for your plant bank!\n",
+        " - Complete tasks to earn coins for your plant bank!\n"
+        " - Click a Task and press Backspace/Delete to remove it from the Task Manager\n",
         "Controls",
         wxOK | wxICON_INFORMATION,
         this

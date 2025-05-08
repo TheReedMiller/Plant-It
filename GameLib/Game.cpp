@@ -161,6 +161,16 @@ void Game::Add(std::shared_ptr<Item> item)
 }
 
 /**
+ * Function to Remove a given item from this game
+ * @param item item to remove
+ */
+void Game::Remove(std::shared_ptr<Item> item)
+{
+    //Remove the Given Task
+    mItems.erase(std::remove(mItems.begin(), mItems.end(), item),mItems.end());
+}
+
+/**
  * Test an x,y click location to see if it clicked
  * on some item in the game.
  * @param x X location in pixels

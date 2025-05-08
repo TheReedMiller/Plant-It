@@ -29,6 +29,7 @@ public:
     void Save(wxXmlNode* taskNode);
     void Load(wxXmlNode* taskNode);
     std::shared_ptr<Task> Add();
+    void Remove(std::shared_ptr<Task> task);
 };
 
 

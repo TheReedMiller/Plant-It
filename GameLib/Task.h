@@ -30,13 +30,13 @@ private:
     bool mIsComplete = false;
 
     ///Task Description
-    wxString mDescription = L"WWWWWWWWWWWWWWW";
+    wxString mDescription = L"NA";
 
 public:
     Task(int width);
     void Draw(wxDC* dc);
     bool HitTest(int x, int y);
-    void SetPosition(int x, int y);
+    void SetPosition(int x, int y, bool isSet = false);
     void ToggleDifficulty();
     bool ToggleComplete();
     void Save(wxXmlNode* taskNode);

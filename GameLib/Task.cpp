@@ -17,7 +17,8 @@ const int Height = 150;
  */
 Task::Task(int width) : mWidth(width)
 {
-
+    //Set Initial Position
+    SetPosition(width/2, 135, true);
 }
 
 /**
@@ -150,10 +151,15 @@ bool Task::HitTest(int x, int y)
  * Setter for Task Position
  * @param x x coord to set
  * @param y y coord to set
+ * @param isSet True when this Function needs to be moved with the x coord too
  */
-void Task::SetPosition(int x, int y)
+void Task::SetPosition(int x, int y, bool isSet)
 {
-    mPosition.x = x;
+    if (isSet)
+    {
+        mPosition.x = x;
+    }
+
     mPosition.y = y;
 }
 
@@ -228,7 +234,7 @@ void Task::Load(wxXmlNode* child)
     int x = 0, y = 0;
     child->GetAttribute(L"x").ToInt(&x);
     child->GetAttribute(L"y").ToInt(&y);
-    SetPosition(x, y);
+    SetPosition(x, y, true);
 
     //Difficulty
     wxString diff = child->GetAttribute(L"diff");

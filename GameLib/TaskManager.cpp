@@ -13,9 +13,6 @@
  */
 TaskManager::TaskManager(int width) : mWidth(width)
 {
-    auto task = std::make_shared<Task>(width);
-    task->SetPosition(width/2, 175);
-    mTasks.push_back(task);
 }
 
 

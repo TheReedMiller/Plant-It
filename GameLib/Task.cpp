@@ -15,7 +15,7 @@ const int Height = 150;
  * Constructor
  * @param width the width of the parent frame
  */
-Task::Task(int width) : mWidth(width)
+Task::Task(int width, wxString desc) : mWidth(width), mDescription(desc)
 {
 
 }
@@ -109,19 +109,16 @@ void Task::Draw(wxDC* dc)
     dc->SetFont(font);
     dc->SetTextForeground(*wxBLACK);
 
-    // The text to draw (you could use a class member here like mName or mLabel)
-    wxString text = L"My Task ";
-
     // Get text size to center it
     int textWidth, textHeight;
-    dc->GetTextExtent(text, &textWidth, &textHeight);
+    dc->GetTextExtent(mDescription, &textWidth, &textHeight);
 
     // Center the text within the rectangle
     int textX = pos.x + (mWidth - textWidth) / 2;
     int textY = pos.y + (Height - textHeight) / 2;
 
     // Draw the text
-    dc->DrawText(text, textX, textY);
+    dc->DrawText(mDescription, textX, textY);
 }
 
 /**

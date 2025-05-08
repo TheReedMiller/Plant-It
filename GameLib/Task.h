@@ -29,8 +29,11 @@ private:
     ///Is Complete Bool - initially false
     bool mIsComplete = false;
 
+    ///Task Description
+    wxString mDescription;
+
 public:
-    Task(int width);
+    Task(int width, wxString desc);
     void Draw(wxDC* dc);
     bool HitTest(int x, int y);
     void SetPosition(int x, int y);
@@ -46,6 +49,12 @@ public:
      * @param complete bool telling if this task is completed
      */
     void SetComplete(bool complete){mIsComplete = complete;}
+
+    /**
+     * Setter for Description
+     * @param desc Description to set
+     */
+    void SetDescription(wxString desc){mDescription = desc;}
 };
 
 

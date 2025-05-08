@@ -160,6 +160,7 @@ void TaskView::Load(wxXmlNode* taskNode)
 {
     //Call to task manager to load
     mTaskManager.Load(taskNode);
+    Refresh();
 }
 
 /**

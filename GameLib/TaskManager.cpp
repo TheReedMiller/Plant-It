@@ -13,9 +13,9 @@
  */
 TaskManager::TaskManager(int width) : mWidth(width)
 {
-    // auto task = std::make_shared<Task>(width);
-    // task->SetPosition(width/2, 175);
-    // mTasks.push_back(task);
+    auto task = std::make_shared<Task>(width, L"TEST THIS JOEY BOB");
+    task->SetPosition(width/2, 175);
+    mTasks.push_back(task);
 }
 
 
@@ -128,7 +128,7 @@ void TaskManager::Load(wxXmlNode* taskNode)
     while (child != nullptr)
     {
         //Create Task
-        auto task = std::make_shared<Task>(mWidth);
+        auto task = std::make_shared<Task>(mWidth, L"NA");
 
         //Load in task
         task->Load(child);

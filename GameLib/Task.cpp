@@ -34,7 +34,17 @@ void Task::Draw(wxDC* dc)
 
     // Set pen (for border) and brush (for fill color)
     dc->SetPen(*wxBLACK_PEN);            // Black border
-    dc->SetBrush(*wxLIGHT_GREY_BRUSH);   // Light gray fill
+
+    //Draw a Different shade if Completed
+    if (mIsComplete)
+    {
+        dc->SetBrush(wxColor(208, 245, 229));
+    }
+    else
+    {
+        dc->SetBrush(*wxLIGHT_GREY_BRUSH);   // Light gray fill
+    }
+
 
     // Define rectangle parameters
     double radius = 20.0;   // Radius for the rounded corners
@@ -51,7 +61,15 @@ void Task::Draw(wxDC* dc)
 
     wxPen thickPen(*wxBLACK, 3);  // color, thickness
     dc->SetPen(thickPen);
-    dc->SetBrush(*wxLIGHT_GREY_BRUSH);  // white interior with black border
+    //Draw a Different shade if Completed
+    if (mIsComplete)
+    {
+        dc->SetBrush(wxColor(208, 245, 229));
+    }
+    else
+    {
+        dc->SetBrush(*wxLIGHT_GREY_BRUSH);   // Light gray fill
+    }
     dc->DrawRectangle(checkboxX, checkboxY, checkboxSize, checkboxSize);
 
     //Only Draw Checkbox if this Box is Marked Completed

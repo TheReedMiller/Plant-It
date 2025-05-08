@@ -179,8 +179,12 @@ void TaskView::OnRightClick(wxMouseEvent& event)
 
     if (mGrabbedTask != nullptr)
     {
-        //Set Task
-        mGrabbedTask->ToggleDifficulty();
+        //Get USer Input Via Dlg Box
+        TaskDlgBox dlg(this, mGrabbedTask);
+        if (dlg.ShowModal() == wxID_OK) {
+            // task->GetDescription() has been updated
+            Refresh();
+        }
     }
 
     //Refresh the view

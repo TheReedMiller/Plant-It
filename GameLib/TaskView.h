@@ -43,6 +43,7 @@ public:
     void Save(wxXmlNode* root);
     void Load(wxXmlNode* taskNode);
     void OnRightClick(wxMouseEvent& event);
+    void OnAddTask(wxCommandEvent& event);
 };
 
 

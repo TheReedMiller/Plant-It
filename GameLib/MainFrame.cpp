@@ -41,10 +41,12 @@ void MainFrame::Initialize()
     // Menu options
     auto fileMenu = new wxMenu();
     auto plantMenu = new wxMenu();
+    auto taskMenu = new wxMenu();
 
     // Append the menu options to the bar.
     menuBar->Append(fileMenu, L"&File");
     menuBar->Append(plantMenu, L"&Plants");
+    menuBar->Append(taskMenu, L"&Tasks");
 
     //Add to menus
     fileMenu->Append(wxID_SAVEAS, "Save", "Save the Program");
@@ -54,6 +56,8 @@ void MainFrame::Initialize()
     plantMenu->Append(IDM_ADDROSE, "Buy Rose [200]", "Buy Rose [200]");
     plantMenu->Append(IDM_ADDCACTUS, "Buy Cactus [400]", "Buy Rose [400]");
     plantMenu->Append(IDM_ADDFLYTRAP, "Buy Flytrap [1000]", "Buy Flytrap [1000]");
+
+    taskMenu->Append(IDM_ADDTASK, "Add New Task", "Add New Task");
 
     SetMenuBar( menuBar );
 

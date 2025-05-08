@@ -15,7 +15,7 @@ const int Height = 150;
  * Constructor
  * @param width the width of the parent frame
  */
-Task::Task(int width, wxString desc) : mWidth(width), mDescription(desc)
+Task::Task(int width) : mWidth(width)
 {
 
 }
@@ -205,7 +205,7 @@ void Task::Save(wxXmlNode* taskNode)
     auto yCoord = wxString::Format(wxT("%d"), mPosition.y);
     task->AddAttribute(L"y", yCoord);  //Save y
 
-    task->AddAttribute(L"diff", Difficulty());  //Save Difficulty
+    task->AddAttribute(L"diff", GetDifficulty());  //Save Difficulty
 
     //Save isComplete bool member variable
     if (mIsComplete)
@@ -250,7 +250,7 @@ void Task::Load(wxXmlNode* child)
  * Function to convert the difficulty component
  * @return difficulty enum converted to a wxstrijng
  */
-wxString Task::Difficulty()
+wxString Task::GetDifficulty()
 {
     switch (mDifficulty)
     {

@@ -30,10 +30,10 @@ private:
     bool mIsComplete = false;
 
     ///Task Description
-    wxString mDescription;
+    wxString mDescription = L"WWWWWWWWWWWWWWW";
 
 public:
-    Task(int width, wxString desc);
+    Task(int width);
     void Draw(wxDC* dc);
     bool HitTest(int x, int y);
     void SetPosition(int x, int y);
@@ -41,7 +41,7 @@ public:
     bool ToggleComplete();
     void Save(wxXmlNode* taskNode);
     void Load(wxXmlNode* child);
-    wxString Difficulty();
+    wxString GetDifficulty();
     void SetDifficulty(wxString diff);
 
     /**
@@ -55,6 +55,12 @@ public:
      * @param desc Description to set
      */
     void SetDescription(wxString desc){mDescription = desc;}
+
+    /**
+     * Getter for Description
+     * @return description of task
+     */
+    wxString GetDescription(){return mDescription;}
 };
 
 

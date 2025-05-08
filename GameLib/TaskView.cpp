@@ -7,6 +7,8 @@
 #include "TaskView.h"
 #include "Task.h"
 #include "Bank.h"
+#include "ids.h"
+#include "TaskDlgBox.h"
 
 /**
  * Constructor for this View
@@ -29,6 +31,9 @@ TaskView::TaskView(wxWindow* parent, std::shared_ptr<Bank> bank) :
     Bind(wxEVT_MOTION, &TaskView::OnMouseMove, this);
     Bind(wxEVT_LEFT_DCLICK, &TaskView::OnDoubleClick, this);
     Bind(wxEVT_TIMER, &TaskView::OnTimer, this);
+
+    //Menu Event Handler
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &TaskView::OnAddTask, this, IDM_ADDTASK);
 
 }
 
@@ -180,4 +185,24 @@ void TaskView::OnRightClick(wxMouseEvent& event)
 
     //Refresh the view
     Refresh();
+}
+
+/**
+ * Handles creating a new Task
+ * @param event event to handle
+ */
+void TaskView::OnAddTask(wxCommandEvent& event)
+{
+    //Call to task Manager to Add Task
+    auto task = mTaskManager.Add();
+
+    //Get USer Input Via Dlg Box
+    TaskDlgBox dlg(this, task);
+    if (dlg.ShowModal() == wxID_OK) {
+        // task->GetDescription() has been updated
+        Refresh();
+    }
+
+
+
 }

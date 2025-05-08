@@ -28,6 +28,7 @@ public:
     void MoveToBack(std::shared_ptr<Task> task);
     void Save(wxXmlNode* taskNode);
     void Load(wxXmlNode* taskNode);
+    std::shared_ptr<Task> Add();
 };
 
 

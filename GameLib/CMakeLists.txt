@@ -30,7 +30,9 @@ set(SOURCE_FILES
         Cactus.cpp
         Cactus.h
         Flytrap.cpp
-        Flytrap.h)
+        Flytrap.h
+        TaskDlgBox.cpp
+        TaskDlgBox.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)

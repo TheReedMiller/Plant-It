@@ -13,7 +13,7 @@
  */
 TaskManager::TaskManager(int width) : mWidth(width)
 {
-    auto task = std::make_shared<Task>(width, L"TEST THIS JOEY BOB");
+    auto task = std::make_shared<Task>(width);
     task->SetPosition(width/2, 175);
     mTasks.push_back(task);
 }
@@ -128,7 +128,7 @@ void TaskManager::Load(wxXmlNode* taskNode)
     while (child != nullptr)
     {
         //Create Task
-        auto task = std::make_shared<Task>(mWidth, L"NA");
+        auto task = std::make_shared<Task>(mWidth);
 
         //Load in task
         task->Load(child);
@@ -140,4 +140,22 @@ void TaskManager::Load(wxXmlNode* taskNode)
         child = child->GetNext();
 
     }
+}
+
+/**
+ * Function to add a new task to the task manager
+ * @return Task that was created
+ */
+std::shared_ptr<Task> TaskManager::Add()
+{
+    //Create New Task
+    auto task = std::make_shared<Task>(mWidth);
+
+    //SET POSITION LOGIC HERE
+
+    //Add to Tasks
+    mTasks.push_back(task);
+
+    //Return the task for editing
+    return task;
 }

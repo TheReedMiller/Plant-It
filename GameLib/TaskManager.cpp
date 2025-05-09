@@ -7,6 +7,9 @@
 #include "TaskManager.h"
 #include "Task.h"
 
+///Constant for Task Manager Header
+const int HeaderHeight = 50;
+
 /**
  *Constructor
  *@param width the width of the given view
@@ -28,14 +31,12 @@ void TaskManager::Draw(wxDC* dc)
     int rectX = 0;  // X coordinate
     int rectY = 0;  // Y coordinate
 
-    int rectHeight = 50;
-
     // Set pen and brush (optional)
     dc->SetPen(wxPen(*wxBLACK, 3));      //Black border
     dc->SetBrush(wxColor(150,150,150)); // fill color
 
     // Draw the rectangle
-    dc->DrawRectangle(rectX, rectY, mWidth, rectHeight);
+    dc->DrawRectangle(rectX, rectY, mWidth, HeaderHeight);
 
     // Set the font and text color
     wxFont font(18, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
@@ -51,7 +52,7 @@ void TaskManager::Draw(wxDC* dc)
 
     // Center the text within the box
     int textX = rectX + (mWidth - textWidth) / 2;
-    int textY = rectY + (rectHeight - textHeight) / 2;
+    int textY = rectY + (HeaderHeight - textHeight) / 2;
 
     // Draw the text
     dc->DrawText(text, textX, textY);

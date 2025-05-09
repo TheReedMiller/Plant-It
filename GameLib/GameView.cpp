@@ -165,6 +165,17 @@ void GameView::Load(wxXmlNode* gameNode)
  */
 void GameView::OnAddSunflower(wxCommandEvent& event)
 {
+    //First Check Bank amount
+    if (mGame.GetBank()->GetCoins() < 150)
+    {
+        //ERROR MESSAGE HERE
+        return;
+    }
+
+    //Subtract from Bank
+    mGame.GetBank()->Sub(150);
+
+    //Create and Add Item
     auto item = std::make_shared<Sunflower>(&mGame);
     mGame.Add(item);
     Refresh();
@@ -174,6 +185,17 @@ void GameView::OnAddSunflower(wxCommandEvent& event)
  */
 void GameView::OnAddRose(wxCommandEvent& event)
 {
+    //First Check Bank amount
+    if (mGame.GetBank()->GetCoins() < 200)
+    {
+        //ERROR MESSAGE HERE
+        return;
+    }
+
+    //Subtract from Bank
+    mGame.GetBank()->Sub(200);
+
+    //Create and Add Item
     auto item = std::make_shared<Rose>(&mGame);
     mGame.Add(item);
     Refresh();
@@ -183,6 +205,17 @@ void GameView::OnAddRose(wxCommandEvent& event)
  */
 void GameView::OnAddCactus(wxCommandEvent& event)
 {
+    //First Check Bank amount
+    if (mGame.GetBank()->GetCoins() < 400)
+    {
+        //ERROR MESSAGE HERE
+        return;
+    }
+
+    //Subtract from Bank
+    mGame.GetBank()->Sub(400);
+
+    //Create and Add Item
     auto item = std::make_shared<Cactus>(&mGame);
     mGame.Add(item);
     Refresh();
@@ -192,6 +225,17 @@ void GameView::OnAddCactus(wxCommandEvent& event)
  */
 void GameView::OnAddFlytrap(wxCommandEvent& event)
 {
+    //First Check Bank amount
+    if (mGame.GetBank()->GetCoins() < 1000)
+    {
+        //ERROR MESSAGE HERE
+        return;
+    }
+
+    //Subtract from Bank
+    mGame.GetBank()->Sub(1000);
+
+    //Create and Add Item
     auto item = std::make_shared<Flytrap>(&mGame);
     mGame.Add(item);
     Refresh();
@@ -211,6 +255,9 @@ void GameView::OnKeyDown(wxKeyEvent& event)
             //Remove and clear selected item
             mGame.Remove(mSelectedItem);
             mSelectedItem = nullptr;
+
+            //Give the User back some coins
+            mGame.GetBank()->Add(100);
         }
     }
     else

@@ -158,6 +158,7 @@ void Game::Clear()
 void Game::Add(std::shared_ptr<Item> item)
 {
     mItems.push_back(item);
+    item->SetPosition(580,300);
 }
 
 /**

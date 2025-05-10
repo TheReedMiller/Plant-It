@@ -46,6 +46,7 @@ public:
     void OnAddRose(wxCommandEvent& event);
     void OnAddCactus(wxCommandEvent& event);
     void OnAddFlytrap(wxCommandEvent& event);
+    void OnAddFern(wxCommandEvent& event);
     void OnKeyDown(wxKeyEvent& event);
 
     /**

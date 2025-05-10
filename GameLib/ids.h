@@ -16,6 +16,7 @@ enum IDs {
     IDM_ADDFLYTRAP,
     IDM_ADDROSE,
     IDM_ADDCACTUS,
+    IDM_ADDFERN,
     IDM_ADDTASK
 };
 

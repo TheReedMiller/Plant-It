@@ -13,6 +13,7 @@
 #include "Flytrap.h"
 #include "Cactus.h"
 #include "Sunflower.h"
+#include "Fern.h"
 
 using namespace std;
 
@@ -99,6 +100,12 @@ void Game::CreateItem(wxXmlNode* childNode)
     else if (type == L"sunflower")
     {
         item = make_shared<Sunflower>(this);
+    }
+
+    //Sunflower Plant
+    else if (type == L"fern")
+    {
+        item = make_shared<Fern>(this);
     }
 
     //Cactus Plant

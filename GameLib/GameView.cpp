@@ -14,6 +14,7 @@
 #include "Item.h"
 #include "Sunflower.h"
 #include "Rose.h"
+#include "Fern.h"
 
 ///Frame Duration Constant
 const int FrameDuration = 30;
@@ -42,6 +43,7 @@ void GameView::Initialize(wxFrame* parent)
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddRose, this, IDM_ADDROSE);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddCactus, this, IDM_ADDCACTUS);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddFlytrap, this, IDM_ADDFLYTRAP);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddFern, this, IDM_ADDFERN);
 
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
@@ -200,6 +202,28 @@ void GameView::OnAddRose(wxCommandEvent& event)
     mGame.Add(item);
     Refresh();
 }
+
+/**
+ * Function to add a fern to our game
+ */
+void GameView::OnAddFern(wxCommandEvent& event)
+{
+    //First Check Bank amount
+    if (mGame.GetBank()->GetCoins() < 250)
+    {
+        //ERROR MESSAGE HERE
+        return;
+    }
+
+    //Subtract from Bank
+    mGame.GetBank()->Sub(250);
+
+    //Create and Add Item
+    auto item = std::make_shared<Fern>(&mGame);
+    mGame.Add(item);
+    Refresh();
+}
+
 /**
  * Function to add a cactus to our game
  */

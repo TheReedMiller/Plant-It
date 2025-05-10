@@ -58,7 +58,8 @@ void MainFrame::Initialize()
 
     plantMenu->Append(IDM_ADDSUNFLOWER, "Buy Sunflower [150]", "Buy Sunflower [150]");
     plantMenu->Append(IDM_ADDROSE, "Buy Rose [200]", "Buy Rose [200]");
-    plantMenu->Append(IDM_ADDCACTUS, "Buy Cactus [400]", "Buy Rose [400]");
+    plantMenu->Append(IDM_ADDFERN, "Buy Fern [250]", "Buy Fern [250]");
+    plantMenu->Append(IDM_ADDCACTUS, "Buy Cactus [400]", "Buy Cactus [400]");
     plantMenu->Append(IDM_ADDFLYTRAP, "Buy Flytrap [1000]", "Buy Flytrap [1000]");
 
     taskMenu->Append(IDM_ADDTASK, "Add New Task", "Add New Task");

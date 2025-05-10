@@ -175,4 +175,13 @@ void TaskManager::Remove(std::shared_ptr<Task> task)
 {
     //Remove the Given Task
     mTasks.erase(std::remove(mTasks.begin(), mTasks.end(), task),mTasks.end());
+
+    //Update the Window Height, based on the Size of the Tasks
+    mHeight = std::max(static_cast<int>(mTasks.size() * 160 + HeaderHeight), 800);
+
+    //Update all Heights
+    for (auto task : mTasks)
+    {
+        task->SetHeight(mHeight);
+    }
 }

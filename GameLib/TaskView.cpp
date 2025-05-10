@@ -238,8 +238,12 @@ void TaskView::OnKeyDown(wxKeyEvent& event)
         //Delete most recently Selected Task
         if (mSelectedTask != nullptr)
         {
+            //Remove the task from the Task Manager
             mTaskManager.Remove(mSelectedTask); //Call to delete the selected task
             mSelectedTask = nullptr;
+
+            //Update the Height of the Window
+            mHeight = mTaskManager.GetHeight();
         }
     }
     else

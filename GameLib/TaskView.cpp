@@ -46,7 +46,7 @@ TaskView::TaskView(wxWindow* parent, std::shared_ptr<Bank> bank) :
 void TaskView::OnPaint(wxPaintEvent& event)
 {
     SetVirtualSize(Width, mHeight);
-    SetScrollRate(0, 1);
+    SetScrollRate(0, 5);
 
     wxAutoBufferedPaintDC dc(this);
     DoPrepareDC(dc);

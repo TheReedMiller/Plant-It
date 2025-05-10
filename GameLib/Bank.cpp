@@ -58,3 +58,18 @@ void Bank::Draw(wxDC* dc)
     dc->DrawText(numberText, X + 105, Y + 30);
 
 }
+
+/**
+     * Function to Subtrack coins from the bank
+     * @param coins coins to subtrack
+     */
+void Bank::Sub(int coins)
+{
+    mCoins -= coins;
+
+    //Make sure there are never negatives
+    if (mCoins < 0)
+    {
+        mCoins = 0;
+    }
+}

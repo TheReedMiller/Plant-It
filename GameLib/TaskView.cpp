@@ -131,6 +131,11 @@ void TaskView::OnDoubleClick(wxMouseEvent& event)
             //Add to bank
             mBank->Add(50);
         }
+        else
+        {
+            //Remove 50 for completing a task
+            mBank->Sub(50);
+        }
     }
 
     //Refresh the view

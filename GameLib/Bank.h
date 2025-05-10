@@ -43,13 +43,8 @@ public:
      */
     void Add(int coins){mCoins += coins;}
 
-    /**
-     * Function to Subtrack coins from the bank
-     * @param coins coins to subtrack
-     */
-    void Sub(int coins){mCoins -= coins;}
-
     void Draw(wxDC* dc);
+    void Sub(int coins);
 };
 
 

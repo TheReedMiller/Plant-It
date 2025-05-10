@@ -93,6 +93,9 @@ void TaskView::OnLeftUp(wxMouseEvent& event)
  */
 void TaskView::OnMouseMove(wxMouseEvent& event)
 {
+    //Calculate un-scrolled position
+    auto click = CalcUnscrolledPosition(event.GetPosition());
+
     // See if an item is currently being moved by the mouse
     if (mGrabbedTask != nullptr)
     {
@@ -100,7 +103,7 @@ void TaskView::OnMouseMove(wxMouseEvent& event)
         // move it while the left button is down.
         if (event.LeftIsDown())
         {
-            mGrabbedTask->SetPosition(event.GetX(), event.GetY());
+            mGrabbedTask->SetPosition(click.x, click.y);
         }
         else
         {
@@ -120,8 +123,11 @@ void TaskView::OnMouseMove(wxMouseEvent& event)
  */
 void TaskView::OnDoubleClick(wxMouseEvent& event)
 {
+    //Calculate un-scrolled position
+    auto click = CalcUnscrolledPosition(event.GetPosition());
+
     //See if we Double-Clicked a Task
-    mGrabbedTask = mTaskManager.HitTest(event.GetX(), event.GetY());
+    mGrabbedTask = mTaskManager.HitTest(click.x, click.y);
 
     if (mGrabbedTask != nullptr)
     {
@@ -182,8 +188,11 @@ void TaskView::Load(wxXmlNode* taskNode)
  */
 void TaskView::OnRightClick(wxMouseEvent& event)
 {
+    //Calculate un-scrolled position
+    auto click = CalcUnscrolledPosition(event.GetPosition());
+
     //See if we Double-Clicked a Task
-    mGrabbedTask = mTaskManager.HitTest(event.GetX(), event.GetY());
+    mGrabbedTask = mTaskManager.HitTest(click.x, click.y);
 
     if (mGrabbedTask != nullptr)
     {

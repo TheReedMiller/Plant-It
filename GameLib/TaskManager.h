@@ -20,9 +20,11 @@ private:
     std::vector<std::shared_ptr<Task>> mTasks;
     ///Width of Parent Frame
     int mWidth;
+    ///Height of the parent frame
+    int mHeight;
 
 public:
-    TaskManager(int width);
+    TaskManager(int width, int height);
     void Draw(wxDC* dc);
     std::shared_ptr<Task> HitTest(int x, int Y);
     void MoveToBack(std::shared_ptr<Task> task);
@@ -30,6 +32,18 @@ public:
     void Load(wxXmlNode* taskNode);
     std::shared_ptr<Task> Add();
     void Remove(std::shared_ptr<Task> task);
+
+    /**
+     * Getter for the Current Number of Tasks
+     * @return Number of Tasks
+     */
+    int GetNumTasks(){return mTasks.size();}
+
+    /**
+     * Getter for the frame height
+     * @return Height of the Frame
+     */
+    int GetHeight(){return mHeight;}
 };
 
 

@@ -14,7 +14,7 @@ const int HeaderHeight = 50;
  *Constructor
  *@param width the width of the given view
  */
-TaskManager::TaskManager(int width) : mWidth(width)
+TaskManager::TaskManager(int width, int height) : mWidth(width), mHeight(height)
 {
 }
 
@@ -126,7 +126,7 @@ void TaskManager::Load(wxXmlNode* taskNode)
     while (child != nullptr)
     {
         //Create Task
-        auto task = std::make_shared<Task>(mWidth);
+        auto task = std::make_shared<Task>(mWidth, mHeight);
 
         //Load in task
         task->Load(child);
@@ -147,12 +147,21 @@ void TaskManager::Load(wxXmlNode* taskNode)
 std::shared_ptr<Task> TaskManager::Add()
 {
     //Create New Task
-    auto task = std::make_shared<Task>(mWidth);
+    auto task = std::make_shared<Task>(mWidth, mHeight);
 
     //SET POSITION LOGIC HERE
 
     //Add to Tasks
     mTasks.push_back(task);
+
+    //Update the Window Height, based on the Size of the Tasks
+    mHeight = std::max(static_cast<int>(mTasks.size() * 160 + HeaderHeight), 800);
+
+    //Update all Heights
+    for (auto task : mTasks)
+    {
+        task->SetHeight(mHeight);
+    }
 
     //Return the task for editing
     return task;

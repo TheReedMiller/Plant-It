@@ -11,14 +11,12 @@
 const int Height = 150;
 ///Constant for Task Manager Header
 const int MinHeight = 125;
-///Constant for Task Manager Header
-const int MaxHeight = 800;
 
 /**
  * Constructor
  * @param width the width of the parent frame
  */
-Task::Task(int width) : mWidth(width)
+Task::Task(int width, int height) : mWidth(width), mHeight(height)
 {
     //Set Initial Position
     SetPosition(width/2, 135, true);
@@ -181,7 +179,7 @@ void Task::SetPosition(int x, int y, bool isSet)
         mPosition.x = x;
     }
 
-    if ((y > MinHeight)&&(y < MaxHeight))
+    if ((y > MinHeight)&&(y < mHeight))
     {
         mPosition.y = y;
     }

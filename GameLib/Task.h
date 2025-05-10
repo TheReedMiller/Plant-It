@@ -23,6 +23,9 @@ private:
     ///Width of area to display task
     int mWidth;
 
+    ///Height of the Area to display to
+    int mHeight;
+
     ///Position of this Object
     wxPoint mPosition;
 
@@ -33,7 +36,7 @@ private:
     wxString mDescription = L"NA";
 
 public:
-    Task(int width);
+    Task(int width, int height);
     void Draw(wxDC* dc);
     bool HitTest(int x, int y);
     void SetPosition(int x, int y, bool isSet = false);
@@ -61,6 +64,12 @@ public:
      * @return description of task
      */
     wxString GetDescription(){return mDescription;}
+
+    /**
+     * Setter for the view height that this task is within
+     * @param height height to set
+     */
+    void SetHeight(int height){mHeight = height;}
 };
 
 

@@ -19,7 +19,7 @@ TaskView::TaskView(wxWindow* parent, std::shared_ptr<Bank> bank) :
                      wxID_ANY,
                      wxDefaultPosition,
                      wxSize(Width, 800),
-                     wxBORDER_SIMPLE), mTaskManager(Width), mBank(bank)
+                     wxBORDER_SIMPLE), mTaskManager(Width, mHeight), mBank(bank)
 {
     SetBackgroundStyle(wxBG_STYLE_PAINT);
 
@@ -45,7 +45,7 @@ TaskView::TaskView(wxWindow* parent, std::shared_ptr<Bank> bank) :
  */
 void TaskView::OnPaint(wxPaintEvent& event)
 {
-    SetVirtualSize(300, 800);
+    SetVirtualSize(Width, mHeight);
     SetScrollRate(0, 1);
 
     wxAutoBufferedPaintDC dc(this);
@@ -194,7 +194,6 @@ void TaskView::OnRightClick(wxMouseEvent& event)
             Refresh();
         }
     }
-
     //Refresh the view
     Refresh();
 }
@@ -207,6 +206,9 @@ void TaskView::OnAddTask(wxCommandEvent& event)
 {
     //Call to task Manager to Add Task
     auto task = mTaskManager.Add();
+
+    //Update the Height of the Window
+    mHeight = mTaskManager.GetHeight();
 
     //Get USer Input Via Dlg Box
     TaskDlgBox dlg(this, task);

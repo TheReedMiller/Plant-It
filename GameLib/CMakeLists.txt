@@ -32,7 +32,9 @@ set(SOURCE_FILES
         Flytrap.cpp
         Flytrap.h
         TaskDlgBox.cpp
-        TaskDlgBox.h)
+        TaskDlgBox.h
+        Fern.cpp
+        Fern.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)

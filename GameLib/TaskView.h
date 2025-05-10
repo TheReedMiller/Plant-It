@@ -25,7 +25,7 @@ public:
     static const int Width = 300;
 
     ///Height for Simulated Window
-    int mHeight = 800;  //<Starts as 800
+    int mHeight = 830;  //<Starts as 830
 
     ///Task Manager Object
     TaskManager mTaskManager;

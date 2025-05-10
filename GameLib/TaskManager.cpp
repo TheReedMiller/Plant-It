@@ -147,7 +147,7 @@ void TaskManager::Load(wxXmlNode* taskNode)
 std::shared_ptr<Task> TaskManager::Add()
 {
     //Create New Task
-    auto task = std::make_shared<Task>(mWidth, mHeight);
+    auto task = std::make_shared<Task>(mWidth - 15, mHeight);   //<Offset so that the Task Isn't drawn over my the Scroll Bar
 
     //SET POSITION LOGIC HERE
 

@@ -19,7 +19,7 @@ const int MinHeight = 125;
 Task::Task(int width, int height) : mWidth(width), mHeight(height)
 {
     //Set Initial Position
-    SetPosition(width/2, 135, true);
+    SetPosition(width/2, 127, true);
 }
 
 /**
@@ -310,4 +310,24 @@ void Task::SetDifficulty(wxString diff)
     {
         mDifficulty = Difficulty::Hard;
     }
+}
+
+/**
+     * Setter for the Index of this task
+     * @param index index to set
+     */
+void Task::SetIndex(int index)
+{
+    //Set the Index
+    mIndex = index;
+
+    //Update the Position
+    // //Position for 0 index
+    // if (mIndex == 0)
+    // {
+    //     std::cout << "YUP" << std::endl;
+    //     SetPosition(mWidth/2, MinHeight + mIndex*(Height + 15) - 40, true);
+    //     return;
+    // }
+    SetPosition(mWidth/2, MinHeight + mIndex*(Height + 10), true);
 }

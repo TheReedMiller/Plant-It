@@ -22,6 +22,8 @@ private:
     int mWidth;
     ///Height of the parent frame
     int mHeight;
+    //Index of the Next Available Slot to Add tasks
+    int mNextIndex = 0;     //<Starts as 0
 
 public:
     TaskManager(int width, int height);
@@ -32,6 +34,7 @@ public:
     void Load(wxXmlNode* taskNode);
     std::shared_ptr<Task> Add();
     void Remove(std::shared_ptr<Task> task);
+    void FindNextIndex();
 
     /**
      * Getter for the Current Number of Tasks

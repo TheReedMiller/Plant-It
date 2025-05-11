@@ -29,6 +29,9 @@ private:
     ///Position of this Object
     wxPoint mPosition;
 
+    ///Index Within the Task Manager Object
+    int mIndex = -1;    //< Starts as -1 so we can detect errors/unplaced tasks
+
     ///Is Complete Bool - initially false
     bool mIsComplete = false;
 
@@ -46,6 +49,7 @@ public:
     void Load(wxXmlNode* child);
     wxString GetDifficulty();
     void SetDifficulty(wxString diff);
+    void SetIndex(int index);
 
     /**
      * Setter for the IsComplete member variable
@@ -70,6 +74,8 @@ public:
      * @param height height to set
      */
     void SetHeight(int height){mHeight = height;}
+
+
 };
 
 

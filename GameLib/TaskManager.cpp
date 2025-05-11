@@ -61,7 +61,10 @@ void TaskManager::Draw(wxDC* dc)
     //Iterate over tasks and Draw
     for (auto task : mTasks)
     {
-        task->Draw(dc);
+        if (task != nullptr)
+        {
+            task->Draw(dc);
+        }
     }
 }
 
@@ -75,6 +78,12 @@ std::shared_ptr<Task> TaskManager::HitTest(int x, int y)
 {
     for (auto i = mTasks.rbegin(); i != mTasks.rend();  i++)
     {
+        //Check for Nullptr
+        if (*i == nullptr)
+        {
+            continue;
+        }
+
         if ((*i)->HitTest(x, y))
         {
             return *i;
@@ -90,6 +99,7 @@ std::shared_ptr<Task> TaskManager::HitTest(int x, int y)
  */
 void TaskManager::MoveToBack(std::shared_ptr<Task> task)
 {
+    return;
     //First We Find the Location of the clicked Task
     auto loc = find(begin(mTasks), end(mTasks), task);
     if (loc != end(mTasks))
@@ -110,7 +120,10 @@ void TaskManager::Save(wxXmlNode* taskNode)
     //Save each Task
     for (auto task : mTasks)
     {
-        task->Save(taskNode);
+        if (task != nullptr)
+        {
+            task->Save(taskNode);
+        }
     }
 }
 
@@ -125,14 +138,11 @@ void TaskManager::Load(wxXmlNode* taskNode)
 
     while (child != nullptr)
     {
-        //Create Task
-        auto task = std::make_shared<Task>(mWidth, mHeight);
+        //Create Task and add
+        auto task = Add();
 
         //Load in task
         task->Load(child);
-
-        //Add Task
-        mTasks.push_back(task);
 
         //Retrieve next Child
         child = child->GetNext();
@@ -150,9 +160,23 @@ std::shared_ptr<Task> TaskManager::Add()
     auto task = std::make_shared<Task>(mWidth - 15, mHeight);   //<Offset so that the Task Isn't drawn over my the Scroll Bar
 
     //SET POSITION LOGIC HERE
+    //Find the Next Index
+    FindNextIndex();
 
-    //Add to Tasks
-    mTasks.push_back(task);
+    //We are inserting to a new slot
+    if (mTasks.size() == mNextIndex)
+    {
+        mTasks.insert(mTasks.begin() + mNextIndex, task);
+    }
+
+    //Otherwise, replace the nullptr
+    else
+    {
+        mTasks[mNextIndex] = task;
+    }
+
+    //Set Task Index
+    task->SetIndex(mNextIndex);
 
     //Update the Window Height, based on the Size of the Tasks
     mHeight = std::max(static_cast<int>(mTasks.size() * 160 + HeaderHeight), 800);
@@ -160,7 +184,11 @@ std::shared_ptr<Task> TaskManager::Add()
     //Update all Heights
     for (auto task : mTasks)
     {
-        task->SetHeight(mHeight);
+        //Safeguard against empty spots
+        if (task != nullptr)
+        {
+            task->SetHeight(mHeight);
+        }
     }
 
     //Return the task for editing
@@ -173,15 +201,29 @@ std::shared_ptr<Task> TaskManager::Add()
  */
 void TaskManager::Remove(std::shared_ptr<Task> task)
 {
-    //Remove the Given Task
-    mTasks.erase(std::remove(mTasks.begin(), mTasks.end(), task),mTasks.end());
+    //Replace the Item with a Nullpr
+    auto it = std::find(mTasks.begin(), mTasks.end(), task);
+    if (it != mTasks.end()) {
+        *it = nullptr;
+    }
+}
 
-    //Update the Window Height, based on the Size of the Tasks
-    mHeight = std::max(static_cast<int>(mTasks.size() * 160 + HeaderHeight), 800);
+/**
+ * A Function to calculate the next index to insert a task at
+ */
+void TaskManager::FindNextIndex()
+{
+    //Reset the mNext Index
+    mNextIndex = 0;
 
-    //Update all Heights
-    for (auto task : mTasks)
+    //Continue to Iterate while the Index isn't out of bounds
+    while (mNextIndex < mTasks.size())
     {
-        task->SetHeight(mHeight);
+        if (mTasks[mNextIndex] == nullptr)
+        {
+            return;
+        }
+        //Increment mNextIndex
+        mNextIndex++;
     }
 }

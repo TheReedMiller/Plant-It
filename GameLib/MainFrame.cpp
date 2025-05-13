@@ -159,7 +159,9 @@ void MainFrame::OnSave(wxCommandEvent& event)
     //Create Dialog Box to get filepath
     wxFileDialog saveFileDialog(this, _("Save Game file"), "", "",
             "Game Files (*.game)|*.game", wxFD_SAVE|wxFD_OVERWRITE_PROMPT);
-    if (saveFileDialog.ShowModal() == wxID_CANCEL)
+    auto result = saveFileDialog.ShowModal();
+
+    if (result == wxID_CANCEL)
     {
         return;
     }

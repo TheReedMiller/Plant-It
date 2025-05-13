@@ -236,6 +236,8 @@ void Task::Save(wxXmlNode* taskNode)
 
     task->AddAttribute(L"diff", GetDifficulty());  //Save Difficulty
 
+    task->AddAttribute(L"desc", mDescription);      //Save Description
+
     //Save isComplete bool member variable
     if (mIsComplete)
     {
@@ -273,6 +275,10 @@ void Task::Load(wxXmlNode* child)
     {
         mIsComplete = false;
     }
+
+    //Description
+    wxString desc = child->GetAttribute(L"desc");
+    mDescription = desc;
 }
 
 /**

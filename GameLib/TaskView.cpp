@@ -134,9 +134,25 @@ void TaskView::OnDoubleClick(wxMouseEvent& event)
         //Set Task
         if (mGrabbedTask->ToggleComplete())
         {
-            //Add to bank
-            mBank->Add(50);
+            //Get The Difficulty of the task
+            auto diff = mGrabbedTask->GetDifficulty();
+            //Moderate task completed
+            if (diff == L"moderate")
+            {
+                mBank->Add(100);
+            }
+            //Hard Task Completed
+            else if (diff == L"hard")
+            {
+                mBank->Add(150);
+            }
+            //Otherwise easy task
+            else
+            {
+                mBank->Add(50);
+            }
         }
+        //Otherwise Task Was Un-Completed
         else
         {
             //Remove 50 for completing a task

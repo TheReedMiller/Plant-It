@@ -155,8 +155,23 @@ void TaskView::OnDoubleClick(wxMouseEvent& event)
         //Otherwise Task Was Un-Completed
         else
         {
-            //Remove 50 for completing a task
-            mBank->Sub(50);
+            //Remove the Coins Gained
+            auto diff = mGrabbedTask->GetDifficulty();
+            //Moderate task completed
+            if (diff == L"moderate")
+            {
+                mBank->Sub(100);
+            }
+            //Hard Task Completed
+            else if (diff == L"hard")
+            {
+                mBank->Sub(150);
+            }
+            //Otherwise easy task
+            else
+            {
+                mBank->Sub(50);
+            }
         }
     }
 

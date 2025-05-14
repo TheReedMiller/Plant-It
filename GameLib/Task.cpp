@@ -327,13 +327,5 @@ void Task::SetIndex(int index)
     //Set the Index
     mIndex = index;
 
-    //Update the Position
-    // //Position for 0 index
-    // if (mIndex == 0)
-    // {
-    //     std::cout << "YUP" << std::endl;
-    //     SetPosition(mWidth/2, MinHeight + mIndex*(Height + 15) - 40, true);
-    //     return;
-    // }
     SetPosition(mWidth/2, MinHeight + mIndex*(Height + 10), true);
 }

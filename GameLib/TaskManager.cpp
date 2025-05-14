@@ -175,9 +175,6 @@ std::shared_ptr<Task> TaskManager::Add()
         mTasks[mNextIndex] = task;
     }
 
-    //Set Task Index
-    task->SetIndex(mNextIndex);
-
     //Update the Window Height, based on the Size of the Tasks
     mHeight = std::max(static_cast<int>(mTasks.size() * 160 + HeaderHeight), 800);
 
@@ -190,6 +187,9 @@ std::shared_ptr<Task> TaskManager::Add()
             task->SetHeight(mHeight);
         }
     }
+
+    //Set Task Index
+    task->SetIndex(mNextIndex);
 
     //Return the task for editing
     return task;

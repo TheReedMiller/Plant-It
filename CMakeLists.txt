@@ -31,3 +31,25 @@ file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Images/
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Images/)
 file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Levels/
         DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Levels/)
+
+if(APPLE)
+    set(MACOSX_BUNDLE_ICON_FILE Plant-It)
+
+    set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/Images/Plant-It.icns PROPERTIES
+            MACOSX_PACKAGE_LOCATION "Resources")
+
+    set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/Info.plist PROPERTIES
+            MACOSX_PACKAGE_LOCATION "Contents")
+
+    set_target_properties(Plant-It PROPERTIES
+            MACOSX_BUNDLE TRUE
+            MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_SOURCE_DIR}/Info.plist"
+    )
+
+    target_sources(Plant-It PRIVATE
+            ${CMAKE_CURRENT_SOURCE_DIR}/Images/Plant-It.icns
+            ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist
+    )
+endif()
+
+target_link_libraries(Plant-It ${wxWidgets_LIBRARIES})

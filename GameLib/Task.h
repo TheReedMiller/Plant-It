@@ -75,7 +75,11 @@ public:
      */
     void SetHeight(int height){mHeight = height;}
 
-
+    /**
+     * Getter for Y Coord
+     * @return Y coord of this task
+     */
+    int GetY(){return mPosition.y;}
 };
 
 

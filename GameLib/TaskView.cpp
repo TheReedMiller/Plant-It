@@ -57,6 +57,12 @@ void TaskView::OnPaint(wxPaintEvent& event)
 
     //Call to Task Manager to Draw tasks
     mTaskManager.Draw(&dc);
+
+    //Draw grabbed task
+    if (mGrabbedTask != nullptr)
+    {
+        mGrabbedTask->Draw(&dc);
+    }
 }
 
 /**
@@ -74,6 +80,9 @@ void TaskView::OnLeftDown(wxMouseEvent& event)
         // Move to Back of List
         mTaskManager.MoveToBack(mGrabbedTask);
 
+        //Remove the Task From Vector
+        mTaskManager.Remove(mGrabbedTask);
+
     }
 }
 
@@ -84,7 +93,15 @@ void TaskView::OnLeftDown(wxMouseEvent& event)
 void TaskView::OnLeftUp(wxMouseEvent& event)
 {
     OnMouseMove(event);
-    mGrabbedTask = nullptr;
+
+    // //Just in case
+    // if (mGrabbedTask != nullptr)
+    // {
+    //     mTaskManager.SetInPlace(mGrabbedTask);
+    // }
+    //
+    // //Set to nullptr just in case
+    // mGrabbedTask = nullptr;
 }
 
 /**
@@ -107,8 +124,8 @@ void TaskView::OnMouseMove(wxMouseEvent& event)
         }
         else
         {
-            // When the left button is released, we release the
-            // item.
+            // When the left button is released, we release the task
+            mTaskManager.SetInPlace(mGrabbedTask);
             mGrabbedTask = nullptr;
         }
 
@@ -127,15 +144,15 @@ void TaskView::OnDoubleClick(wxMouseEvent& event)
     auto click = CalcUnscrolledPosition(event.GetPosition());
 
     //See if we Double-Clicked a Task
-    mGrabbedTask = mTaskManager.HitTest(click.x, click.y);
+    mSelectedTask = mTaskManager.HitTest(click.x, click.y);
 
-    if (mGrabbedTask != nullptr)
+    if (mSelectedTask != nullptr)
     {
         //Set Task
-        if (mGrabbedTask->ToggleComplete())
+        if (mSelectedTask->ToggleComplete())
         {
             //Get The Difficulty of the task
-            auto diff = mGrabbedTask->GetDifficulty();
+            auto diff = mSelectedTask->GetDifficulty();
             //Moderate task completed
             if (diff == L"moderate")
             {
@@ -156,7 +173,7 @@ void TaskView::OnDoubleClick(wxMouseEvent& event)
         else
         {
             //Remove the Coins Gained
-            auto diff = mGrabbedTask->GetDifficulty();
+            auto diff = mSelectedTask->GetDifficulty();
             //Moderate task completed
             if (diff == L"moderate")
             {

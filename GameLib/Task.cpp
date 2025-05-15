@@ -327,5 +327,12 @@ void Task::SetIndex(int index)
     //Set the Index
     mIndex = index;
 
+    //Set 0 index
+    if (mIndex == 0)
+    {
+        SetPosition(mWidth/2,125, true);
+        return;
+    }
+
     SetPosition(mWidth/2, MinHeight + mIndex*(Height + 10), true);
 }

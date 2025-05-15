@@ -16,6 +16,11 @@ const int HeaderHeight = 50;
  */
 TaskManager::TaskManager(int width, int height) : mWidth(width), mHeight(height)
 {
+    //Add a Few Empty Nullptrs to the Task Vector
+    for (int i = 0; i < 7; i++)
+    {
+        mTasks.push_back(nullptr);
+    }
 }
 
 
@@ -226,4 +231,81 @@ void TaskManager::FindNextIndex()
         //Increment mNextIndex
         mNextIndex++;
     }
+}
+
+/**
+ * This function, given a task, will set it into a correct location
+ * @param task Task to move
+ */
+void TaskManager::SetInPlace(std::shared_ptr<Task> task)
+{
+    //Get its Y value
+    auto y = task->GetY();
+
+    //Get a starting index
+    int index = (y - 50)/160;
+
+    //Find Closest Index Above
+    int aboveIndex = index;
+    while (aboveIndex != -1)
+    {
+        if (mTasks[aboveIndex] == nullptr)
+        {
+            //Index found
+            break;
+        }
+        //Otherwise go up
+        aboveIndex--;
+    }
+
+    //Out of range above
+    if (aboveIndex == -1)
+    {
+        aboveIndex = -1000;
+    }
+
+    //Find Closest Index Below
+    int belowIndex = index + 1;
+    while (belowIndex < mTasks.size())
+    {
+        if (mTasks[belowIndex] == nullptr)
+        {
+            //Lower index found
+            break;
+        }
+        //Otherwise go down
+        belowIndex++;
+    }
+
+    //Out of range below
+    if (belowIndex == mTasks.size())
+    {
+        belowIndex = 1000;
+    }
+
+    //Find which of the two indices are closer
+    auto top = index - aboveIndex;
+    auto bottom = belowIndex - index;
+
+    //Indicates are Equal or top is closer than bottom
+    if (( top == bottom) || (top < bottom))
+    {
+        index = aboveIndex;
+    }
+
+    //Bottom is Closer
+    else
+    {
+        index = belowIndex;
+    }
+
+    //Set the Task in Place
+    mTasks[index] = task;
+    task->SetIndex(index);
+
+    if (index == 0)
+    {
+        task->SetPosition(mWidth/2, 125);
+    }
+
 }

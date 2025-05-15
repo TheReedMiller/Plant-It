@@ -179,11 +179,10 @@ void Task::SetPosition(int x, int y, bool isSet)
         mPosition.x = x;
     }
 
-    if ((y > MinHeight)&&(y < mHeight))
+    if ((y >= MinHeight)&&(y < mHeight))
     {
         mPosition.y = y;
     }
-
 }
 
 /**

@@ -99,24 +99,6 @@ std::shared_ptr<Task> TaskManager::HitTest(int x, int y)
 }
 
 /**
- *A function to move a grabbed item to the back of the task-list
- *@param task the task to move
- */
-void TaskManager::MoveToBack(std::shared_ptr<Task> task)
-{
-    return;
-    //First We Find the Location of the clicked Task
-    auto loc = find(begin(mTasks), end(mTasks), task);
-    if (loc != end(mTasks))
-    {
-        //Remove the original element from the vector
-        mTasks.erase(loc);
-        //Add it back to the end of the list
-        mTasks.push_back(task);
-    }
-}
-
-/**
  * Saves the state of the task manager
  * @param taskNode root node for the tasks portion of the XML document
  */
@@ -307,5 +289,4 @@ void TaskManager::SetInPlace(std::shared_ptr<Task> task)
     {
         task->SetPosition(mWidth/2, 125);
     }
-
 }

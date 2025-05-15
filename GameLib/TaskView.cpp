@@ -77,9 +77,6 @@ void TaskView::OnLeftDown(wxMouseEvent& event)
     mSelectedTask = mGrabbedTask;   //Set Most recently selected also
     if (mGrabbedTask != nullptr)
     {
-        // Move to Back of List
-        mTaskManager.MoveToBack(mGrabbedTask);
-
         //Remove the Task From Vector
         mTaskManager.Remove(mGrabbedTask);
 

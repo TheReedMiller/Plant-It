@@ -22,14 +22,13 @@ private:
     int mWidth;
     ///Height of the parent frame
     int mHeight;
-    //Index of the Next Available Slot to Add tasks
+    ///Index of the Next Available Slot to Add tasks
     int mNextIndex = 0;     //<Starts as 0
 
 public:
     TaskManager(int width, int height);
     void Draw(wxDC* dc);
     std::shared_ptr<Task> HitTest(int x, int Y);
-    void MoveToBack(std::shared_ptr<Task> task);
     void Save(wxXmlNode* taskNode);
     void Load(wxXmlNode* taskNode);
     std::shared_ptr<Task> Add();

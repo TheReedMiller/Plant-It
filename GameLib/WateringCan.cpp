@@ -22,3 +22,11 @@ bool WateringCan::CanDelete()
 {
     return false;
 }
+
+/**
+ * Click this item, and begin 'watering' rotation
+ */
+void WateringCan::Click()
+{
+    std::cout << "WateringCan::Click" << std::endl;
+}

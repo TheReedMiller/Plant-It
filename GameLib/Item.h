@@ -47,7 +47,7 @@ public:
     virtual wxXmlNode* Save(wxXmlNode* root);
     virtual void Load(wxXmlNode* childNode);
     virtual bool CanDelete(){return true;}
-
+    virtual void Click(){}
     /// Assignment Operator
     Item &operator=(const Item &) = delete;
 

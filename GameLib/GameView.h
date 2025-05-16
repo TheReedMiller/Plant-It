@@ -39,6 +39,7 @@ public:
     void OnPaint(wxPaintEvent& event);
     void OnLeftDown(const wxMouseEvent &event);
     void OnLeftUp(wxMouseEvent& event);
+    void OnDoubleClick(wxMouseEvent& event);
     void OnMouseMove(wxMouseEvent& event);
     void Save(wxXmlNode* root);
     void Load(wxXmlNode* root);

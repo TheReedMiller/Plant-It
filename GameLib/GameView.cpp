@@ -34,6 +34,7 @@ void GameView::Initialize(wxFrame* parent)
     Bind(wxEVT_PAINT, &GameView::OnPaint, this);
     Bind(wxEVT_LEFT_DOWN, &GameView::OnLeftDown, this);
     Bind(wxEVT_LEFT_UP, &GameView::OnLeftUp, this);
+    Bind(wxEVT_LEFT_DCLICK, &GameView::OnDoubleClick, this);
     Bind(wxEVT_MOTION, &GameView::OnMouseMove, this);
     Bind(wxEVT_TIMER, &GameView::OnTimer, this);
     Bind(wxEVT_KEY_DOWN, &GameView::OnKeyDown, this);
@@ -90,7 +91,6 @@ void GameView::OnLeftDown(const wxMouseEvent &event)
     {
         // Move to Back of List
         mGame.MoveToBack(mGrabbedItem);
-
     }
 }
 
@@ -102,6 +102,21 @@ void GameView::OnLeftUp(wxMouseEvent &event)
 {
     OnMouseMove(event);
     mGrabbedItem = nullptr;
+}
+
+/**
+ * Event handler for double clicking
+ * @param event event handler
+ */
+void GameView::OnDoubleClick(wxMouseEvent &event)
+{
+    mGrabbedItem = mGame.HitTest(event.GetX(), event.GetY());
+
+    if (mGrabbedItem != nullptr)
+    {
+        //Click Item
+        mGrabbedItem->Click();
+    }
 }
 
 /**

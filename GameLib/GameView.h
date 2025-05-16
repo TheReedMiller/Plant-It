@@ -26,6 +26,9 @@ private:
     ///The Current Time within the game
     int mTime = 0;
 
+    ///Current Time for Animation
+    int mAnimationTime = 0;
+
     ///Pointer to a Grabbed Item
     std::shared_ptr<Item> mGrabbedItem = nullptr;
 

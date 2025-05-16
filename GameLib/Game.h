@@ -34,6 +34,7 @@ private:
 public:
     Game();
     void OnDraw(wxDC* graphics);
+    void Update(double elapsed);
     void Load(wxXmlNode* gameNode);
     void CreateItem(wxXmlNode *childNode);
     void Save(wxXmlNode* root);

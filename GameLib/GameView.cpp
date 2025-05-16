@@ -76,6 +76,11 @@ void GameView::OnPaint(wxPaintEvent& event)
     dc.SetBackground(background);
     dc.Clear();
 
+    auto newTime = mStopWatch.Time();
+    auto elapsed = (double)(newTime - mAnimationTime) * 0.001;
+    mAnimationTime = newTime;
+    mGame.Update(elapsed);
+
     mGame.OnDraw(&dc);
 }
 

@@ -53,6 +53,18 @@ void Game::OnDraw(wxDC* graphics)
     }
 }
 
+/**
+ * Update function for animation within the game
+ * @param elampsed time elapsed since last update
+ */
+void Game::Update(double elapsed)
+{
+    //Call the Update function on each item within the game
+    for (auto item : mItems)
+    {
+        item->Update(elapsed);
+    }
+}
 
 /**
  * Load the game level from a saved XML file.

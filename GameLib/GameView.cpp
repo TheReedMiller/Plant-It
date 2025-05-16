@@ -276,12 +276,20 @@ void GameView::OnKeyDown(wxKeyEvent& event)
         //Delete Most Recently Selected Plant
         if (mSelectedItem != nullptr)
         {
-            //Remove and clear selected item
-            mGame.Remove(mSelectedItem);
-            mSelectedItem = nullptr;
+            //Check if we can delete this item
+            if (mSelectedItem->CanDelete())
+            {
+                //Remove and clear selected item
+                mGame.Remove(mSelectedItem);
+                mSelectedItem = nullptr;
 
-            //Give the User back some coins
-            mGame.GetBank()->Add(100);
+                //Give the User back some coins
+                mGame.GetBank()->Add(100);
+            }
+            else
+            {
+                event.Skip(); // Let other handlers run if not handled
+            }
         }
     }
     else

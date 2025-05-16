@@ -18,6 +18,7 @@ private:
 
 public:
     WateringCan(Game *game);
+    bool CanDelete() override;
 };
 
 

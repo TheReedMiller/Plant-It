@@ -34,7 +34,9 @@ set(SOURCE_FILES
         TaskDlgBox.cpp
         TaskDlgBox.h
         Fern.cpp
-        Fern.h)
+        Fern.h
+        WateringCan.cpp
+        WateringCan.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)

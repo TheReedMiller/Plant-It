@@ -10,6 +10,7 @@
 #include "Item.h"
 #include "Background.h"
 #include "Bank.h"
+#include "WateringCan.h"
 
 //forward references
 
@@ -23,6 +24,9 @@ private:
 
     ///Bank for game
     std::shared_ptr<Bank> mBank = nullptr;
+
+    ///WateringCan for game
+    std::shared_ptr<WateringCan> mWateringCan = nullptr;
 
     ///Container to hold all the game's Items
     std::vector<std::shared_ptr<Item>> mItems;

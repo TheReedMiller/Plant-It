@@ -27,6 +27,11 @@ Game::Game()
     //Create the Bank
     mBank = std::make_shared<Bank>();
 
+    //Create Watering can
+    mWateringCan = std::make_shared<WateringCan>(this);
+    Add(mWateringCan);
+    mWateringCan->SetPosition(580,780);
+
 }
 
 /**

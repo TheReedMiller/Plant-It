@@ -15,11 +15,19 @@
  */
 class WateringCan : public Item{
 private:
+    ///Bool representing if this watering can is currently active
+    bool mIsActive = false;
+    ///Bool saying if the watering can is heading down
+    bool mIsDown = true;
+    ///Current angle of this item
+    double mCurrentAngle = 0;
 
 public:
     WateringCan(Game *game);
     bool CanDelete() override;
     void Click() override;
+    void Draw(wxDC* dc) override;
+    void Update(double elapsed) override;
 };
 
 

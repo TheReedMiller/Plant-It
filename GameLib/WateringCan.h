@@ -21,6 +21,10 @@ private:
     bool mIsDown = true;
     ///Current angle of this item
     double mCurrentAngle = 0;
+    /// The underlying droplet image
+    std::unique_ptr<wxImage> mDropImage = nullptr;
+    ///Bitmap for water Droplet image
+    std::unique_ptr<wxBitmap> mDropBitmap = nullptr;
 
 public:
     WateringCan(Game *game);

@@ -10,6 +10,12 @@
 const double HeadbuttSpeed = 200;
 ///Constant for Headbutt angle
 const double HeadButtAngle = 90;
+/// Directory within resources that contains the images.
+const std::wstring ImagesDirectory = L"Images/";
+///Constant for Droplet Offset X
+const int DropXOffset = 110;
+///Constant for Droplet Offset Y
+const int DropYOffset = 35;
 
 
 /**
@@ -17,7 +23,9 @@ const double HeadButtAngle = 90;
  */
 WateringCan::WateringCan(Game *game) : Item(game, L"wateringcan.png")
 {
-    //Simple Up-call
+    //Create Bitmap and Image for Water Drop
+    mDropImage = std::make_unique<wxImage>( ImagesDirectory +L"waterdrop.png", wxBITMAP_TYPE_ANY);
+    mDropBitmap = std::make_unique<wxBitmap>(*mDropImage);
 }
 
 /**
@@ -58,6 +66,11 @@ void WateringCan::Draw(std::shared_ptr<wxGraphicsContext> gc)
 
         //Draw the Item
         Item::Draw(gc);
+
+        //Draw Droplet
+        wxDouble x = GetX() - DropXOffset;
+        wxDouble y = GetY() - DropYOffset;
+        gc->DrawBitmap(*mDropBitmap, x, y, mDropBitmap->GetWidth(), mDropBitmap->GetHeight());
 
         //Pop the GC
         gc->PopState();

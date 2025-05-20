@@ -69,11 +69,13 @@ void Bank::Draw(std::shared_ptr<wxGraphicsContext> gc)
      */
 void Bank::Sub(int coins)
 {
+    //Subtract from coins
     mCoins -= coins;
 
     //Make sure there are never negatives
     if (mCoins < 0)
     {
+        //If the value is ever negative, reset it to 0
         mCoins = 0;
     }
 }

@@ -6,12 +6,10 @@
 #include "pch.h"
 #include "WateringCan.h"
 
-///Constant for Rotation point
-const wxPoint BasePoint = wxPoint(140,140);
 ///Constant for headbutt speed
-const double HeadbuttSpeed = 220;
+const double HeadbuttSpeed = 200;
 ///Constant for Headbutt angle
-const double HeadButtAngle = 1.5;
+const double HeadButtAngle = 90;
 
 
 /**
@@ -36,7 +34,6 @@ bool WateringCan::CanDelete()
  */
 void WateringCan::Click()
 {
-    std::cout << "WateringCan::Click" << std::endl;
     //Activate the Watering can for animation
     mIsActive = true;
 }
@@ -47,34 +44,30 @@ void WateringCan::Click()
  */
 void WateringCan::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
-    //Right now just draw
-    Item::Draw(gc);
-    return;
-
     //Get the Bitmap Pointer
     auto bitmap = Item::GetBitmap();
 
     //If this object is in the Active Animation state, rotate and draw
     if (mIsActive)
     {
+        //Perform the Rotation of the Object
         gc->PushState();
-        gc->Translate(BasePoint.x, BasePoint.y);
-        gc->Rotate(mCurrentAngle);
-        gc->Translate(-BasePoint.x, -BasePoint.y);
+        gc->Translate(GetX(), GetY());
+        gc->Rotate(wxDegToRad(mCurrentAngle));
+        gc->Translate(-GetX(), -GetY());
 
-        int drawX = BasePoint.x - bitmap->GetWidth() / 2;
-        int drawY = BasePoint.y - bitmap->GetHeight() / 2;
-        gc->DrawBitmap(*bitmap, drawX, drawY, bitmap->GetWidth(), bitmap->GetHeight());
+        //Draw the Item
+        Item::Draw(gc);
 
+        //Pop the GC
         gc->PopState();
     }
 
     //otherwise just draw
     else
     {
-        int drawX = BasePoint.x - bitmap->GetWidth() / 2;
-        int drawY = BasePoint.y - bitmap->GetHeight() / 2;
-        gc->DrawBitmap(*bitmap, drawX, drawY, bitmap->GetWidth(), bitmap->GetHeight());
+        //Call to base Class to Draw
+        Item::Draw(gc);
     }
 }
 
@@ -89,18 +82,21 @@ void WateringCan::Update(double elapsed)
         //Check which part of the animation state it is in
         if (mIsDown)
         {
-            mCurrentAngle += elapsed * HeadbuttSpeed;
-            if (mCurrentAngle >= HeadButtAngle)
+
+            mCurrentAngle -= elapsed * HeadbuttSpeed;
+            if (mCurrentAngle <= -HeadButtAngle)
             {
                 mIsDown = false;
             }
         }
         else
         {
-            mCurrentAngle -= elapsed * HeadbuttSpeed;
-            if (mCurrentAngle <= 0)
+            mCurrentAngle += elapsed * HeadbuttSpeed;
+            if (mCurrentAngle >= 0)
             {
+                //Reset all Variables
                 mIsActive = false;
+                mIsDown = true;
                 mCurrentAngle = 0;
             }
         }

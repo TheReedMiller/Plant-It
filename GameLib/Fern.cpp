@@ -37,7 +37,7 @@ wxXmlNode* Fern::Save(wxXmlNode *gameNode)
 /**
  * A Function to Toggle The State of the Plant
  */
-void Fern::Toggle()
+void Fern::Click()
 {
 
 }

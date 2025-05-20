@@ -35,7 +35,7 @@ wxXmlNode* Flytrap::Save(wxXmlNode *gameNode)
 /**
  * A Function to Toggle The State of the Plant
  */
-void Flytrap::Toggle()
+void Flytrap::Click()
 {
 
 }

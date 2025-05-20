@@ -20,6 +20,11 @@ class Plant : public Item{
 private:
     ///File name for the Current Plant image - used for altering from dry/watered states
     std::wstring mPlantImageFile;
+    /// Possible Plant states
+    enum class State {Watered, Dry};
+    /// The current Plant state
+    State mState = State::Watered;
+
 public:
     Plant(Game* game, const wxString& filename);
     void SetImage(const std::wstring& file);
@@ -30,10 +35,8 @@ public:
      */
     std::wstring GetImage(){return  mPlantImageFile; }
 
-    /**
-     * A Function to Toggle the State of the Plant
-     */
-    virtual void Toggle() = 0;  //MUST be overwritten by Derived Classes
+    void SetState(std::wstring state);
+    std::wstring GetState();
 };
 
 

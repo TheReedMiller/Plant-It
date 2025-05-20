@@ -28,3 +28,36 @@ void Plant::SetImage(const std::wstring& file)
 
     Item::SetImage(file);
 }
+
+/**
+ * Setter for the State of this plant
+ * @param state state to set
+ */
+void Plant::SetState(std::wstring state)
+{
+    if (state == L"watered")
+    {
+        mState = State::Watered;
+    }
+    if (state == L"dry")
+    {
+        mState = State::Dry;
+    }
+}
+
+/**
+ * Getter for Plant state
+ * @return The state of this Plant
+ */
+std::wstring Plant::GetState()
+{
+    if (mState == State::Watered)
+    {
+        return L"watered";
+    }
+
+    else if (mState == State::Dry)
+    {
+        return L"dry";
+    }
+}

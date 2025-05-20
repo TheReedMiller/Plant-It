@@ -166,6 +166,8 @@ void GameView::Save(wxXmlNode* root)
 
     auto value = wxString::Format(wxT("%d"), mTime);
     gameNode->AddAttribute(L"time", value);
+    auto value2 = wxString::Format(wxT("%d"), mAnimationTime);
+    gameNode->AddAttribute(L"animtime", value2);
     root->AddChild(gameNode);
 
     //Call to game to save
@@ -181,6 +183,9 @@ void GameView::Load(wxXmlNode* gameNode)
     //Set Time/Stopwatch
     gameNode->GetAttribute(L"time").ToInt(&mTime);
     mStopWatch.Start(mTime * 1000);
+
+    //Set Animation Time
+    gameNode->GetAttribute(L"animtime").ToInt(&mAnimationTime);
 
     //Load game
     mGame.Load(gameNode);

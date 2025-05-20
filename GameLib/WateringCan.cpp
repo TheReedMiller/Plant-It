@@ -115,3 +115,23 @@ void WateringCan::Update(double elapsed)
         }
     }
 }
+
+/**
+ * Function to save the state of this Watering Can
+ * @param gameNode root node of XML
+ * @return a completed xmlNode for this object
+ */
+wxXmlNode* WateringCan::Save(wxXmlNode *gameNode)
+{
+    //Don't save this item
+
+
+    // //Up-call to item class
+    // auto itemNode = Item::Save(gameNode);
+    //
+    // //Add type of item
+    // itemNode->AddAttribute(L"type", L"watering-can");
+    //
+    // //Return the Node
+    // return itemNode;
+}

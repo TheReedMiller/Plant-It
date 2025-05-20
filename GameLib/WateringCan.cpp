@@ -7,15 +7,15 @@
 #include "WateringCan.h"
 
 ///Constant for headbutt speed
-const double HeadbuttSpeed = 200;
+const double HeadbuttSpeed = 5;
 ///Constant for Headbutt angle
-const double HeadButtAngle = 90;
+const double HeadButtAngle = 1.5;
 /// Directory within resources that contains the images.
 const std::wstring ImagesDirectory = L"Images/";
 ///Constant for Droplet Offset X
 const int DropXOffset = 110;
 ///Constant for Droplet Offset Y
-const int DropYOffset = 35;
+const int DropYOffset = 40;
 
 
 /**
@@ -61,7 +61,7 @@ void WateringCan::Draw(std::shared_ptr<wxGraphicsContext> gc)
         //Perform the Rotation of the Object
         gc->PushState();
         gc->Translate(GetX(), GetY());
-        gc->Rotate(wxDegToRad(mCurrentAngle));
+        gc->Rotate(mCurrentAngle);
         gc->Translate(-GetX(), -GetY());
 
         //Draw the Item
@@ -124,14 +124,4 @@ void WateringCan::Update(double elapsed)
 wxXmlNode* WateringCan::Save(wxXmlNode *gameNode)
 {
     //Don't save this item
-
-
-    // //Up-call to item class
-    // auto itemNode = Item::Save(gameNode);
-    //
-    // //Add type of item
-    // itemNode->AddAttribute(L"type", L"watering-can");
-    //
-    // //Return the Node
-    // return itemNode;
 }

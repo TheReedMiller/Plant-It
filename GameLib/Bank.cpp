@@ -42,7 +42,7 @@ void Bank::Draw(std::shared_ptr<wxGraphicsContext> gc)
 
 
     //Draw the Coin
-    gc->DrawBitmap(*mItemBitmap, X, Y, rectWidth, rectHeight);
+    gc->DrawBitmap(*mItemBitmap, X, Y, mItemBitmap->GetWidth(), mItemBitmap->GetHeight());
 
     //Draw the Amount of Coins
 
@@ -57,11 +57,6 @@ void Bank::Draw(std::shared_ptr<wxGraphicsContext> gc)
 
     // Set it on the graphics context
     gc->SetFont(graphicsFont);
-
-    // // Set font and text color
-    // wxFont font(50, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
-    // gc->SetFont(font);
-    // gc->SetTextForeground(wxColor(195, 219, 210));  // or any color
 
     // Draw the text
     gc->DrawText(numberText, X + 105, Y + 30);

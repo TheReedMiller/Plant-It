@@ -35,7 +35,6 @@ TaskView::TaskView(wxWindow* parent, std::shared_ptr<Bank> bank) :
 
     //Menu Event Handler
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &TaskView::OnAddTask, this, IDM_ADDTASK);
-
 }
 
 
@@ -89,16 +88,8 @@ void TaskView::OnLeftDown(wxMouseEvent& event)
  */
 void TaskView::OnLeftUp(wxMouseEvent& event)
 {
+    //Event is Handled in Move Function
     OnMouseMove(event);
-
-    // //Just in case
-    // if (mGrabbedTask != nullptr)
-    // {
-    //     mTaskManager.SetInPlace(mGrabbedTask);
-    // }
-    //
-    // //Set to nullptr just in case
-    // mGrabbedTask = nullptr;
 }
 
 /**
@@ -237,12 +228,12 @@ void TaskView::OnRightClick(wxMouseEvent& event)
     auto click = CalcUnscrolledPosition(event.GetPosition());
 
     //See if we Double-Clicked a Task
-    mGrabbedTask = mTaskManager.HitTest(click.x, click.y);
+    mSelectedTask= mTaskManager.HitTest(click.x, click.y);
 
-    if (mGrabbedTask != nullptr)
+    if (mSelectedTask != nullptr)
     {
         //Get USer Input Via Dlg Box
-        TaskDlgBox dlg(this, mGrabbedTask);
+        TaskDlgBox dlg(this, mSelectedTask);
         if (dlg.ShowModal() == wxID_OK) {
             // task->GetDescription() has been updated
             Refresh();

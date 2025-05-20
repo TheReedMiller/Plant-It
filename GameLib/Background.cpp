@@ -15,7 +15,13 @@ Background::Background(Game *game, const wxString& filename) : Item(game, filena
  //Simple up-call - No added functionality
 }
 
-void Background::Draw(wxDC* dc)
+/**
+ * Override the Draw Function for Background Item
+ * @param gc graphics to draw on
+ */
+void Background::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
-    dc->DrawBitmap(*GetBitmap(), GetX(), GetY());
+    auto wid = GetBitmap()->GetWidth();
+    auto hit = GetBitmap()->GetHeight();
+    gc->DrawBitmap(*GetBitmap(), GetX(), GetY(), wid, hit);
 }

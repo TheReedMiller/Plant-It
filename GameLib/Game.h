@@ -33,7 +33,7 @@ private:
 
 public:
     Game();
-    void OnDraw(wxDC* graphics);
+    void OnDraw(std::shared_ptr<wxGraphicsContext> gc);
     void Update(double elapsed);
     void Load(wxXmlNode* gameNode);
     void CreateItem(wxXmlNode *childNode);

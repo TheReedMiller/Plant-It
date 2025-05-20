@@ -44,15 +44,13 @@ Item::~Item()
 
 /**
  * Function to draw this item
- * @param dc dc to draw on
+ * @param gc graphics to draw on
  */
-void Item::Draw(wxDC* dc)
+void Item::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
     double wid = mItemBitmap->GetWidth();
     double hit = mItemBitmap->GetHeight();
-    dc->DrawBitmap(*mItemBitmap,
-            int(GetX() - wid / 2),
-            int(GetY() - hit / 2));
+    gc->DrawBitmap(*mItemBitmap,int(GetX() - wid / 2),int(GetY() - hit / 2), wid, hit);
 }
 
 /**

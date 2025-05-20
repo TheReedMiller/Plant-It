@@ -23,9 +23,9 @@ Bank::Bank()
 
 /**
  * Function to Draw the Bank
- * @param dc dc to draw on
+ * @param gc graphics to draw on
  */
-void Bank::Draw(wxDC* dc)
+void Bank::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
     //Draw Rectangle
 
@@ -35,27 +35,36 @@ void Bank::Draw(wxDC* dc)
 
     // Set pen and brush (optional)
     wxPen thickPen(*wxBLACK, 3);  // color, thickness
-    dc->SetPen(thickPen);
-    dc->SetBrush(wxColor(3,145,93)); // fill color
+    gc->SetPen(thickPen);
+    gc->SetBrush(wxColor(3,145,93)); // fill color
 
-    dc->DrawRoundedRectangle(X, Y, rectWidth, rectHeight, radius);
+    gc->DrawRoundedRectangle(X, Y, rectWidth, rectHeight, radius);
 
 
     //Draw the Coin
-    dc->DrawBitmap(*mItemBitmap, X, Y);
+    gc->DrawBitmap(*mItemBitmap, X, Y, rectWidth, rectHeight);
 
     //Draw the Amount of Coins
 
     // Convert number to wxString
     wxString numberText = wxString::Format("%d", mCoins);
 
-    // Set font and text color
-    wxFont font(50, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
-    dc->SetFont(font);
-    dc->SetTextForeground(wxColor(195, 219, 210));  // or any color
+    // Create a graphics font from wxFont
+    wxGraphicsFont graphicsFont = gc->CreateFont(
+        wxFont(50, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD),
+        wxColor(195, 219, 210) // text color
+    );
+
+    // Set it on the graphics context
+    gc->SetFont(graphicsFont);
+
+    // // Set font and text color
+    // wxFont font(50, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD);
+    // gc->SetFont(font);
+    // gc->SetTextForeground(wxColor(195, 219, 210));  // or any color
 
     // Draw the text
-    dc->DrawText(numberText, X + 105, Y + 30);
+    gc->DrawText(numberText, X + 105, Y + 30);
 
 }
 

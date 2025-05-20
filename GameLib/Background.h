@@ -19,7 +19,7 @@ private:
 
 public:
     Background(Game *game, const wxString& filename);
-    void Draw(wxDC* dc) override ;
+    void Draw(std::shared_ptr<wxGraphicsContext> gc) override ;
 };
 
 

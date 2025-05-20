@@ -43,7 +43,7 @@ public:
      */
     void Add(int coins){mCoins += coins;}
 
-    void Draw(wxDC* dc);
+    void Draw(std::shared_ptr<wxGraphicsContext> gc);
     void Sub(int coins);
 };
 

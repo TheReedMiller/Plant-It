@@ -36,20 +36,20 @@ Game::Game()
 
 /**
  * Draw all the items within our game
- * @param graphics The graphics we are drawing on
+ * @param gc The graphics we are drawing on
  */
-void Game::OnDraw(wxDC* graphics)
+void Game::OnDraw(std::shared_ptr<wxGraphicsContext> gc)
 {
     //Draw the background
-    mBackground->Draw(graphics);
+    mBackground->Draw(gc);
 
     //Draw the Bank
-    mBank->Draw(graphics);
+    mBank->Draw(gc);
 
     //Iterate over the collection of game items
     for (auto item : mItems)
     {
-        item->Draw(graphics);
+        item->Draw(gc);
     }
 }
 

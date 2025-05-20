@@ -81,7 +81,11 @@ void GameView::OnPaint(wxPaintEvent& event)
     mAnimationTime = newTime;
     mGame.Update(elapsed);
 
-    mGame.OnDraw(&dc);
+    // Create a graphics context
+    auto gc = std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create( dc ));
+
+    //Call to Game to Draw
+    mGame.OnDraw(gc);
 }
 
 /**

@@ -42,7 +42,7 @@ public:
     Item(const Item &) = delete;
 
     virtual ~Item();
-    virtual void Draw(wxDC* dc);
+    virtual void Draw(std::shared_ptr<wxGraphicsContext> gc);
     virtual bool HitTest(int x, int y);
     virtual wxXmlNode* Save(wxXmlNode* root);
     virtual void Load(wxXmlNode* childNode);

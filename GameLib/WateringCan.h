@@ -26,7 +26,7 @@ public:
     WateringCan(Game *game);
     bool CanDelete() override;
     void Click() override;
-    void Draw(wxDC* dc) override;
+    void Draw(std::shared_ptr<wxGraphicsContext> gc) override;
     void Update(double elapsed) override;
 };
 

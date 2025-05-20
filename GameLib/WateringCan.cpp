@@ -43,15 +43,13 @@ void WateringCan::Click()
 
 /**
  * Special Draw function for this watering can
- * @param dc object we are drawing on
+ * @param gc object we are drawing on
  */
-void WateringCan::Draw(wxDC* dc)
+void WateringCan::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
     //Right now just draw
-    Item::Draw(dc);
+    Item::Draw(gc);
     return;
-    //Create a GC
-    auto gc = std::shared_ptr<wxGraphicsContext>(wxGraphicsContext::Create(dc));
 
     //Get the Bitmap Pointer
     auto bitmap = Item::GetBitmap();

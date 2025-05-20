@@ -10,7 +10,7 @@
  * Constructor
  * @param game game this Cactus belongs to
  */
-Cactus::Cactus(Game* game) : Plant(game, L"cactus.png")
+Cactus::Cactus(Game* game) : Plant(game, L"cactus_1.png")
 {
     //Simple up-call
 }
@@ -30,4 +30,12 @@ wxXmlNode* Cactus::Save(wxXmlNode *gameNode)
 
     //Return the Node
     return itemNode;
+}
+
+/**
+ * A Function to Toggle The State of the Plant
+ */
+void Cactus::Toggle()
+{
+
 }

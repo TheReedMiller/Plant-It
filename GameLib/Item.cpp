@@ -111,3 +111,22 @@ void Item::Load(wxXmlNode *childNode)
     childNode->GetAttribute(L"x", L"0").ToDouble(&mX);
     childNode->GetAttribute(L"y", L"0").ToDouble(&mY);
 }
+
+/**
+ *  Set the image file to draw
+ * @param file The base filename. Blank files are allowed
+ */
+void Item::SetImage(const std::wstring &file)
+{
+    if (!file.empty())
+    {
+        std::wstring filename = ImagesDirectory + L"/" + file;
+        mItemImage = std::make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
+        mItemBitmap = std::make_unique<wxBitmap>(*mItemImage);
+    }
+    else
+    {
+        mItemImage.release();
+        mItemBitmap.release();
+    }
+}

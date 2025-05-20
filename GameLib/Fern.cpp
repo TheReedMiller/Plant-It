@@ -12,7 +12,7 @@
  * Constructor
  * @param game Game this Flytrap belongs to
  */
-Fern::Fern(Game* game) : Plant(game, L"fern.png")
+Fern::Fern(Game* game) : Plant(game, L"fern_1.png")
 {
     //Simple up-call
 }
@@ -32,4 +32,12 @@ wxXmlNode* Fern::Save(wxXmlNode *gameNode)
 
     //Return the Node
     return itemNode;
+}
+
+/**
+ * A Function to Toggle The State of the Plant
+ */
+void Fern::Toggle()
+{
+
 }

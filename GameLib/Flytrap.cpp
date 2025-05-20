@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game this Flytrap belongs to
  */
-Flytrap::Flytrap(Game* game) : Plant(game, L"flytrap.png")
+Flytrap::Flytrap(Game* game) : Plant(game, L"flytrap_1.png")
 {
     //Simple up-call
 }
@@ -30,4 +30,12 @@ wxXmlNode* Flytrap::Save(wxXmlNode *gameNode)
 
     //Return the Node
     return itemNode;
+}
+
+/**
+ * A Function to Toggle The State of the Plant
+ */
+void Flytrap::Toggle()
+{
+
 }

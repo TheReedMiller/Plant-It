@@ -10,7 +10,7 @@
  * Constructor
  * @param game Game this rose belongs to
  */
-Rose::Rose(Game* game) : Plant(game, L"rose.png")
+Rose::Rose(Game* game) : Plant(game, L"rose_1.png")
 {
     //Simple up-call
 }
@@ -30,4 +30,12 @@ wxXmlNode* Rose::Save(wxXmlNode *gameNode)
 
     //Return the Node
     return itemNode;
+}
+
+/**
+ * A Function to Toggle The State of the Plant
+ */
+void Rose::Toggle()
+{
+
 }

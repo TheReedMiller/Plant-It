@@ -12,7 +12,7 @@
  * Constructor
  * @param game the game that this object belongs to
  */
-Sunflower::Sunflower(Game* game) : Plant(game, L"sunflower.png")
+Sunflower::Sunflower(Game* game) : Plant(game, L"sunflower_1.png")
 {
     //Simple Up-call no other functionality right now
 }
@@ -32,4 +32,12 @@ wxXmlNode* Sunflower::Save(wxXmlNode *gameNode)
 
     //Return the Node
     return itemNode;
+}
+
+/**
+ * A Function to Toggle The State of the Plant
+ */
+void Sunflower::Toggle()
+{
+
 }

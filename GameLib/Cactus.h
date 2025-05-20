@@ -19,6 +19,7 @@ private:
 public:
     Cactus(Game* game);
     wxXmlNode* Save(wxXmlNode* gameNode) override;
+    void Toggle() override;
 };
 
 

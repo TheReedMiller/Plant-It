@@ -46,6 +46,7 @@ public:
     virtual bool HitTest(int x, int y);
     virtual wxXmlNode* Save(wxXmlNode* root);
     virtual void Load(wxXmlNode* childNode);
+    void SetImage(const std::wstring& file);
     virtual bool CanDelete(){return true;}
     virtual void Click(){}
     virtual void Update(double elapsed){}

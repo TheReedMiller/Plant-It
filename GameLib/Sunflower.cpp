@@ -46,7 +46,7 @@ wxXmlNode* Sunflower::Save(wxXmlNode *gameNode)
 /**
  * A Function to Toggle The State of the Plant
  */
-void Sunflower::Click()
+void Sunflower::Toggle()
 {
     //First we get the state
     auto state = GetState();

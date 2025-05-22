@@ -19,7 +19,7 @@ private:
 public:
     Sunflower(Game* game);
     wxXmlNode* Save(wxXmlNode* gameNode) override;
-    void Click() override;
+    void Toggle() override;
 };
 
 

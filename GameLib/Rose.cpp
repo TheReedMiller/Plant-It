@@ -44,7 +44,7 @@ wxXmlNode* Rose::Save(wxXmlNode *gameNode)
 /**
  * A Function to Toggle The State of the Plant
  */
-void Rose::Click()
+void Rose::Toggle()
 {
     //First we get the state
     auto state = GetState();

@@ -20,7 +20,7 @@ private:
 public:
     Fern(Game* game);
     wxXmlNode* Save(wxXmlNode* gameNode);
-    void Click() override;
+    void Toggle() override;
 };
 
 

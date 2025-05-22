@@ -96,8 +96,8 @@ void Plant::Update(double elapsed)
         //Alter the State - only if in watered state
         if (mState == State::Watered)
         {
-            //Call to the Click Function to change this plants state
-            Click();
+            //Call to the Toggle Function to change this plants state
+            Toggle();
         }
     }
 }

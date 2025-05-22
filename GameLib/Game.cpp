@@ -266,7 +266,7 @@ void Game::WaterPlant(int x, int y)
         if (foundItem->IsDry())
         {
             //If it is, then water it
-            foundItem->Click();
+            foundItem->Toggle();
         }
     }
 }

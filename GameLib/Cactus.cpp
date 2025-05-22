@@ -44,7 +44,7 @@ wxXmlNode* Cactus::Save(wxXmlNode *gameNode)
 /**
  * A Function to Toggle The State of the Plant
  */
-void Cactus::Click()
+void Cactus::Toggle()
 {
     //First we get the state
     auto state = GetState();

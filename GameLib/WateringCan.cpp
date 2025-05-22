@@ -136,5 +136,5 @@ wxXmlNode* WateringCan::Save(wxXmlNode *gameNode)
 void WateringCan::Water()
 {
     //Call to Game to Try and Water a plant
-    GetGame()->WaterPlant(GetX(), GetY());
+    GetGame()->WaterPlant(GetX() - 50, GetY() + 50);
 }

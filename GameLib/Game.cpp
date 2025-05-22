@@ -51,20 +51,6 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> gc)
     {
         item->Draw(gc);
     }
-
-    //FOR TESTING DRAW A SMALL CIRCLE
-    if (XCoord != -1)
-    {
-        // Set the brush to orange for filling the circle
-        gc->SetBrush(wxBrush(wxColour(255, 165, 0))); // Orange color (RGB)
-
-        // Optionally set a pen if you want an outline
-        gc->SetPen(*wxTRANSPARENT_PEN); // No border
-
-        // Draw a circle centered at (x, y) with radius r
-        double radius = 5.0;  // Small circle
-        gc->DrawEllipse(XCoord - radius, YCoord - radius, radius * 2, radius * 2);
-    }
 }
 
 /**
@@ -253,10 +239,6 @@ void Game::MoveToBack(std::shared_ptr<Item> item)
  */
 void Game::WaterPlant(int x, int y)
 {
-    //TEMP FOR TESTING
-    XCoord = x;
-    YCoord = y;
-
     //Pointer to the found item
     std::shared_ptr<Item> foundItem = nullptr;
 

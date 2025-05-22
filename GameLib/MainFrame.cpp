@@ -55,6 +55,7 @@ void MainFrame::Initialize()
     fileMenu->Append(wxID_OPEN, "Load", "Load a Program");
 
     helpMenu->Append(wxID_ABOUT, "Game Controls", "View game controls and rules");
+    helpMenu->Append(IDM_CHEATCODE, "Cheat Code", "Super Secret Cheat Code");
 
     plantMenu->Append(IDM_ADDSUNFLOWER, "Buy Sunflower [150]", "Buy Sunflower [150]");
     plantMenu->Append(IDM_ADDROSE, "Buy Rose [200]", "Buy Rose [200]");

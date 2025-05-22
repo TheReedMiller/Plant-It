@@ -36,13 +36,7 @@ public:
      * @param coins Coins to set
      */
     void SetCoins(int coins) {mCoins = coins;}
-
-    /**
-     * Function to add coins to the bank
-     * @param coins Coins to Add
-     */
-    void Add(int coins){mCoins += coins;}
-
+    void Add(int coins);
     void Draw(std::shared_ptr<wxGraphicsContext> gc);
     void Sub(int coins);
 };

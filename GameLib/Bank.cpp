@@ -79,3 +79,17 @@ void Bank::Sub(int coins)
         mCoins = 0;
     }
 }
+
+/**
+* Function to add coins to the bank
+* @param coins Coins to Add
+*/
+void Bank::Add(int coins)
+{
+    mCoins += coins;
+
+    if (mCoins > 9999)
+    {
+        mCoins = 9999;
+    }
+}

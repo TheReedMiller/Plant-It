@@ -35,6 +35,7 @@ TaskView::TaskView(wxWindow* parent, std::shared_ptr<Bank> bank) :
 
     //Menu Event Handler
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &TaskView::OnAddTask, this, IDM_ADDTASK);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &TaskView::OnCheatCode, this, IDM_CHEATCODE);
 }
 
 
@@ -154,7 +155,7 @@ void TaskView::OnDoubleClick(wxMouseEvent& event)
             //Otherwise easy task
             else
             {
-                mBank->Add(5000);
+                mBank->Add(50);
             }
         }
         //Otherwise Task Was Un-Completed
@@ -286,4 +287,14 @@ void TaskView::OnKeyDown(wxKeyEvent& event)
     {
         event.Skip(); // Let other handlers run if not handled
     }
+}
+
+/**
+ *Event Handler for Cheat Code
+ * @param event the event to respond to
+ */
+void TaskView::OnCheatCode(wxCommandEvent& event)
+{
+    //Add all the Coins you would need
+    mBank->Add(9999);
 }

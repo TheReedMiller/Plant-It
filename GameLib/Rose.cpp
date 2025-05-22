@@ -18,7 +18,7 @@ const std::wstring DryRoseImage = L"rose_2.png";
 Rose::Rose(Game* game) : Plant(game, RegRoseImage)
 {
     //Set the MaxLevel for Rose
-    SetMaxLevel(500);
+    SetMaxLevel(1000);
 }
 
 /**

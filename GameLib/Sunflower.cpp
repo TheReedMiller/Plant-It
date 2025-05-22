@@ -19,7 +19,8 @@ const std::wstring DrySunflowerImage = L"sunflower_2.png";
  */
 Sunflower::Sunflower(Game* game) : Plant(game, RegSunflowerImage)
 {
-    //Simple Up-call no other functionality right now
+    //Set the MaxLevel for Sunflower
+    SetMaxLevel(1000);
 }
 
 /**

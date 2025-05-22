@@ -17,7 +17,8 @@ const std::wstring DryFlytrapImage = L"flytrap_2.png";
  */
 Flytrap::Flytrap(Game* game) : Plant(game,RegFlytrapImage )
 {
-    //Simple up-call
+    //Set the MaxLevel for Flytrap
+    SetMaxLevel(1000);
 }
 
 /**

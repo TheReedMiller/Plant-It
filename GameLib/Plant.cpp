@@ -11,7 +11,6 @@
 Plant::Plant(Game *game, const wxString& filename) : Item(game, filename)
 {
     //Simple Up-call for right now
-    std::cout << "plant" << std::endl;
 }
 
 /**

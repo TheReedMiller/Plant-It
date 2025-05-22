@@ -17,7 +17,8 @@ const std::wstring DryCactusImage = L"cactus_2.png";
  */
 Cactus::Cactus(Game* game) : Plant(game, RegCactusImage)
 {
-    //Simple up-call
+    //Set the MaxLevel for Rose
+    SetMaxLevel(15000);
 }
 
 /**

@@ -18,7 +18,8 @@ const std::wstring DryFernImage = L"fern_2.png";
  */
 Fern::Fern(Game* game) : Plant(game, RegFernImage)
 {
-    //Simple up-call
+    //Set the MaxLevel for Cactus
+    SetMaxLevel(1000);
 }
 
 /**

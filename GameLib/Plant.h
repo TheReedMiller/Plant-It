@@ -27,7 +27,7 @@ private:
     ///A level of Dryness so that we can
     int mLevel = 0;
     ///The Max level of dryness that this plant can have, before changing its state
-    int mMaxLevel = 100;
+    int mMaxLevel = 1000;
 
 public:
     Plant(Game* game, const wxString& filename);

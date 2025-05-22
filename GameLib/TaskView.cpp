@@ -154,7 +154,7 @@ void TaskView::OnDoubleClick(wxMouseEvent& event)
             //Otherwise easy task
             else
             {
-                mBank->Add(50);
+                mBank->Add(5000);
             }
         }
         //Otherwise Task Was Un-Completed

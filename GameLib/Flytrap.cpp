@@ -6,11 +6,16 @@
 #include "pch.h"
 #include "Flytrap.h"
 
+///Constant for Watered FileName
+const std::wstring RegFlytrapImage = L"flytrap_1.png";
+///Constant for Dry FileName
+const std::wstring DryFlytrapImage = L"flytrap_2.png";
+
 /**
  * Constructor
  * @param game Game this Flytrap belongs to
  */
-Flytrap::Flytrap(Game* game) : Plant(game, L"flytrap_1.png")
+Flytrap::Flytrap(Game* game) : Plant(game,RegFlytrapImage )
 {
     //Simple up-call
 }
@@ -37,5 +42,26 @@ wxXmlNode* Flytrap::Save(wxXmlNode *gameNode)
  */
 void Flytrap::Click()
 {
+    //First we get the state
+    auto state = GetState();
 
+    //State is currently watered, flip it
+    if (state == L"watered")
+    {
+        //Set New State
+        SetState(L"dry");
+
+        //Set new image and Bitmap
+        SetImage(DryFlytrapImage);
+    }
+
+    //Otherwise state is Dry, flip it
+    else
+    {
+        //Set New State
+        SetState(L"watered");
+
+        //Set ne Image and Bitmap
+        SetImage(RegFlytrapImage);
+    }
 }

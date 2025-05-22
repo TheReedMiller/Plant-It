@@ -80,7 +80,8 @@ bool Item::HitTest(int x, int y)
     // Test to see if x, y are in the drawn part of the image
     // If the location is transparent, we are not in the drawn
     // part of the image
-    return !mItemImage->IsTransparent((int)testX, (int)testY);
+    // return !mItemImage->IsTransparent((int)testX, (int)testY);
+    return true;
 }
 
 /**

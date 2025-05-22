@@ -34,6 +34,12 @@ public:
     void Update(double elapsed) override;
     wxXmlNode* Save(wxXmlNode* gameNode);
     void Water();
+
+    /**
+     * A function that tells if this item can be watered or not
+     * @return Bool representing if it can be watered or not
+     */
+    virtual bool IsWaterable(){return false;}
 };
 
 

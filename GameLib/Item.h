@@ -90,6 +90,18 @@ public:
      * @return Game that this item belongs to
      */
     Game* GetGame() const { return mGame; }
+
+    /**
+     * Checks if this item is in the dry state
+     * @return bool if this object is currently is the dry state
+     */
+    virtual bool IsDry() { return false; }
+
+    /**
+     * A function that tells if this item can be watered or not
+     * @return Bool representing if it can be watered or not
+     */
+    virtual bool IsWaterable(){return false;}
 };
 
 

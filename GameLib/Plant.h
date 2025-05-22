@@ -37,6 +37,13 @@ public:
 
     void SetState(std::wstring state);
     std::wstring GetState();
+    bool IsDry() override;
+
+    /**
+     * A function that tells if this item can be watered or not
+     * @return Bool representing if it can be watered or not
+     */
+    bool IsWaterable() override {return true;}
 };
 
 

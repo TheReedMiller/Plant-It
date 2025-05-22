@@ -31,6 +31,9 @@ private:
     ///Container to hold all the game's Items
     std::vector<std::shared_ptr<Item>> mItems;
 
+    int XCoord = -1;
+    int YCoord = -1;
+
 public:
     Game();
     void OnDraw(std::shared_ptr<wxGraphicsContext> gc);

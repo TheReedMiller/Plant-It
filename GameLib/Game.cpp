@@ -51,6 +51,20 @@ void Game::OnDraw(std::shared_ptr<wxGraphicsContext> gc)
     {
         item->Draw(gc);
     }
+
+    //FOR TESTING DRAW A SMALL CIRCLE
+    if (XCoord != -1)
+    {
+        // Set the brush to orange for filling the circle
+        gc->SetBrush(wxBrush(wxColour(255, 165, 0))); // Orange color (RGB)
+
+        // Optionally set a pen if you want an outline
+        gc->SetPen(*wxTRANSPARENT_PEN); // No border
+
+        // Draw a circle centered at (x, y) with radius r
+        double radius = 5.0;  // Small circle
+        gc->DrawEllipse(XCoord - radius, YCoord - radius, radius * 2, radius * 2);
+    }
 }
 
 /**
@@ -239,5 +253,38 @@ void Game::MoveToBack(std::shared_ptr<Item> item)
  */
 void Game::WaterPlant(int x, int y)
 {
-    std::cout << "YUP" << std::endl;
+    //TEMP FOR TESTING
+    XCoord = x;
+    YCoord = y;
+
+    //Pointer to the found item
+    std::shared_ptr<Item> foundItem = nullptr;
+
+    //Iterate over items and see if we found an item(SPECIAL VERSION OF HIT TEST
+    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+    {
+        //If the Hit is Successful
+        if ((*i)->HitTest(x, y))
+        {
+            //Make sure this item is not the watering can
+            if ((*i)->IsWaterable())
+            {
+                //Set the found item
+                foundItem =*i;
+            }
+
+        }
+    }
+
+    //If item was found
+    if (foundItem != nullptr)
+    {
+        //Check if this Item is Dry
+        if (foundItem->IsDry())
+        {
+            //If it is, then water it
+            foundItem->Click();
+        }
+    }
+
 }

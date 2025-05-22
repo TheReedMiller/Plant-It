@@ -61,3 +61,19 @@ std::wstring Plant::GetState()
         return L"dry";
     }
 }
+
+/**
+    * Checks if this item is in the dry state
+    * @return bool if this object is currently is the dry state
+    */
+bool Plant::IsDry()
+{
+    //If state is dry -> True
+    if (mState == State::Dry)
+    {
+        return true;
+    }
+
+    //Otherwise -> False
+    return false;
+}

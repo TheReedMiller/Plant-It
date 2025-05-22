@@ -26,6 +26,8 @@ private:
     State mState = State::Watered;
     ///A level of Dryness so that we can
     int mLevel = 0;
+    ///The Max level of dryness that this plant can have, before changing its state
+    int mMaxLevel = 100;
 
 public:
     Plant(Game* game, const wxString& filename);
@@ -47,10 +49,7 @@ public:
      */
     bool IsWaterable() override {return true;}
 
-    /**
-     * A function that updates the dry-level of this plant
-     */
-    void Update(){ mLevel++; }
+    void Update(double elapsed) override;
 
     /**
      * Setter for dryness-level
@@ -63,6 +62,12 @@ public:
      * @return Level of this plant
      */
     int GetLevel(){return mLevel;}
+
+    /**
+     * This function sets the max level
+     * @param level Level to set
+     */
+    void SetMaxLevel(int level){mMaxLevel = level;}
 };
 
 

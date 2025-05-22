@@ -17,7 +17,8 @@ const std::wstring DryRoseImage = L"rose_2.png";
  */
 Rose::Rose(Game* game) : Plant(game, RegRoseImage)
 {
-    //Simple up-call
+    //Set the MaxLevel for Rose
+    SetMaxLevel(500);
 }
 
 /**
@@ -63,23 +64,5 @@ void Rose::Click()
 
         //Set ne Image and Bitmap
         SetImage(RegRoseImage);
-    }
-}
-
-void Rose::Update(double elapsed)
-{
-    //Call to Increment Dryness Level
-    Plant::Update();
-
-    if (GetLevel() >= 200)
-    {
-        //Reset the level
-        SetLevel(0);
-
-        //Alter the State - only if in watered state
-        if (GetState() == L"watered")
-        {
-            Click();
-        }
     }
 }

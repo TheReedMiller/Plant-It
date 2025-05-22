@@ -10,7 +10,8 @@
 
 Plant::Plant(Game *game, const wxString& filename) : Item(game, filename)
 {
-    //Simple Up-call for right no
+    //Simple Up-call for right now
+    std::cout << "plant" << std::endl;
 }
 
 /**
@@ -76,4 +77,28 @@ bool Plant::IsDry()
 
     //Otherwise -> False
     return false;
+}
+
+/**
+ * An update function for this Plant
+ * @param elapsed time since last update
+ */
+void Plant::Update(double elapsed)
+{
+    //Increment the Level
+    mLevel++;
+
+    //Change the state of this Plant if it reached max level
+    if (GetLevel() >= mMaxLevel)
+    {
+        //Reset the level
+        mLevel = 0;
+
+        //Alter the State - only if in watered state
+        if (mState == State::Watered)
+        {
+            //Call to the Click Function to change this plants state
+            Click();
+        }
+    }
 }

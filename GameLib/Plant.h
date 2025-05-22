@@ -50,6 +50,7 @@ public:
     bool IsWaterable() override {return true;}
 
     void Update(double elapsed) override;
+    wxXmlNode* Save(wxXmlNode* itemNode) override;
 
     /**
      * Setter for dryness-level

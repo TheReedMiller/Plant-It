@@ -31,6 +31,9 @@ wxXmlNode* Flytrap::Save(wxXmlNode *gameNode)
     //Up-call to item class
     auto itemNode = Item::Save(gameNode);
 
+    //Call to Plant Class
+    Plant::Save(itemNode);
+
     //Add type of plant
     itemNode->AddAttribute(L"type", L"flytrap");
 

@@ -101,3 +101,20 @@ void Plant::Update(double elapsed)
         }
     }
 }
+
+/**
+ * Function to save the state of this Plant
+ * @param itemNode the item node we are editing
+ * @return a completed xmlNode for this object
+ */
+wxXmlNode* Plant::Save(wxXmlNode *itemNode)
+{
+    //Add State of Plant
+    itemNode->AddAttribute(L"state", GetState());
+
+    //Add Dryness Level
+    auto level = wxString::Format(wxT("%d"), GetLevel());
+    itemNode->AddAttribute(L"level", level);
+    //Return the Node
+    return itemNode;
+}

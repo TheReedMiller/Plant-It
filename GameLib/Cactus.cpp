@@ -18,7 +18,7 @@ const std::wstring DryCactusImage = L"cactus_2.png";
 Cactus::Cactus(Game* game) : Plant(game, RegCactusImage)
 {
     //Set the MaxLevel for Rose
-    SetMaxLevel(15000);
+    SetMaxLevel(1000);
 }
 
 /**
@@ -30,6 +30,9 @@ wxXmlNode* Cactus::Save(wxXmlNode *gameNode)
 {
     //Up-call to item class
     auto itemNode = Item::Save(gameNode);
+
+    //Call to Plant Class
+    Plant::Save(itemNode);
 
     //Add type of plant
     itemNode->AddAttribute(L"type", L"cactus");

@@ -65,3 +65,21 @@ void Rose::Click()
         SetImage(RegRoseImage);
     }
 }
+
+void Rose::Update(double elapsed)
+{
+    //Call to Increment Dryness Level
+    Plant::Update();
+
+    if (GetLevel() >= 200)
+    {
+        //Reset the level
+        SetLevel(0);
+
+        //Alter the State - only if in watered state
+        if (GetState() == L"watered")
+        {
+            Click();
+        }
+    }
+}

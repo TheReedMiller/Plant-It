@@ -24,6 +24,8 @@ private:
     enum class State {Watered, Dry};
     /// The current Plant state
     State mState = State::Watered;
+    ///A level of Dryness so that we can
+    int mLevel = 0;
 
 public:
     Plant(Game* game, const wxString& filename);
@@ -44,6 +46,23 @@ public:
      * @return Bool representing if it can be watered or not
      */
     bool IsWaterable() override {return true;}
+
+    /**
+     * A function that updates the dry-level of this plant
+     */
+    void Update(){ mLevel++; }
+
+    /**
+     * Setter for dryness-level
+     * @param level level to set
+     */
+    void SetLevel(int level){mLevel = level;}
+
+    /**
+     * Getter for Dryness-level
+     * @return Level of this plant
+     */
+    int GetLevel(){return mLevel;}
 };
 
 

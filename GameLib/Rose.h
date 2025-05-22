@@ -20,6 +20,7 @@ public:
     Rose(Game* game);
     wxXmlNode* Save(wxXmlNode* gameNode) override;
     void Click() override;
+    void Update(double elapsed) override;
 };
 
 

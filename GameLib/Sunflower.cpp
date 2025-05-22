@@ -64,7 +64,10 @@ void Sunflower::Click()
         //Set New State
         SetState(L"watered");
 
-        //Set ne Image and Bitmap
+        //Set the Image and Bitmap
         SetImage(RegSunflowerImage);
+
+        //Reset the Level
+        SetLevel(0);
     }
 }

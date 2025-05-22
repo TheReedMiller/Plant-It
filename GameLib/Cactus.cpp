@@ -62,7 +62,10 @@ void Cactus::Click()
         //Set New State
         SetState(L"watered");
 
-        //Set ne Image and Bitmap
+        //Set the Image and Bitmap
         SetImage(RegCactusImage);
+
+        //Reset the Level
+        SetLevel(0);
     }
 }

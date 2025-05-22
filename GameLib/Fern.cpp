@@ -63,7 +63,10 @@ void Fern::Click()
         //Set New State
         SetState(L"watered");
 
-        //Set ne Image and Bitmap
+        //Set the Image and Bitmap
         SetImage(RegFernImage);
+
+        //Reset the Level
+        SetLevel(0);
     }
 }

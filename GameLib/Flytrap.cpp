@@ -62,7 +62,10 @@ void Flytrap::Click()
         //Set New State
         SetState(L"watered");
 
-        //Set ne Image and Bitmap
+        //Set the Image and Bitmap
         SetImage(RegFlytrapImage);
+
+        //Reset the Level
+        SetLevel(0);
     }
 }

@@ -44,6 +44,7 @@ public:
     std::shared_ptr<Item> HitTest(int x, int y);
     void MoveToBack(std::shared_ptr<Item> item);
     void WaterPlant(int x, int y);
+    void ResetWateringCan(bool isCreate  = false);
 
     /**
      * Getter for the Bank

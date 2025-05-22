@@ -51,6 +51,7 @@ public:
 
     void Update(double elapsed) override;
     wxXmlNode* Save(wxXmlNode* itemNode) override;
+    void Load(wxXmlNode* childNode) override;
 
     /**
      * Setter for dryness-level

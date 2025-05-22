@@ -28,9 +28,7 @@ Game::Game()
     mBank = std::make_shared<Bank>();
 
     //Create Watering can
-    mWateringCan = std::make_shared<WateringCan>(this);
-    Add(mWateringCan);
-    mWateringCan->SetPosition(580,780);
+    ResetWateringCan(true);     //Bool is true, because we want to create and add the watering can
 
 }
 
@@ -173,6 +171,9 @@ void Game::Clear()
 {
     //Clear the Vector - making sure to reset size and deallocate memory
     mItems = vector<shared_ptr<Item>>();
+
+    //Add the Watering Can Back
+    ResetWateringCan(true);
 }
 
 /**
@@ -268,5 +269,21 @@ void Game::WaterPlant(int x, int y)
             foundItem->Click();
         }
     }
+}
 
+/**
+ * A Function to Reset the Creation and Placement of the Watering Can
+ * @param isCreate tells if we need to create the Watering can, or just reset it placement
+ */
+void Game::ResetWateringCan(bool isCreate)
+{
+    //If bool is set, create a new watering can
+    if (isCreate)
+    {
+        mWateringCan = make_shared<WateringCan>(this);
+        Add(mWateringCan);
+    }
+
+    //Reset Positioning
+    mWateringCan->SetPosition(580,780);
 }

@@ -8,11 +8,16 @@
 #include "Plant.h"
 #include "Game.h"
 
+///Constant for Watered FileName
+const std::wstring RegSunflowerImage = L"sunflower_1.png";
+///Constant for Dry FileName
+const std::wstring DrySunflowerImage = L"sunflower_2.png";
+
 /**
  * Constructor
  * @param game the game that this object belongs to
  */
-Sunflower::Sunflower(Game* game) : Plant(game, L"sunflower_1.png")
+Sunflower::Sunflower(Game* game) : Plant(game, RegSunflowerImage)
 {
     //Simple Up-call no other functionality right now
 }
@@ -39,5 +44,26 @@ wxXmlNode* Sunflower::Save(wxXmlNode *gameNode)
  */
 void Sunflower::Click()
 {
+    //First we get the state
+    auto state = GetState();
 
+    //State is currently watered, flip it
+    if (state == L"watered")
+    {
+        //Set New State
+        SetState(L"dry");
+
+        //Set new image and Bitmap
+        SetImage(DrySunflowerImage);
+    }
+
+    //Otherwise state is Dry, flip it
+    else
+    {
+        //Set New State
+        SetState(L"watered");
+
+        //Set ne Image and Bitmap
+        SetImage(RegSunflowerImage);
+    }
 }

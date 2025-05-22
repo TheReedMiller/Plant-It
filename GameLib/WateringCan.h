@@ -33,6 +33,7 @@ public:
     void Draw(std::shared_ptr<wxGraphicsContext> gc) override;
     void Update(double elapsed) override;
     wxXmlNode* Save(wxXmlNode* gameNode);
+    void Water();
 };
 
 

@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "WateringCan.h"
+#include "Game.h"
 
 ///Constant for headbutt speed
 const double HeadbuttSpeed = 5;
@@ -111,6 +112,9 @@ void WateringCan::Update(double elapsed)
                 mIsActive = false;
                 mIsDown = true;
                 mCurrentAngle = 0;
+
+                //Call to game to actually water
+                Water();
             }
         }
     }
@@ -124,4 +128,13 @@ void WateringCan::Update(double elapsed)
 wxXmlNode* WateringCan::Save(wxXmlNode *gameNode)
 {
     //Don't save this item
+}
+
+/**
+ * This function completed the 'watering' action at the end of animation
+ */
+void WateringCan::Water()
+{
+    //Call to Game to Try and Water a plant
+    GetGame()->WaterPlant(GetX(), GetY());
 }

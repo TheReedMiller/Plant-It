@@ -84,6 +84,12 @@ public:
      * @return Bitmap for this item
      */
     wxBitmap* GetBitmap() const { return mItemBitmap.get(); }
+
+    /**
+     * Getter for the game
+     * @return Game that this item belongs to
+     */
+    Game* GetGame() const { return mGame; }
 };
 
 

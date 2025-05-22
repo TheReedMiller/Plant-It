@@ -231,3 +231,13 @@ void Game::MoveToBack(std::shared_ptr<Item> item)
         mItems.push_back(item);
     }
 }
+
+/**
+ * This function finds if there is a plant that can be watered
+ * @param x x coord of Watering action
+ * @param y y coord of Watering action
+ */
+void Game::WaterPlant(int x, int y)
+{
+    std::cout << "YUP" << std::endl;
+}

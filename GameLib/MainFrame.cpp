@@ -196,14 +196,19 @@ void MainFrame::OnShowControls(wxCommandEvent& event)
         "Plants:\n"
         " - You can Purchase Plants from the Plant Menu Option\n"
         " - Click and Drag your plants where you want\n"
-        " - Click on a Plant and Press Backspace/Delete to Sell it\n\n"
+        " - Click on a Plant and Press Backspace/Delete to Sell it\n"
+        " - When a Plant is 'Dry', Click and Drag the Watering Can over\n"
+        "   the Plant, then Double-Click the Watering Can to water it\n\n"
         "Tasks:\n"
         " - Tasks can be added from the menu bar.\n"
         " - You can Edit Tasks by right clicking them.\n"
         " - You can Mark Tasks completed by double-clicking them.\n"
         " - Click and Drag your Task to organize how you'd like.\n"
-        " - Complete tasks to earn coins for your plant bank!\n"
-        " - Click a Task and press Backspace/Delete to remove it from the Task Manager\n",
+        " - Complete tasks to earn coins for your plant bank! The harder\n"
+        "   the difficulty, the more coins you'll earn!\n"
+        " - Click a Task and press Backspace/Delete to remove it from the Task Manager\n\n"
+        "Save/Load:\n"
+        " - Game states can be saved and loaded via the File menu option.\n",
         "Controls",
         wxOK | wxICON_INFORMATION,
         this

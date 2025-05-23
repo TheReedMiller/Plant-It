@@ -22,6 +22,12 @@ the amount of coins received when completed. The difficulty can be either Easy, 
 as well as the completed task displaying a lighter color, and a green check mark within the top left corner. Tasks can be dragged and moved, as well as deleted as the user desires.</p>
 <img width="150" alt="Screenshot 2025-05-12 at 10 00 32 PM" src="https://github.com/user-attachments/assets/25368fe5-d105-49bf-b47d-d9e0de84d2fb" />
 
+# About the Plants
+On top of being able to purchase and place plants, there is actually some 'Plant-Like" functionality to this task manager. After a certain period of time, each individual plant will change its image to a 'Dry' state. This will encourage users to use a 'Watering Can' object that can be double-clicked, to water the plants and return them back to their original state. This feature adds both animation and states for both the Plants and the Watering Can objects. Images below show thie functionality in action.
+
+<img width="600" alt="Screenshot 2025-05-23 at 12 13 53 PM" src="https://github.com/user-attachments/assets/9daf002a-dded-45a2-a58f-52f2b8737925" />
+<img width="600" alt="Screenshot 2025-05-23 at 12 13 58 PM 1" src="https://github.com/user-attachments/assets/c55af1bf-5546-4da2-a7aa-f570d48f1724" />
+
 
 # Tech Stack
 This Project is a C++ project, that makes use of CMake, wxWidgets and XML. While these may not be state of the art in todays world, I wanted to make use of the tools presented to me 
@@ -52,7 +58,8 @@ Another important goal within this project, was for the user to be able to save 
 simply selecting either the save/load file-menu option. The application can save/load each item, plant, task and more within the game. Ensuring that when the game is loaded, it is in 
 the exact same state as you left it, and can continue where you left off last time. A short example of what that XML file would look like is shown below.
 
-<img width="500" alt="Screenshot 2025-05-12 at 10 06 38 PM" src="https://github.com/user-attachments/assets/1d2deed0-0a29-45a5-8dc5-519b934f8a85" />
+<img width="555" alt="Screenshot 2025-05-23 at 11 43 51 AM" src="https://github.com/user-attachments/assets/5bdbfad4-3276-4413-a2f9-cdb1b87a51bd" />
+
 
 # What I Learned
 This Project focused on two main obectives: Object Oriented Programming and Professional Development. This project was a perfect example of both. I worked hard to plan ahead of time the

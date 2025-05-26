@@ -73,3 +73,22 @@ void Fern::Toggle()
         SetLevel(0);
     }
 }
+
+/**
+ * Function to Load in the state of this Fern
+ * @param childNode node to load Xml data from
+ */
+void Fern::Load(wxXmlNode* childNode)
+{
+    //Get State Attribute
+    auto state = childNode->GetAttribute(L"state");
+
+    //If state is Dry, toggle it
+    if (state == L"dry")
+    {
+        Toggle();
+    }
+
+    //Call to Plant Class to load
+    Plant::Load(childNode);
+}

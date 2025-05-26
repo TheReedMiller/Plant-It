@@ -21,6 +21,7 @@ public:
     Fern(Game* game);
     wxXmlNode* Save(wxXmlNode* gameNode);
     void Toggle() override;
+    void Load(wxXmlNode* childNode) override;
 };
 
 

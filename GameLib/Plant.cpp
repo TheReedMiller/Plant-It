@@ -125,10 +125,6 @@ wxXmlNode* Plant::Save(wxXmlNode *itemNode)
  */
 void Plant::Load(wxXmlNode* childNode)
 {
-    //Get State Attribute
-    auto state = childNode->GetAttribute(L"state");
-    SetState(state.ToStdWstring()); //Set State
-
     //Get and set dryness level
     childNode->GetAttribute(L"level").ToInt(&mLevel);
 

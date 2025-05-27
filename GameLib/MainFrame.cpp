@@ -50,19 +50,24 @@ void MainFrame::Initialize()
     menuBar->Append(plantMenu, L"&Plants");
     menuBar->Append(taskMenu, L"&Tasks");
 
-    //Add to menus
+    //File Menu
     fileMenu->Append(wxID_SAVEAS, "Save", "Save the Program");
     fileMenu->Append(wxID_OPEN, "Load", "Load a Program");
 
+    //Help Menu
     helpMenu->Append(wxID_ABOUT, "Game Controls", "View game controls and rules");
     helpMenu->Append(IDM_CHEATCODE, "Cheat Code", "Super Secret Cheat Code");
 
+    //Plant Menu
     plantMenu->Append(IDM_ADDSUNFLOWER, "Buy Sunflower [150]", "Buy Sunflower [150]");
     plantMenu->Append(IDM_ADDROSE, "Buy Rose [200]", "Buy Rose [200]");
     plantMenu->Append(IDM_ADDFERN, "Buy Fern [250]", "Buy Fern [250]");
     plantMenu->Append(IDM_ADDCACTUS, "Buy Cactus [400]", "Buy Cactus [400]");
     plantMenu->Append(IDM_ADDFLYTRAP, "Buy Flytrap [1000]", "Buy Flytrap [1000]");
+    plantMenu->AppendSeparator();
+    plantMenu->Append(IDM_ADDFERTILIZER, "Buy Fertilizer [200]", "Buy Fertilizer [200]");
 
+    //Task Menu
     taskMenu->Append(IDM_ADDTASK, "Add New Task", "Add New Task");
 
     SetMenuBar( menuBar );
@@ -197,6 +202,7 @@ void MainFrame::OnShowControls(wxCommandEvent& event)
         " - You can Purchase Plants from the Plant Menu Option\n"
         " - Click and Drag your plants where you want\n"
         " - Click on a Plant and Press Backspace/Delete to Sell it\n"
+        " - Purchase Fertilizer from the Plant Menu, to increase the \namount of time a plant will stay watered\n"
         " - When a Plant is 'Dry', Click and Drag the Watering Can over\n"
         "   the Plant, then Double-Click the Watering Can to water it\n\n"
         "Tasks:\n"

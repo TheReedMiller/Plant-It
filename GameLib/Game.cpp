@@ -260,7 +260,6 @@ void Game::WaterPlant(double x, double y)
                 //Set the found item
                 foundItem =*i;
             }
-
         }
     }
 

@@ -80,11 +80,7 @@ public:
     /**
      * Overrides the Click function, to now increase the amount of time a play stays watered
      */
-    void Click() override
-    {
-        mMaxLevel += 5000;
-        std::cout << mMaxLevel << std::endl;
-    }
+    void Click() override {mMaxLevel += 5000;}
 };
 
 

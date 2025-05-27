@@ -15,6 +15,7 @@
 #include "Sunflower.h"
 #include "Rose.h"
 #include "Fern.h"
+#include "Fertilizer.h"
 
 ///Frame Duration Constant
 const int FrameDuration = 30;
@@ -45,6 +46,7 @@ void GameView::Initialize(wxFrame* parent)
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddCactus, this, IDM_ADDCACTUS);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddFlytrap, this, IDM_ADDFLYTRAP);
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddFern, this, IDM_ADDFERN);
+    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &GameView::OnAddFertilizer, this, IDM_ADDFERTILIZER);
 
     mTimer.SetOwner(this);
     mTimer.Start(FrameDuration);
@@ -277,6 +279,7 @@ void GameView::OnAddCactus(wxCommandEvent& event)
     mGame.Add(item);
     Refresh();
 }
+
 /**
  * Function to add a flytrap to our game
  */
@@ -294,6 +297,27 @@ void GameView::OnAddFlytrap(wxCommandEvent& event)
 
     //Create and Add Item
     auto item = std::make_shared<Flytrap>(&mGame);
+    mGame.Add(item);
+    Refresh();
+}
+
+/**
+ * Function to add a fertilizer to the game
+ */
+void GameView::OnAddFertilizer(wxCommandEvent& event)
+{
+    //First Check Bank amount
+    if (mGame.GetBank()->GetCoins() < 200)
+    {
+        //ERROR MESSAGE HERE
+        return;
+    }
+
+    //Subtract from Bank
+    mGame.GetBank()->Sub(200);
+
+    //Create and Add Item
+    auto item = std::make_shared<Fertilizer>(&mGame);
     mGame.Add(item);
     Refresh();
 }

@@ -19,8 +19,13 @@ private:
 
 public:
     Fertilizer(Game* game);
+
+    /**
+     * A function that classifies
+     * @return wstring representation for this item
+     */
+    std::wstring GetItemName()override{return L"fertilizer";}
+
 };
-
-
 
 #endif //FERTILIZER_H

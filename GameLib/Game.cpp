@@ -14,6 +14,7 @@
 #include "Cactus.h"
 #include "Sunflower.h"
 #include "Fern.h"
+#include "Fertilizer.h"
 
 using namespace std;
 
@@ -30,6 +31,10 @@ Game::Game()
     //Create Watering can
     ResetWateringCan(true);     //Bool is true, because we want to create and add the watering can
 
+    //Try adding Fertilizer
+    auto fert = std::make_shared<Fertilizer>(this);
+    fert->SetPosition(150,150);
+    Add(fert);
 }
 
 /**

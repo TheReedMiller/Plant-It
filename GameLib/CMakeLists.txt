@@ -36,7 +36,9 @@ set(SOURCE_FILES
         Fern.cpp
         Fern.h
         WateringCan.cpp
-        WateringCan.h)
+        WateringCan.h
+        Fertilizer.cpp
+        Fertilizer.h)
 
 set(wxBUILD_PRECOMP OFF)
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)

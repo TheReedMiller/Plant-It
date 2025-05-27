@@ -28,7 +28,7 @@ private:
 
 public:
     WateringCan(Game *game);
-    bool CanDelete() override;
+    std::wstring GetItemName() override;
     void Click() override;
     void Draw(std::shared_ptr<wxGraphicsContext> gc) override;
     void Update(double elapsed) override;
@@ -39,7 +39,7 @@ public:
      * A function that tells if this item can be watered or not
      * @return Bool representing if it can be watered or not
      */
-    virtual bool IsWaterable(){return false;}
+    virtual bool IsWaterable() override {return false;}
 };
 
 

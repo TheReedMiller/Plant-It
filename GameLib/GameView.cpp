@@ -144,8 +144,10 @@ void GameView::OnMouseMove(wxMouseEvent &event)
         }
         else
         {
-            // When the left button is released, we release the
-            // item.
+            //Check to see if we are releasing a Fertilizer Object
+
+
+            // When the left button is released, we release the item\
             mGrabbedItem = nullptr;
         }
 
@@ -300,7 +302,7 @@ void GameView::OnKeyDown(wxKeyEvent& event)
         if (mSelectedItem != nullptr)
         {
             //Check if we can delete this item
-            if (mSelectedItem->CanDelete())
+            if (mSelectedItem->GetItemName() != L"watering-can")
             {
                 //Remove and clear selected item
                 mGame.Remove(mSelectedItem);

@@ -70,6 +70,12 @@ public:
      * @param level Level to set
      */
     void SetMaxLevel(int level){mMaxLevel = level;}
+
+    /**
+     * Function that helps classify this object as a plant item
+     * @return wstring representation of what this item is
+     */
+    std::wstring GetItemName() override {return L"plant";}
 };
 
 

@@ -30,12 +30,12 @@ WateringCan::WateringCan(Game *game) : Item(game, L"wateringcan.png")
 }
 
 /**
- * Removes the Ability to delete this item
- * @return Bool telling that this item cannot be deleted
+ * Overrides the item function game getter
+ * @return wstring representing what the name of this item is
  */
-bool WateringCan::CanDelete()
+std::wstring WateringCan::GetItemName()
 {
-    return false;
+    return L"watering-can";
 }
 
 /**

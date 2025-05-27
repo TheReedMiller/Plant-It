@@ -47,11 +47,12 @@ public:
     virtual wxXmlNode* Save(wxXmlNode* root);
     virtual void Load(wxXmlNode* childNode);
     void SetImage(const std::wstring& file);
+
     /**
-     * Function to determine what Items to delete
-     * @return bool telling if this item can be deleted
+     * Function to determine what Item this is
+     * @return string representing what this item is
      */
-    virtual bool CanDelete(){return true;}
+    virtual std::wstring GetItemName(){return L"Item";}
     /**
      * Function to activate an item when clicked on
      */

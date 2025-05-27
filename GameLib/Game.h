@@ -45,6 +45,7 @@ public:
     void MoveToBack(std::shared_ptr<Item> item);
     void WaterPlant(int x, int y);
     void ResetWateringCan(bool isCreate  = false);
+    bool FertilizePlant(double x, double y);
 
     /**
      * Getter for the Bank

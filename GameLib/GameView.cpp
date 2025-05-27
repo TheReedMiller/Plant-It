@@ -147,9 +147,13 @@ void GameView::OnMouseMove(wxMouseEvent &event)
             //Check to see if we are releasing a Fertilizer Object
             if (mGrabbedItem->GetItemName() == L"fertilizer")
             {
-                std::cout << "Dropped fertilizer" << std::endl;
+                //Call to Game to try and Fertilize a plant
+                if (mGame.FertilizePlant(mGrabbedItem->GetX(), mGrabbedItem->GetY()))
+                {
+                    //Delete the Fertilizer Object if this is successful
+                    mGame.Remove(mGrabbedItem);
+                }
             }
-
 
             // When the left button is released, we release the item
             mGrabbedItem = nullptr;

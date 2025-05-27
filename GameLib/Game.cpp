@@ -248,7 +248,7 @@ void Game::WaterPlant(int x, int y)
     //Pointer to the found item
     std::shared_ptr<Item> foundItem = nullptr;
 
-    //Iterate over items and see if we found an item(SPECIAL VERSION OF HIT TEST
+    //Iterate over items and see if we found an item(SPECIAL VERSION OF HIT TEST)
     for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
     {
         //If the Hit is Successful
@@ -291,4 +291,44 @@ void Game::ResetWateringCan(bool isCreate)
 
     //Reset Positioning
     mWateringCan->SetPosition(580,780);
+}
+
+/**
+ * Event Function to attempt to fertilize a plant item
+ * @param x x coord of the event to fertilize plants
+ * @param y y coord of the event to fertilize plants
+ * @return bool representing if the fertilize action was successful
+ */
+bool Game::FertilizePlant(double x, double y)
+{
+    //Pointer to the found item
+    std::shared_ptr<Item> foundItem = nullptr;
+
+    //Iterate over items and see if we found an item(SPECIAL VERSION OF HIT TEST)
+    for (auto i = mItems.rbegin(); i != mItems.rend();  i++)
+    {
+        //If the Hit is Successful
+        if ((*i)->HitTest(x, y))
+        {
+            //Make sure this item is a plant
+            if ((*i)->IsWaterable())
+            {
+                //Set the found item
+                foundItem =*i;
+            }
+
+        }
+    }
+
+    //If item was found
+    if (foundItem != nullptr)
+    {
+        //Fertilize the Plant
+        foundItem->Click();
+
+        //Return the Success State
+        return true;
+    }
+    //Didn't find a Plant to fertilize
+    return false;
 }

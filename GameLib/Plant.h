@@ -76,6 +76,15 @@ public:
      * @return wstring representation of what this item is
      */
     std::wstring GetItemName() override {return L"plant";}
+
+    /**
+     * Overrides the Click function, to now increase the amount of time a play stays watered
+     */
+    void Click() override
+    {
+        mMaxLevel += 5000;
+        std::cout << mMaxLevel << std::endl;
+    }
 };
 
 

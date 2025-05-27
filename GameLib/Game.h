@@ -43,7 +43,7 @@ public:
     void Remove(std::shared_ptr<Item> item);
     std::shared_ptr<Item> HitTest(int x, int y);
     void MoveToBack(std::shared_ptr<Item> item);
-    void WaterPlant(int x, int y);
+    void WaterPlant(double x, double y);
     void ResetWateringCan(bool isCreate  = false);
     bool FertilizePlant(double x, double y);
 

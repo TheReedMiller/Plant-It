@@ -243,7 +243,7 @@ void Game::MoveToBack(std::shared_ptr<Item> item)
  * @param x x coord of Watering action
  * @param y y coord of Watering action
  */
-void Game::WaterPlant(int x, int y)
+void Game::WaterPlant(double x, double y)
 {
     //Pointer to the found item
     std::shared_ptr<Item> foundItem = nullptr;

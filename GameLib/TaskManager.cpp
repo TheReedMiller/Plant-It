@@ -120,6 +120,9 @@ void TaskManager::Save(wxXmlNode* taskNode)
  */
 void TaskManager::Load(wxXmlNode* taskNode)
 {
+    //First Clear the Task manager
+    Clear();
+
     //Iterate over nodes, creating a Task for each
     auto child = taskNode->GetChildren();
 
@@ -288,5 +291,20 @@ void TaskManager::SetInPlace(std::shared_ptr<Task> task)
     if (index == 0)
     {
         task->SetPosition(mWidth/2, 125);
+    }
+}
+
+/**
+ * A Function to Clear the Task Manager of all current tasks
+ */
+void TaskManager::Clear()
+{
+    //Clear the Vector - making sure to reset size and deallocate memory
+    mTasks = std::vector<std::shared_ptr<Task>>();
+
+    //Add a Few Empty Nullptrs to the Task Vector
+    for (int i = 0; i < 7; i++)
+    {
+        mTasks.push_back(nullptr);
     }
 }

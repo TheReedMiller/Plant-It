@@ -35,6 +35,7 @@ public:
     void Remove(std::shared_ptr<Task> task);
     void FindNextIndex();
     void SetInPlace(std::shared_ptr<Task> task);
+    void Clear();
 
     /**
      * Getter for the Current Number of Tasks

@@ -25,13 +25,14 @@ private:
     LoadState mLoadState = LoadState::Load1;
 
     void OnAbout(wxCommandEvent &event);
-    void OnLoad(wxCommandEvent& event);
-    void OnSave(wxCommandEvent& event);
+    void OnCustomLoad(wxCommandEvent& event);
+    void OnCustomSave(wxCommandEvent& event);
     void OnShowControls(wxCommandEvent& event);
     void OnLoad1(wxCommandEvent& event);
     void OnLoad2(wxCommandEvent& event);
     void OnLoad3(wxCommandEvent& event);
     void LoadState();
+    void OnSaveCurrent(wxCommandEvent& event);
     void OnExit(wxCommandEvent &event);
 
 public:

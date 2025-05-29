@@ -80,13 +80,13 @@ void MainFrame::Initialize()
 
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnExit, this, wxID_EXIT);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnAbout, this, wxID_ABOUT);
-    Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnSave, this, wxID_SAVEAS);
-    Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad, this, wxID_OPEN);
+    Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnCustomSave, this, wxID_SAVEAS);
+    Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnCustomLoad, this, wxID_OPEN);
     Bind(wxEVT_MENU, &MainFrame::OnShowControls, this, wxID_ABOUT);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad1, this, IDM_LOAD1);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad2, this, IDM_LOAD2);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad3, this, IDM_LOAD3);
-    // Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnSave, this, IDM_LOAD1);
+    Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnSaveCurrent, this, IDM_SAVECURRENT);
 
     CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
 }
@@ -116,7 +116,7 @@ void MainFrame::OnAbout(wxCommandEvent& event)
  * Event handler for loading file
  * @param event event to handle
  */
-void MainFrame::OnLoad(wxCommandEvent& event)
+void MainFrame::OnCustomLoad(wxCommandEvent& event)
 {
     wxFileDialog loadFileDialog(this, _("Load Game file"), "", "",
             "Game Files (*.game)|*.game", wxFD_OPEN);
@@ -170,7 +170,7 @@ void MainFrame::OnLoad(wxCommandEvent& event)
  * Event Handler for saving files
  * @param event event to handle
  */
-void MainFrame::OnSave(wxCommandEvent& event)
+void MainFrame::OnCustomSave(wxCommandEvent& event)
 {
     //Create Dialog Box to get filepath
     wxFileDialog saveFileDialog(this, _("Save Game file"), "", "",
@@ -331,4 +331,43 @@ void MainFrame::LoadState()
     //Load both Views
     mGameView->Load(gameNode);
     mTaskView->Load(taskNode);
+}
+
+/**
+ * Event Handler for saving the current state
+ * @param event event to handle
+ */
+void MainFrame::OnSaveCurrent(wxCommandEvent& event)
+{
+    //Get the Correct FileName
+    auto filename = L"Levels/load1.game";
+
+    //Game State 2
+    if (mLoadState == LoadState::Load2)
+    {
+        filename = L"Levels/load2.game";
+    }
+
+    //Game 3 state
+    if (mLoadState == LoadState::Load3)
+    {
+        filename = L"Levels/load3.game";
+    }
+
+    //create XML document to save
+    wxXmlDocument xmlDoc;
+    //Create <game> root
+    auto root = new wxXmlNode(wxXML_ELEMENT_NODE, L"Plant-It");
+    xmlDoc.SetRoot(root);
+
+    //Call to Views to save
+    mGameView->Save(root);
+    mTaskView->Save(root);
+
+    //Final action ->Save the File itself
+    if(!xmlDoc.Save(filename, wxXML_NO_INDENTATION))
+    {
+        wxMessageBox(L"Write to XML failed");
+        return;
+    }
 }

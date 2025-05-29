@@ -35,6 +35,7 @@ private:
     void OnLoad3(wxCommandEvent& event);
     void LoadState();
     void OnSaveCurrent(wxCommandEvent& event);
+    void SaveToLoad();
     void OnExit(wxCommandEvent &event);
 
 public:

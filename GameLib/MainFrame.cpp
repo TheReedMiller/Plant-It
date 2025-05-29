@@ -249,7 +249,7 @@ void MainFrame::OnShowControls(wxCommandEvent& event)
 void MainFrame::OnLoad1(wxCommandEvent& event)
 {
     //Save current state
-    //CODE HERE
+    SaveToLoad();
 
     //Load in this state
     mLoadState = LoadState::Load1;
@@ -263,7 +263,7 @@ void MainFrame::OnLoad1(wxCommandEvent& event)
 void MainFrame::OnLoad2(wxCommandEvent& event)
 {
     //Save current state
-    //CODE HERE
+    SaveToLoad();
 
     //Load in this state
     mLoadState = LoadState::Load2;
@@ -277,7 +277,7 @@ void MainFrame::OnLoad2(wxCommandEvent& event)
 void MainFrame::OnLoad3(wxCommandEvent& event)
 {
     //Save current state
-    //CODE HERE
+    SaveToLoad();
 
     //Load in this state
     mLoadState = LoadState::Load3;
@@ -349,6 +349,15 @@ void MainFrame::LoadState()
  * @param event event to handle
  */
 void MainFrame::OnSaveCurrent(wxCommandEvent& event)
+{
+    //Simple Call to Save Function
+    SaveToLoad();
+}
+
+/**
+ * Function that Will save the Game the Currently selected load state
+ */
+void MainFrame::SaveToLoad()
 {
     //Get the Correct FileName
     auto filename = mResDir + L"/Levels/load1.game";

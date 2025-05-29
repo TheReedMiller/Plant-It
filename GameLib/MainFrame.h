@@ -19,11 +19,19 @@ private:
     GameView* mGameView = nullptr;
     ///Task View Object
     TaskView* mTaskView = nullptr;
+    ///Enum Class for which Load this game is using/saving to
+    enum class LoadState{Load1, Load2, Load3};
+    ///Which load this Application is currently using
+    LoadState mLoadState = LoadState::Load1;
 
     void OnAbout(wxCommandEvent &event);
     void OnLoad(wxCommandEvent& event);
     void OnSave(wxCommandEvent& event);
     void OnShowControls(wxCommandEvent& event);
+    void OnLoad1(wxCommandEvent& event);
+    void OnLoad2(wxCommandEvent& event);
+    void OnLoad3(wxCommandEvent& event);
+    void LoadState();
     void OnExit(wxCommandEvent &event);
 
 public:

@@ -226,3 +226,105 @@ void MainFrame::OnShowControls(wxCommandEvent& event)
         this
     );
 }
+
+/**
+ * Function that loads the load 1 game state
+ * @param event event to handle
+ */
+void MainFrame::OnLoad1(wxCommandEvent& event)
+{
+    //Save current state
+    //CODE HERE
+
+    //Load in this state
+    mLoadState = LoadState::Load1;
+    LoadState();
+}
+
+/**
+ * Function that loads the load 2 game state
+ * @param event event to handle
+ */
+void MainFrame::OnLoad2(wxCommandEvent& event)
+{
+    //Save current state
+    //CODE HERE
+
+    //Load in this state
+    mLoadState = LoadState::Load2;
+    LoadState();
+}
+
+/**
+ * Function that loads the load 3 game state
+ * @param event event to handle
+ */
+void MainFrame::OnLoad3(wxCommandEvent& event)
+{
+    //Save current state
+    //CODE HERE
+
+    //Load in this state
+    mLoadState = LoadState::Load3;
+    LoadState();
+}
+
+/**
+ * Function to load from a specific game state
+ */
+void MainFrame::LoadState()
+{
+    //Get the Correct FileName
+    auto filename = L"Levels/load1.game";
+
+    //Game State 2
+    if (mLoadState == LoadState::Load2)
+    {
+        filename = L"Levels/load2.game";
+    }
+
+    //Game 3 state
+    if (mLoadState == LoadState::Load3)
+    {
+        filename = L"Levels/load3.game";
+    }
+
+    //Create xml document and load from it
+    wxXmlDocument xmlDoc;
+    if(!xmlDoc.Load(filename))
+    {
+        wxMessageBox(L"Unable to load Animation file");
+        return;
+    }
+
+    // Get the XML document root node
+    auto root = xmlDoc.GetRoot();
+
+    //Game View and Task view nodes
+    wxXmlNode* gameNode = nullptr;
+    wxXmlNode* taskNode = nullptr;
+
+    //Iterate to find nodes
+    auto childNode = root->GetChildren();
+    while(childNode)
+    {
+        //Check for Game View Node
+        if (childNode->GetName() == L"Game")
+        {
+            gameNode = childNode;
+        }
+
+        //Check for Task View Node
+        if (childNode->GetName() == L"Task")
+        {
+            taskNode = childNode;
+        }
+
+        //Get Next Child
+        childNode = childNode->GetNext();
+    }
+
+    //Load both Views
+    mGameView->Load(gameNode);
+    mTaskView->Load(taskNode);
+}

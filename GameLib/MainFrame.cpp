@@ -4,11 +4,22 @@
  */
 
 #include "pch.h"
+
+#include <wx/stdpaths.h>
+#include <wx/filename.h>
+
 #include "MainFrame.h"
 #include "GameView.h"
 #include "TaskView.h"
 #include "ids.h"
 
+/**
+ * Constructor
+ * @param resDir the path to the resource directory
+ */
+MainFrame::MainFrame(std::wstring resDir) : mResDir(resDir)
+{
+}
 
 /**
  * Initialize the MainFrame window.
@@ -279,18 +290,18 @@ void MainFrame::OnLoad3(wxCommandEvent& event)
 void MainFrame::LoadState()
 {
     //Get the Correct FileName
-    auto filename = L"Levels/load1.game";
+    auto filename = mResDir + L"/Levels/load1.game";
 
     //Game State 2
     if (mLoadState == LoadState::Load2)
     {
-        filename = L"Levels/load2.game";
+        filename = mResDir + L"/Levels/load2.game";
     }
 
     //Game 3 state
     if (mLoadState == LoadState::Load3)
     {
-        filename = L"Levels/load3.game";
+        filename = mResDir + L"/Levels/load3.game";
     }
 
     //Create xml document and load from it
@@ -340,18 +351,18 @@ void MainFrame::LoadState()
 void MainFrame::OnSaveCurrent(wxCommandEvent& event)
 {
     //Get the Correct FileName
-    auto filename = L"Levels/load1.game";
+    auto filename = mResDir + L"/Levels/load1.game";
 
     //Game State 2
     if (mLoadState == LoadState::Load2)
     {
-        filename = L"Levels/load2.game";
+        filename = mResDir + L"/Levels/load2.game";
     }
 
     //Game 3 state
     if (mLoadState == LoadState::Load3)
     {
-        filename = L"Levels/load3.game";
+        filename = mResDir + L"/Levels/load3.game";
     }
 
     //create XML document to save

@@ -15,6 +15,8 @@ class TaskView;
 
 class MainFrame : public wxFrame{
 private:
+    ///Path to the resource Directory
+    std::wstring mResDir;
     ///Game View Object
     GameView* mGameView = nullptr;
     ///Task View Object
@@ -37,6 +39,7 @@ private:
 
 public:
     void Initialize();
+    MainFrame(std::wstring resDir);
 };
 
 

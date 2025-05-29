@@ -27,15 +27,24 @@ add_executable(Plant-It WIN32 MACOSX_BUNDLE ${SOURCE_FILES})
 target_link_libraries(${PROJECT_NAME} ${wxWidgets_LIBRARIES} ${APPLICATION_LIBRARY})
 target_precompile_headers(${PROJECT_NAME} PRIVATE pch.h)
 
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Images/
-        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Images/)
-file(COPY ${CMAKE_CURRENT_SOURCE_DIR}/Levels/
-        DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/Levels/)
+file(COPY resources/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
+
+# Path to the source Levels/ directory
+set(LEVELS_SRC "${CMAKE_CURRENT_SOURCE_DIR}/resources/Levels")
+
+# Destination in the .app bundle
+set(LEVELS_DST "${CMAKE_CURRENT_BINARY_DIR}/Plant-It.app/Contents/Resources/Levels")
+
+# Copy Levels/ into the app bundle after build
+add_custom_command(TARGET Plant-It POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${LEVELS_DST}"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${LEVELS_SRC}" "${LEVELS_DST}"
+)
 
 if(APPLE)
     set(MACOSX_BUNDLE_ICON_FILE Plant-It)
 
-    set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/Images/Plant-It.icns PROPERTIES
+    set_source_files_properties(resources/Images/Plant-It.icns PROPERTIES
             MACOSX_PACKAGE_LOCATION "Resources")
 
     set_source_files_properties(${CMAKE_CURRENT_SOURCE_DIR}/Info.plist PROPERTIES
@@ -47,7 +56,7 @@ if(APPLE)
     )
 
     target_sources(Plant-It PRIVATE
-            ${CMAKE_CURRENT_SOURCE_DIR}/Images/Plant-It.icns
+            resources/Images/Plant-It.icns
             ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist
     )
 endif()

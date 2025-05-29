@@ -4,6 +4,9 @@
  */
 
 #include "pch.h"
+
+#include <wx/stdpaths.h>
+
 #include "GameApp.h"
 #include "MainFrame.h"
 
@@ -19,7 +22,8 @@ bool GameApp::OnInit()
     // Add image type handlers
     wxInitAllImageHandlers();
 
-    auto frame = new MainFrame();
+    auto standardPaths = wxStandardPaths::Get();
+    auto frame = new MainFrame(standardPaths.GetResourcesDir().ToStdWstring());
     frame->Initialize();
 
     frame->SetFocus();

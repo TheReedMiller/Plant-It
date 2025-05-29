@@ -57,8 +57,8 @@ void MainFrame::Initialize()
     fileMenu->AppendSeparator();
     fileMenu->Append(IDM_SAVECURRENT, "Save Current Game", "Save Current Game");
     fileMenu->AppendSeparator();
-    fileMenu->Append(wxID_SAVEAS, "Save", "Save the Program");
-    fileMenu->Append(wxID_OPEN, "Load", "Load a Program");
+    fileMenu->Append(wxID_SAVEAS, "Custom Save", "Save the Program");
+    fileMenu->Append(wxID_OPEN, "Custom Load", "Load a Program");
 
     //Help Menu
     helpMenu->Append(wxID_ABOUT, "Game Controls", "View game controls and rules");
@@ -83,6 +83,10 @@ void MainFrame::Initialize()
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnSave, this, wxID_SAVEAS);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad, this, wxID_OPEN);
     Bind(wxEVT_MENU, &MainFrame::OnShowControls, this, wxID_ABOUT);
+    Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad1, this, IDM_LOAD1);
+    Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad2, this, IDM_LOAD2);
+    Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad3, this, IDM_LOAD3);
+    // Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnSave, this, IDM_LOAD1);
 
     CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
 }

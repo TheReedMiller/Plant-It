@@ -51,6 +51,12 @@ void MainFrame::Initialize()
     menuBar->Append(taskMenu, L"&Tasks");
 
     //File Menu
+    fileMenu->Append(IDM_LOAD1, "Load Save 1", "Load Save 1");
+    fileMenu->Append(IDM_LOAD2, "Load Save 2", "Load Save 2");
+    fileMenu->Append(IDM_LOAD3, "Load Save 3", "Load Save 3");
+    fileMenu->AppendSeparator();
+    fileMenu->Append(IDM_SAVECURRENT, "Save Current Game", "Save Current Game");
+    fileMenu->AppendSeparator();
     fileMenu->Append(wxID_SAVEAS, "Save", "Save the Program");
     fileMenu->Append(wxID_OPEN, "Load", "Load a Program");
 

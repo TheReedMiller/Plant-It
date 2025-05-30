@@ -115,6 +115,10 @@ wxXmlNode* Plant::Save(wxXmlNode *itemNode)
     //Add Dryness Level
     auto level = wxString::Format(wxT("%d"), GetLevel());
     itemNode->AddAttribute(L"level", level);
+
+    //Add Max Dryness level
+    itemNode->AddAttribute(L"max-level", wxString::Format(wxT("%d"), mMaxLevel));
+
     //Return the Node
     return itemNode;
 }
@@ -127,6 +131,9 @@ void Plant::Load(wxXmlNode* childNode)
 {
     //Get and set dryness level
     childNode->GetAttribute(L"level").ToInt(&mLevel);
+
+    //Get and set max-level
+    childNode->GetAttribute(L"max-level").ToInt(&mMaxLevel);
 
     //Now Call to Item class to finish loading
     Item::Load(childNode);

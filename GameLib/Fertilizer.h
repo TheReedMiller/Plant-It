@@ -19,6 +19,7 @@ private:
 
 public:
     Fertilizer(Game* game);
+    wxXmlNode* Save(wxXmlNode* gameNode);
 
     /**
      * A function that classifies

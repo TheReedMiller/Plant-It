@@ -135,6 +135,12 @@ void Game::CreateItem(wxXmlNode* childNode)
         item = make_shared<Flytrap>(this);
     }
 
+    //Fertilizer
+    else if (type == L"fertilizer")
+    {
+        item = make_shared<Fertilizer>(this);
+    }
+
     if (item != nullptr)
     {
         //Add the Item to the game

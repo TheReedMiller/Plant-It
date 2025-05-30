@@ -100,6 +100,9 @@ void MainFrame::Initialize()
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnSaveCurrent, this, IDM_SAVECURRENT);
 
     CreateStatusBar( 1, wxSTB_SIZEGRIP, wxID_ANY );
+
+    //Load Load1
+    LoadState();
 }
 
 /**
@@ -108,6 +111,10 @@ void MainFrame::Initialize()
  */
 void MainFrame::OnExit(wxCommandEvent& event)
 {
+    //Save Before closed
+    SaveToLoad();
+    std::cout << "Terminating..." << std::endl;
+
     Close(true);
 }
 

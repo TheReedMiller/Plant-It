@@ -247,7 +247,10 @@ void MainFrame::OnShowControls(wxCommandEvent& event)
         "   the difficulty, the more coins you'll earn!\n"
         " - Click a Task and press Backspace/Delete to remove it from the Task Manager\n\n"
         "Save/Load:\n"
-        " - Game states can be saved and loaded via the File menu option.\n",
+        " - Game states can be saved and loaded via the File menu option.\n"
+        " - You can Save/Load to 3 different Load states. Note that selecting to load a load state,\n"
+        "will override and save your current state, then load the newly selected one\n"
+        " - You can also select custom loads/saves if you so choose/need.\n",
         "Controls",
         wxOK | wxICON_INFORMATION,
         this

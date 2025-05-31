@@ -28,6 +28,10 @@ void MainFrame::Initialize()
 {
     Create(nullptr, wxID_ANY, L"Plant-It", wxDefaultPosition, wxSize(1100, 800));
 
+    //Create and Start the auto-save timer (interval in milliseconds)
+    mAutoSaveTimer.SetOwner(this);
+    mAutoSaveTimer.Start(60000);  // Save every 60 seconds
+
     // create a sizer that will lay out child windows Horizontally
     auto sizer = new wxBoxSizer(wxHORIZONTAL);
 
@@ -94,6 +98,7 @@ void MainFrame::Initialize()
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnCustomSave, this, wxID_SAVEAS);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnCustomLoad, this, wxID_OPEN);
     Bind(wxEVT_MENU, &MainFrame::OnShowControls, this, wxID_ABOUT);
+    Bind(wxEVT_TIMER, &MainFrame::OnAutoSave, this);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad1, this, IDM_LOAD1);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad2, this, IDM_LOAD2);
     Bind(wxEVT_COMMAND_MENU_SELECTED, &MainFrame::OnLoad3, this, IDM_LOAD3);
@@ -397,4 +402,13 @@ void MainFrame::SaveToLoad()
         wxMessageBox(L"Write to XML failed");
         return;
     }
+}
+
+/**
+ * Function to Automatically save the game state every 60 sec
+ * @param event timer event
+ */
+void MainFrame::OnAutoSave(wxTimerEvent& event)
+{
+    SaveToLoad();  // Save to the currently selected slot
 }

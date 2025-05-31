@@ -23,7 +23,8 @@ enum IDs {
     IDM_LOAD1,
     IDM_LOAD2,
     IDM_LOAD3,
-    IDM_SAVECURRENT
+    IDM_SAVECURRENT,
+    IDM_AUTOSAVETIMER
 };
 
 #endif //IDS_H

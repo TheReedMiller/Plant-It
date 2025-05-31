@@ -25,6 +25,8 @@ private:
     enum class LoadState{Load1, Load2, Load3};
     ///Which load this Application is currently using
     LoadState mLoadState = LoadState::Load1;
+    ///Timer for Automatic Saves
+    wxTimer mAutoSaveTimer;
 
     void OnAbout(wxCommandEvent &event);
     void OnCustomLoad(wxCommandEvent& event);
@@ -36,6 +38,7 @@ private:
     void LoadState();
     void OnSaveCurrent(wxCommandEvent& event);
     void SaveToLoad();
+    void OnAutoSave(wxTimerEvent& event);
     void OnExit(wxCommandEvent &event);
 
 public:

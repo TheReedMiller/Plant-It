@@ -410,5 +410,9 @@ void MainFrame::SaveToLoad()
  */
 void MainFrame::OnAutoSave(wxTimerEvent& event)
 {
-    SaveToLoad();  // Save to the currently selected slot
+    //Save the Game
+    SaveToLoad();
+
+    //Call to GameView to display the saving icon
+    mGameView->GameSaved();
 }

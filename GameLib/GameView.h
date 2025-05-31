@@ -35,6 +35,12 @@ private:
     ///Pointer to Most Recently Selected Item
     std::shared_ptr<Item> mSelectedItem = nullptr;
 
+    ///Bool to track if the game is currently saving the game
+    bool mIsSaving = false;
+
+    ///Animation time for the 'saving' icon on screen
+    int mSaveTime = 0;
+
     void OnTimer(wxTimerEvent& event);
 
 public:
@@ -59,6 +65,11 @@ public:
      * @return Bank of the underlying game
      */
     std::shared_ptr<Bank> GetBank(){return mGame.GetBank();}
+
+    /**
+     * Function to toggle the saving state of the game(for animation)
+     */
+    void GameSaved(){mIsSaving = true;}
 };
 
 

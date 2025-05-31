@@ -87,6 +87,28 @@ void GameView::OnPaint(wxPaintEvent& event)
 
     //Call to Game to Draw
     mGame.OnDraw(gc);
+
+    //If the Game saved ->Draw the saving icon in the top left corner
+    if (mIsSaving)
+    {
+        //Firstly Update the Time interval
+        mSaveTime += 1;
+
+        //Reset the Animation time and bool
+        if (mSaveTime > 50)
+        {
+            //Reset
+            mSaveTime = 0;
+            mIsSaving = false;
+        }
+
+        //Otherwise Draw the Saving Icon
+        else
+        {
+            gc->SetFont(wxFont(20, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_NORMAL), *wxWHITE);
+            gc->DrawText("Saving...", 20, 20);  // x=10, y=10 for some padding from the top-left
+        }
+    }
 }
 
 /**

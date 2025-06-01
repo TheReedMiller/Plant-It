@@ -59,6 +59,9 @@ if(APPLE)
             resources/Images/Plant-It.icns
             ${CMAKE_CURRENT_SOURCE_DIR}/Info.plist
     )
+
+    set_target_properties(Plant-It PROPERTIES
+            MACOSX_BUNDLE_ICON_FILE "Plant-It.icns"  # Include .icns extension here
+    )
 endif()
 
-target_link_libraries(Plant-It ${wxWidgets_LIBRARIES})

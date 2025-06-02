@@ -9,6 +9,7 @@
 
 #include <wx/valnum.h>
 #include <wx/xrc/xmlres.h>
+#include <memory>
 
 
 /**

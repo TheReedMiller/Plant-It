@@ -8,6 +8,8 @@
 #ifndef TASKDLGBOX_H
 #define TASKDLGBOX_H
 
+#include <memory>
+
 //Forward Reference
 class Task;
 

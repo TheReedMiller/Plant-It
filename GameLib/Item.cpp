@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "Item.h"
 #include "Game.h"
+#include <memory>
 
 /// Directory within resources that contains the images.
 const std::wstring ImagesDirectory = L"/Images/";

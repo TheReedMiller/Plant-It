@@ -6,6 +6,7 @@
 #include "pch.h"
 #include "TaskManager.h"
 #include "Task.h"
+#include <memory>
 
 ///Constant for Task Manager Header
 const int HeaderHeight = 50;

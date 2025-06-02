@@ -8,6 +8,7 @@
 #ifndef BANK_H
 #define BANK_H
 
+#include <memory>
 
 /**
 * A Class that Describes the Bank for the Game View

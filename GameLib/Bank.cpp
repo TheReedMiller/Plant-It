@@ -5,6 +5,7 @@
 
 #include "pch.h"
 #include "Bank.h"
+#include <memory>
 
 ///Constant for X coord
 const int X = 850;
@@ -27,16 +28,15 @@ Bank::Bank(const std::wstring &resourseDir) : mResourseDir(resourseDir)
  */
 void Bank::Draw(std::shared_ptr<wxGraphicsContext> gc)
 {
-    //Draw Rectangle
-
+    //Sizes to Draw Rectangle with
     int rectWidth = 250;
     int rectHeight = 100;
     double radius = 30.0;
 
-    // Set pen and brush (optional)
-    wxPen thickPen(*wxBLACK, 3);  // color, thickness
+    //Set pen and brush (optional)
+    wxPen thickPen(*wxBLACK, 3);    //color, thickness
     gc->SetPen(thickPen);
-    gc->SetBrush(wxColor(3,145,93)); // fill color
+    gc->SetBrush(wxColor(3,145,93));    //fill color
 
     gc->DrawRoundedRectangle(X, Y, rectWidth, rectHeight, radius);
 
@@ -46,21 +46,28 @@ void Bank::Draw(std::shared_ptr<wxGraphicsContext> gc)
 
     //Draw the Amount of Coins
 
-    // Convert number to wxString
+    //Convert number to wxString
     wxString numberText = wxString::Format("%d", mCoins);
 
-    // Create a graphics font from wxFont
+    //Create a graphics font from wxFont
     wxGraphicsFont graphicsFont = gc->CreateFont(
         wxFont(50, wxFONTFAMILY_DEFAULT, wxFONTSTYLE_NORMAL, wxFONTWEIGHT_BOLD),
         wxColor(195, 219, 210) // text color
     );
 
-    // Set it on the graphics context
+    //Set font on the graphics context
     gc->SetFont(graphicsFont);
 
-    // Draw the text
-    gc->DrawText(numberText, X + 105, Y + 30);
+    //Calculate Y position with Windows-specific adjustment
+    int textY = Y + 30;
 
+#ifdef _WIN32
+    //Move text up by 50 pixels on Windows only
+    textY -= 20;
+#endif
+
+    //Draw the text
+    gc->DrawText(numberText, X + 105, textY);
 }
 
 /**

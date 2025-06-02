@@ -4,12 +4,18 @@ set(APPLICATION_LIBRARY GameLib)
 
 set(CMAKE_CXX_STANDARD 17)
 
+if (WIN32)
+    # Tell CMake where to find your wxWidgets build
+    set(wxWidgets_ROOT_DIR "C:/wxWidgets-3.2.8")
+
+endif()
+
 # Request the required wxWidgets libs
 # Turn off wxWidgets own precompiled header system
 set(wxBUILD_PRECOMP OFF)
+set(wxWidgets_ROOT_DIR "C:/wxWidgets-3.2.8")
 find_package(wxWidgets COMPONENTS core base xrc html xml REQUIRED)
 
-# Include the wxWidgets use file to initialize various settings
 include(${wxWidgets_USE_FILE})
 
 add_subdirectory(${APPLICATION_LIBRARY})

@@ -8,6 +8,8 @@
 #ifndef TASKMANAGER_H
 #define TASKMANAGER_H
 
+#include <memory>
+
 //Forward References
 class Task;
 

@@ -10,6 +10,8 @@ can be found within the application within the help or about menu bar options.</
 # How to Use!!?
 This program was developed using a MAC, so currently this version will only work on a MAC. There is a provided executable that you can dowload and use at your leisure. If I have free time in between projects I hope one day to make this program available for Windows as well (I'm too busy to add one for Linux..)
 
+There are two Zip files that you can download and extract a working Plant-It executable. One is a Demo, which makes shows the entirety of the application, but without the need to wait (as waiting for plants to get dry and change state takes a while). The other is a regular version, this is the intented version of the application that you can use to keep track of tasks, and water plants, this version DOES have lots of waiting. If you're interested in breifly trying the code for yourself, try the Demo!
+
 <h3>About the Game</h3>
 <p>Within the game, you can purchase, sell, move, display and collect various types of plants, each with different functionality and gameplay. The goal is to collect plants and 
 customize your garden to your own desires. Plants can be purchased via a menu in the menu bar. Of course you'll need to pay for these plants, so the game has its very own banking system.

@@ -36,7 +36,7 @@ void MainFrame::Initialize()
     auto sizer = new wxBoxSizer(wxHORIZONTAL);
 
     //Create Game View as well as Task view
-    mGameView = new GameView();
+    mGameView = new GameView(mResDir);
     mTaskView = new TaskView(this, mGameView->GetBank());
 
     //Call to initialize

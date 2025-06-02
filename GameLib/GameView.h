@@ -41,9 +41,14 @@ private:
     ///Animation time for the 'saving' icon on screen
     int mSaveTime = 0;
 
+    ///Path to Resource Dir
+    const std::wstring mResourseDir;
+
     void OnTimer(wxTimerEvent& event);
 
+
 public:
+    GameView(const std::wstring &resourseDir);
     void Initialize(wxFrame *parent);
     void OnPaint(wxPaintEvent& event);
     void OnLeftDown(const wxMouseEvent &event);

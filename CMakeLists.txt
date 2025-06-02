@@ -31,7 +31,6 @@ file(COPY resources/ DESTINATION ${CMAKE_CURRENT_BINARY_DIR}/)
 
 # Path to the source Levels/ directory
 set(LEVELS_SRC "${CMAKE_CURRENT_SOURCE_DIR}/resources/Levels")
-
 # Destination in the .app bundle
 set(LEVELS_DST "${CMAKE_CURRENT_BINARY_DIR}/Plant-It.app/Contents/Resources/Levels")
 
@@ -39,6 +38,15 @@ set(LEVELS_DST "${CMAKE_CURRENT_BINARY_DIR}/Plant-It.app/Contents/Resources/Leve
 add_custom_command(TARGET Plant-It POST_BUILD
         COMMAND ${CMAKE_COMMAND} -E make_directory "${LEVELS_DST}"
         COMMAND ${CMAKE_COMMAND} -E copy_directory "${LEVELS_SRC}" "${LEVELS_DST}"
+)
+
+# Copy Images/ into the app bundle after build
+set(IMAGES_SRC "${CMAKE_CURRENT_SOURCE_DIR}/resources/Images")
+set(IMAGES_DST "${CMAKE_CURRENT_BINARY_DIR}/Plant-It.app/Contents/Resources/Images")
+
+add_custom_command(TARGET Plant-It POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E make_directory "${IMAGES_DST}"
+        COMMAND ${CMAKE_COMMAND} -E copy_directory "${IMAGES_SRC}" "${IMAGES_DST}"
 )
 
 if(APPLE)

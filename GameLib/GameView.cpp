@@ -21,6 +21,14 @@
 const int FrameDuration = 30;
 
 /**
+ * Constructor
+ */
+GameView::GameView(const std::wstring &resourseDir) :mResourseDir(resourseDir)
+{
+
+}
+
+/**
  * Initialize the Game view class.
  * @param parent The parent window for this class
  */

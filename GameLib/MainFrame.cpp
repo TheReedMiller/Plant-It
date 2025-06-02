@@ -77,7 +77,7 @@ void MainFrame::Initialize()
 
     //Help Menu
     helpMenu->Append(wxID_ABOUT, "Game Controls", "View game controls and rules");
-    helpMenu->Append(IDM_CHEATCODE, "Cheat Code", "Super Secret Cheat Code");
+    // helpMenu->Append(IDM_CHEATCODE, "Cheat Code", "Super Secret Cheat Code");
 
     //Plant Menu
     plantMenu->Append(IDM_ADDSUNFLOWER, "Buy Sunflower [150]", "Buy Sunflower [150]");

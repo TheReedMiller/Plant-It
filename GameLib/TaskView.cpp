@@ -35,7 +35,7 @@ TaskView::TaskView(wxWindow* parent, std::shared_ptr<Bank> bank) :
 
     //Menu Event Handler
     parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &TaskView::OnAddTask, this, IDM_ADDTASK);
-    parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &TaskView::OnCheatCode, this, IDM_CHEATCODE);
+    // parent->Bind(wxEVT_COMMAND_MENU_SELECTED, &TaskView::OnCheatCode, this, IDM_CHEATCODE);
 }
 
 
@@ -289,12 +289,12 @@ void TaskView::OnKeyDown(wxKeyEvent& event)
     }
 }
 
-/**
- *Event Handler for Cheat Code
- * @param event the event to respond to
- */
-void TaskView::OnCheatCode(wxCommandEvent& event)
-{
-    //Add all the Coins you would need
-    mBank->Add(9999);
-}
+// /**
+//  *Event Handler for Cheat Code
+//  * @param event the event to respond to
+//  */
+// void TaskView::OnCheatCode(wxCommandEvent& event)
+// {
+//     //Add all the Coins you would need
+//     mBank->Add(9999);
+// }

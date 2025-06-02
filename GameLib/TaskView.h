@@ -51,7 +51,7 @@ public:
     void OnRightClick(wxMouseEvent& event);
     void OnAddTask(wxCommandEvent& event);
     void OnKeyDown(wxKeyEvent& event);
-    void OnCheatCode(wxCommandEvent& event);
+    // void OnCheatCode(wxCommandEvent& event);
 };
 
 

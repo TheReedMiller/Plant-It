@@ -28,6 +28,11 @@ void MainFrame::Initialize()
 {
     Create(nullptr, wxID_ANY, L"Plant-It", wxDefaultPosition, wxSize(1100, 800));
 
+#ifdef _WIN32
+    //Set maximum Frame size - Windows only
+    SetMaxSize(wxSize(1470, 950));
+#endif
+
     //Create and Start the auto-save timer (interval in milliseconds)
     mAutoSaveTimer.SetOwner(this);
     mAutoSaveTimer.Start(60000);  // Save every 60 seconds

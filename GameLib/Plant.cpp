@@ -8,7 +8,7 @@
 #include "Game.h"
 #include "Item.h"
 
-Plant::Plant(Game *game, const wxString& filename) : Item(game, filename)
+Plant::Plant(Game *game, const wxString& filename, const std::wstring &resourseDir) : Item(game, filename, resourseDir)
 {
     //Simple Up-call for right now
 }
@@ -56,10 +56,9 @@ std::wstring Plant::GetState()
         return L"watered";
     }
 
-    else if (mState == State::Dry)
-    {
-        return L"dry";
-    }
+    //State is dry
+    return L"dry";
+
 }
 
 /**

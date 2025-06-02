@@ -15,7 +15,7 @@ const std::wstring DryFlytrapImage = L"flytrap_2.png";
  * Constructor
  * @param game Game this Flytrap belongs to
  */
-Flytrap::Flytrap(Game* game) : Plant(game,RegFlytrapImage )
+Flytrap::Flytrap(Game* game, const std::wstring &resourseDir) : Plant(game,RegFlytrapImage, resourseDir )
 {
     //Set the MaxLevel for Flytrap
     SetMaxLevel(1000);

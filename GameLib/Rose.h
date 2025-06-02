@@ -17,7 +17,7 @@ class Rose : public Plant{
 private:
 
 public:
-    Rose(Game* game);
+    Rose(Game* game, const std::wstring &resourseDir);
     wxXmlNode* Save(wxXmlNode* gameNode) override;
     void Toggle() override;
     void Load(wxXmlNode* childNode) override;

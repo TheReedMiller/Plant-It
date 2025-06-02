@@ -12,7 +12,7 @@ const double HeadbuttSpeed = 5;
 ///Constant for Headbutt angle
 const double HeadButtAngle = 1.5;
 /// Directory within resources that contains the images.
-const std::wstring ImagesDirectory = L"Images/";
+const std::wstring ImagesDirectory = L"/Images/";
 ///Constant for Droplet Offset X
 const int DropXOffset = 110;
 ///Constant for Droplet Offset Y
@@ -22,10 +22,11 @@ const int DropYOffset = 40;
 /**
  * Constructor
  */
-WateringCan::WateringCan(Game *game) : Item(game, L"wateringcan.png")
+WateringCan::WateringCan(Game *game, const std::wstring &resourseDir) :
+Item(game, L"wateringcan.png", resourseDir), mResourseDir(resourseDir)
 {
     //Create Bitmap and Image for Water Drop
-    mDropImage = std::make_unique<wxImage>( ImagesDirectory +L"waterdrop.png", wxBITMAP_TYPE_ANY);
+    mDropImage = std::make_unique<wxImage>( mResourseDir + ImagesDirectory +L"waterdrop.png", wxBITMAP_TYPE_ANY);
     mDropBitmap = std::make_unique<wxBitmap>(*mDropImage);
 }
 
@@ -128,6 +129,7 @@ void WateringCan::Update(double elapsed)
 wxXmlNode* WateringCan::Save(wxXmlNode *gameNode)
 {
     //Don't save this item
+    return gameNode;
 }
 
 /**

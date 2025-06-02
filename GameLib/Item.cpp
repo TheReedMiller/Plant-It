@@ -8,17 +8,18 @@
 #include "Game.h"
 
 /// Directory within resources that contains the images.
-const std::wstring ImagesDirectory = L"Images/";
+const std::wstring ImagesDirectory = L"/Images/";
 
 
 /**
  * Constructor
  * @param game The game this item is a member of
  */
-Item::Item(Game *game, const wxString& filename) : mGame(game), mImageFileName(filename)
+Item::Item(Game *game, const wxString& filename, const std::wstring &resourseDir) : mGame(game),
+mImageFileName(filename), mResourseDir(resourseDir)
 {
     //Set Image and Bitmap
-    mItemImage = std::make_unique<wxImage>( ImagesDirectory + filename, wxBITMAP_TYPE_ANY);
+    mItemImage = std::make_unique<wxImage>( mResourseDir + ImagesDirectory + filename, wxBITMAP_TYPE_ANY);
     mItemBitmap = std::make_unique<wxBitmap>(*mItemImage);
 }
 
@@ -121,7 +122,7 @@ void Item::SetImage(const std::wstring &file)
 {
     if (!file.empty())
     {
-        std::wstring filename = ImagesDirectory + L"/" + file;
+        std::wstring filename = mResourseDir + ImagesDirectory + file;
         mItemImage = std::make_unique<wxImage>(filename, wxBITMAP_TYPE_ANY);
         mItemBitmap = std::make_unique<wxBitmap>(*mItemImage);
     }

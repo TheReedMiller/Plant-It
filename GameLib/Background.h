@@ -18,7 +18,7 @@ class Background : public Item
 private:
 
 public:
-    Background(Game *game, const wxString& filename);
+    Background(Game *game, const wxString& filename, const std::wstring &resourseDir);
     void Draw(std::shared_ptr<wxGraphicsContext> gc) override ;
 };
 

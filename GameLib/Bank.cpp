@@ -14,10 +14,10 @@ const int Y = 15;
 /**
  * Constructor
  */
-Bank::Bank()
+Bank::Bank(const std::wstring &resourseDir) : mResourseDir(resourseDir)
 {
     //Set Image and Bitmap
-    mItemImage = std::make_unique<wxImage>( L"Images/coin.png", wxBITMAP_TYPE_ANY);
+    mItemImage = std::make_unique<wxImage>( mResourseDir + L"/Images/coin.png", wxBITMAP_TYPE_ANY);
     mItemBitmap = std::make_unique<wxBitmap>(*mItemImage);
 }
 

@@ -16,7 +16,7 @@ const std::wstring DryFernImage = L"fern_2.png";
  * Constructor
  * @param game Game this Flytrap belongs to
  */
-Fern::Fern(Game* game) : Plant(game, RegFernImage)
+Fern::Fern(Game* game, const std::wstring &resourseDir) : Plant(game, RegFernImage, resourseDir)
 {
     //Set the MaxLevel for Cactus
     SetMaxLevel(1000);

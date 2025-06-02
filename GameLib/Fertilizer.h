@@ -18,8 +18,8 @@ class Fertilizer : public Item{
 private:
 
 public:
-    Fertilizer(Game* game);
-    wxXmlNode* Save(wxXmlNode* gameNode);
+    Fertilizer(Game* game, const std::wstring &resourseDir);
+    wxXmlNode* Save(wxXmlNode* gameNode) override;
 
     /**
      * A function that classifies

@@ -18,8 +18,8 @@ class Fern : public Plant{
 private:
 
 public:
-    Fern(Game* game);
-    wxXmlNode* Save(wxXmlNode* gameNode);
+    Fern(Game* game, const std::wstring &resourseDir);
+    wxXmlNode* Save(wxXmlNode* gameNode) override;
     void Toggle() override;
     void Load(wxXmlNode* childNode) override;
 };

@@ -17,7 +17,7 @@ class Sunflower : public Plant{
 private:
 
 public:
-    Sunflower(Game* game);
+    Sunflower(Game* game, const std::wstring &resourseDir);
     wxXmlNode* Save(wxXmlNode* gameNode) override;
     void Toggle() override;
     void Load(wxXmlNode* childNode) override;

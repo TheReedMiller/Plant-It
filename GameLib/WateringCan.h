@@ -25,14 +25,16 @@ private:
     std::unique_ptr<wxImage> mDropImage = nullptr;
     ///Bitmap for water Droplet image
     std::unique_ptr<wxBitmap> mDropBitmap = nullptr;
+    ///Path to Resource Dir
+    const std::wstring mResourseDir;
 
 public:
-    WateringCan(Game *game);
+    WateringCan(Game *game, const std::wstring &resourseDir);
     std::wstring GetItemName() override;
     void Click() override;
     void Draw(std::shared_ptr<wxGraphicsContext> gc) override;
     void Update(double elapsed) override;
-    wxXmlNode* Save(wxXmlNode* gameNode);
+    wxXmlNode* Save(wxXmlNode* gameNode) override;
     void Water();
 
     /**

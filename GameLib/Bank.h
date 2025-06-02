@@ -22,8 +22,12 @@ private:
 
     /// The bitmap we can display for this item
     std::unique_ptr<wxBitmap> mItemBitmap;
+
+    ///Path to Resource Dir
+    const std::wstring mResourseDir;
+
 public:
-    Bank();
+    Bank(const std::wstring &resourseDir);
 
     /**
      * Getter for Coins

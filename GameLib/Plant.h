@@ -30,7 +30,7 @@ private:
     int mMaxLevel = 1000;
 
 public:
-    Plant(Game* game, const wxString& filename);
+    Plant(Game* game, const wxString& filename, const std::wstring &resourseDir);
     void SetImage(const std::wstring& file);
 
     /**

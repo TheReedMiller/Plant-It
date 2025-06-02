@@ -19,6 +19,9 @@
  */
 class Game {
 private:
+    ///Path to Resource Dir
+    const std::wstring mResourseDir;
+
     ///Background for game
     std::unique_ptr<Background> mBackground;
 
@@ -32,7 +35,7 @@ private:
     std::vector<std::shared_ptr<Item>> mItems;
 
 public:
-    Game();
+    Game(const std::wstring &resourseDir);
     void OnDraw(std::shared_ptr<wxGraphicsContext> gc);
     void Update(double elapsed);
     void Load(wxXmlNode* gameNode);

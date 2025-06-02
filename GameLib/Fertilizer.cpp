@@ -7,7 +7,7 @@
 #include "Fertilizer.h"
 #include "Game.h"
 
-Fertilizer::Fertilizer(Game* game) : Item(game, L"fertilizer.png")
+Fertilizer::Fertilizer(Game* game, const std::wstring &resourseDir) : Item(game, L"fertilizer.png", resourseDir)
 {
 
 }

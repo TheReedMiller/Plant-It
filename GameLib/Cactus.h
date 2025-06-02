@@ -17,7 +17,7 @@ class Cactus : public Plant {
 private:
 
 public:
-    Cactus(Game* game);
+    Cactus(Game* game, const std::wstring &resourseDir);
     wxXmlNode* Save(wxXmlNode* gameNode) override;
     void Toggle() override;
     void Load(wxXmlNode* childNode) override;

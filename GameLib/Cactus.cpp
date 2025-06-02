@@ -15,7 +15,7 @@ const std::wstring DryCactusImage = L"cactus_2.png";
  * Constructor
  * @param game game this Cactus belongs to
  */
-Cactus::Cactus(Game* game) : Plant(game, RegCactusImage)
+Cactus::Cactus(Game* game, const std::wstring &resourseDir) : Plant(game, RegCactusImage, resourseDir)
 {
     //Set the MaxLevel for Rose
     SetMaxLevel(1000);

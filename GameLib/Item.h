@@ -15,7 +15,7 @@ class Game;
  */
 class Item {
 protected:
-    Item(Game *game, const wxString& filename);   //Constructor
+    Item(Game *game, const wxString& filename, const std::wstring &resourseDir);   //Constructor
 
 private:
     ///Game object that this item belongs to
@@ -32,6 +32,10 @@ private:
     std::unique_ptr<wxImage> mItemImage;
     /// The bitmap we can display for this item
     std::unique_ptr<wxBitmap> mItemBitmap;
+
+    ///Path to Resource Dir
+    const std::wstring mResourseDir;
+
 
 public:
 

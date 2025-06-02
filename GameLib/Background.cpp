@@ -10,7 +10,7 @@
  * Constructor
  * @param game The game this Background is a member of
 */
-Background::Background(Game *game, const wxString& filename) : Item(game, filename)
+Background::Background(Game *game, const wxString& filename, const std::wstring &resourseDir) : Item(game, filename, resourseDir)
 {
  //Simple up-call - No added functionality
 }

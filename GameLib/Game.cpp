@@ -21,12 +21,12 @@ using namespace std;
 /**
  * Constructor
  */
-Game::Game()
+Game::Game(const std::wstring &resourseDir) : mResourseDir(resourseDir)
 {   //Add background to Items
-    mBackground = std::make_unique<Background>(this, L"background.png");
+    mBackground = std::make_unique<Background>(this, L"background.png", mResourseDir);
 
     //Create the Bank
-    mBank = std::make_shared<Bank>();
+    mBank = std::make_shared<Bank>(mResourseDir);
 
     //Create Watering can
     ResetWateringCan(true);     //Bool is true, because we want to create and add the watering can
@@ -108,37 +108,37 @@ void Game::CreateItem(wxXmlNode* childNode)
     //Rose Plant
     if (type == L"rose")
     {
-        item = make_shared<Rose>(this);
+        item = make_shared<Rose>(this, mResourseDir);
     }
 
     //Sunflower Plant
     else if (type == L"sunflower")
     {
-        item = make_shared<Sunflower>(this);
+        item = make_shared<Sunflower>(this, mResourseDir);
     }
 
     //Sunflower Plant
     else if (type == L"fern")
     {
-        item = make_shared<Fern>(this);
+        item = make_shared<Fern>(this, mResourseDir);
     }
 
     //Cactus Plant
     else if (type == L"cactus")
     {
-        item = make_shared<Cactus>(this);
+        item = make_shared<Cactus>(this, mResourseDir);
     }
 
     //Flytrap Plant
     else if (type == L"flytrap")
     {
-        item = make_shared<Flytrap>(this);
+        item = make_shared<Flytrap>(this, mResourseDir);
     }
 
     //Fertilizer
     else if (type == L"fertilizer")
     {
-        item = make_shared<Fertilizer>(this);
+        item = make_shared<Fertilizer>(this, mResourseDir);
     }
 
     if (item != nullptr)
@@ -285,7 +285,7 @@ void Game::ResetWateringCan(bool isCreate)
     //If bool is set, create a new watering can
     if (isCreate)
     {
-        mWateringCan = make_shared<WateringCan>(this);
+        mWateringCan = make_shared<WateringCan>(this, mResourseDir);
         Add(mWateringCan);
     }
 

@@ -17,7 +17,7 @@ class Flytrap : public Plant {
 private:
 
 public:
-    Flytrap(Game* game);
+    Flytrap(Game* game, const std::wstring &resourseDir);
     wxXmlNode* Save(wxXmlNode* gameNode) override;
     void Toggle() override;
     void Load(wxXmlNode* childNode) override;

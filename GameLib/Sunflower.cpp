@@ -17,7 +17,7 @@ const std::wstring DrySunflowerImage = L"sunflower_2.png";
  * Constructor
  * @param game the game that this object belongs to
  */
-Sunflower::Sunflower(Game* game) : Plant(game, RegSunflowerImage)
+Sunflower::Sunflower(Game* game, const std::wstring &resourseDir) : Plant(game, RegSunflowerImage, resourseDir)
 {
     //Set the MaxLevel for Sunflower
     SetMaxLevel(1000);

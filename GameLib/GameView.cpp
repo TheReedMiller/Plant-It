@@ -23,7 +23,7 @@ const int FrameDuration = 30;
 /**
  * Constructor
  */
-GameView::GameView(const std::wstring &resourseDir) :mResourseDir(resourseDir)
+GameView::GameView(const std::wstring &resourseDir) :mResourseDir(resourseDir), mGame(resourseDir)
 {
 
 }
@@ -236,7 +236,7 @@ void GameView::OnAddSunflower(wxCommandEvent& event)
     mGame.GetBank()->Sub(150);
 
     //Create and Add Item
-    auto item = std::make_shared<Sunflower>(&mGame);
+    auto item = std::make_shared<Sunflower>(&mGame, mResourseDir);
     mGame.Add(item);
     Refresh();
 }
@@ -256,7 +256,7 @@ void GameView::OnAddRose(wxCommandEvent& event)
     mGame.GetBank()->Sub(200);
 
     //Create and Add Item
-    auto item = std::make_shared<Rose>(&mGame);
+    auto item = std::make_shared<Rose>(&mGame, mResourseDir);
     mGame.Add(item);
     Refresh();
 }
@@ -277,7 +277,7 @@ void GameView::OnAddFern(wxCommandEvent& event)
     mGame.GetBank()->Sub(250);
 
     //Create and Add Item
-    auto item = std::make_shared<Fern>(&mGame);
+    auto item = std::make_shared<Fern>(&mGame, mResourseDir);
     mGame.Add(item);
     Refresh();
 }
@@ -298,7 +298,7 @@ void GameView::OnAddCactus(wxCommandEvent& event)
     mGame.GetBank()->Sub(400);
 
     //Create and Add Item
-    auto item = std::make_shared<Cactus>(&mGame);
+    auto item = std::make_shared<Cactus>(&mGame, mResourseDir);
     mGame.Add(item);
     Refresh();
 }
@@ -319,7 +319,7 @@ void GameView::OnAddFlytrap(wxCommandEvent& event)
     mGame.GetBank()->Sub(1000);
 
     //Create and Add Item
-    auto item = std::make_shared<Flytrap>(&mGame);
+    auto item = std::make_shared<Flytrap>(&mGame, mResourseDir);
     mGame.Add(item);
     Refresh();
 }
@@ -340,7 +340,7 @@ void GameView::OnAddFertilizer(wxCommandEvent& event)
     mGame.GetBank()->Sub(200);
 
     //Create and Add Item
-    auto item = std::make_shared<Fertilizer>(&mGame);
+    auto item = std::make_shared<Fertilizer>(&mGame, mResourseDir);
     mGame.Add(item);
     Refresh();
 }
